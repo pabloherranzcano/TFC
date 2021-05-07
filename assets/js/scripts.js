@@ -1,3 +1,4 @@
+// Mostrar menú al hacer click en la hamburguesa
 $(document).ready(function() {
     $('.burger').on('click', function() {
         $('.nav').toggleClass('showing');
@@ -5,11 +6,12 @@ $(document).ready(function() {
     });
 });
 
-
+// Carousel Slick
 $('.post-wrapper').slick({
     centerMode: true,
     centerPadding: '60px',
-    slidesToShow: 3,
+    slidesToShow: 4,
+    cssEase: 'linear',
     nextArrow: $('.next'),
     prevArrow: $('.prev'),
     responsive: [{
