@@ -1,5 +1,7 @@
-<?php include "path.php"; ?>
-<?php include "app/controllers/users.php"; ?>
+<?php
+include "path.php";
+include ROOT_PATH . "/app/controllers/users.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,25 +28,31 @@
         <form action="register.php" method="POST">
             <h2 class="form-title">REGISTRO</h2>
 
-            <!-- <div class="msg success error">
-                <li>Username required</li>
-            </div> -->
-            
+			<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
+			mostramos en este div una lista con los errores. -->
+			<?php if(count($errors) > 0) : ?>
+				<div class="msg error">
+					<?php foreach ($errors as $error) : ?>
+						<li><?php echo "- $error"; ?></li>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+			            
 			<div>
                 <label>Username</label>
-                <input type="text" name="username" id="" class="text-input">
+                <input type="text" name="username" value="<?php echo $username; ?>" id="" class="text-input">
             </div>
             <div>
                 <label>Email</label>
-                <input type="text" name="email" id="" class="text-input">
+                <input type="text" name="email" value="<?php echo $email; ?>" id="" class="text-input">
             </div>
             <div>
                 <label>Password</label>
-                <input type="text" name="password" id="" class="text-input">
+                <input type="text" name="password" value="<?php echo $password; ?>" id="" class="text-input">
             </div>
             <div>
                 <label>Password Confirmation</label>
-                <input type="text" name="passwordConf" id="" class="text-input">
+                <input type="text" name="passwordConf" value="<?php echo $passwordConf; ?>" id="" class="text-input">
             </div>
             <div>
                 <button type="submit" name="register-btn" class="btn btn-big">Register</button>

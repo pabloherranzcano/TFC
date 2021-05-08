@@ -5,7 +5,7 @@
 ** archivo connection.php, que es el que nos permite conectarnos
 ** con la base de datos.
 */
-require("connection.php");
+require ("connection.php");
 
 function printData($value) // SE ELIMINARÁ
 {
@@ -212,15 +212,16 @@ function delete($table, $id)
 	return ($stmt->affected_rows);
 }
 
-$data = [
-	'username' => 'Pablooooooooo',
-	'admin' => 0,
-	'email' => 'pablo111@gmail.com',
-	'password' => 'Enrique'
-];
+// $data = [
+// 	'username' => 'Eugenio',
+// 	'admin' => 0,
+// 	'email' => 'pablo111@gmail.com',
+// 	'password' => 'Enrique'
+// ];
 
 // $user_id = create('users', $data);
 // $user = selectOne('users', ['id' => $user_id]);
 
 // printData($user);
+
 ?>
