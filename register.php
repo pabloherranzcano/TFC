@@ -1,3 +1,6 @@
+<?php include "path.php"; ?>
+<?php include "app/controllers/users.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,41 +19,18 @@
 
 <body>
     <!-- HEADER -->
-    <header>
-        <div class="logo">
-            <h1 class="logo-text">
-                <a href="/app/index.html"><span>TFC</span>BLOG</a>
-            </h1>
-        </div>
-        <i class="fa fa-bars burger"></i>
-        <ul class="nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <!-- <li><a href="#">Sign up</a></li>
-			<li><a href="#">Log in</a></li> -->
-            <li>
-                <a href="#">
-                    <i class="fa fa-user"></i> Username
-                    <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
-                </a>
-
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#" class="logout">Log out</a></li>
-                </ul>
-            </li>
-        </ul>
-    </header>
+	<?php include ROOT_PATH . "/app/includes/header.php"; ?>
     <!-- // HEADER -->
 
     <div class="auth-content">
-        <form action="register.html">
+        <form action="register.php" method="POST">
             <h2 class="form-title">REGISTRO</h2>
+
             <!-- <div class="msg success error">
                 <li>Username required</li>
             </div> -->
-            <div>
+            
+			<div>
                 <label>Username</label>
                 <input type="text" name="username" id="" class="text-input">
             </div>
@@ -69,7 +49,7 @@
             <div>
                 <button type="submit" name="register-btn" class="btn btn-big">Register</button>
             </div>
-            <p>Or <a href="login.html">Log in</a></p>
+            <p>Or <a href="<?php echo BASE_URL . "/login.php" ?>">Log in</a></p>
         </form>
     </div>
 
