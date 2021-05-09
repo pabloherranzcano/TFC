@@ -39,49 +39,73 @@ include ROOT_PATH . "/app/controllers/posts.php";
 
 		<!-- Admin content -->
 		<div class="admin-content">
-            <div class="btn-group">
-                <a href="create.php" class="btn btn-big">Add post</a>
-                <a href="index.php" class="btn btn-big">Manage posts</a>
-            </div>
+			<div class="btn-group">
+				<a href="create.php" class="btn btn-big">Add post</a>
+				<a href="index.php" class="btn btn-big">Manage posts</a>
+			</div>
 
-            <div class="content">
-                <h2 class="page-title">EDIT Posts</h2>
+			<div class="content">
+				<h2 class="page-title">EDIT Posts</h2>
 
-                <form action="create.php" method="POST">
-                    <div>
-                        <label>Title</label>
-                        <input type="text" name="title" class="text-input">
-                    </div>
-                    <div>
-                        <label>Body</label>
-                        <textarea name="body" id="body"></textarea>
-                        <script>
-                            ClassicEditor
-                                .create(document.querySelector('#body'))
-                                .catch(error => {
-                                    console.error(error);
-                                });
-                        </script>
-                    </div>
-                    <div>
-                        <label>Image</label>
-                        <input type="file" name="image" class="text-input">
-                    </div>
-                    <div>
-                        <label>Topic</label>
-                        <select name="topic" class="text-input">
-							<option value="Poetry">Poetry</option>
-							<option value="Guerra">Guerra</option>
+					<!-- Enctype para poder subir imágenes -->
+					<form action="edit.php" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="id" value="<?php echo $id; ?>">
+					<div>
+						<label>Title</label>
+						<input type="text" name="title" value="<?php echo $title; ?>" class="text-input">
+					</div>
+					<div>
+						<label>Body</label>
+						<textarea name="body" id="body"><?php echo $body; ?></textarea>
+						<script>
+							ClassicEditor
+								.create(document.querySelector('#body'))
+								.catch(error => {
+									console.error(error);
+								});
+						</script>
+					</div>
+					<div>
+						<label>Image</label>
+						<input type="file" name="image" class="text-input">
+					</div>
+					<div>
+						<label>Topic</label>
+						<select name="topic_id" class="text-input">
+							<option value=""></option>
+							<?php foreach ($topics as $key => $topic) : ?>
+
+								<?php if (!empty($topic_id) && $topic_id == $topic['id']) : ?>
+									<option selected value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
+								<?php else : ?>
+									<option value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
+								<?php endif; ?>
+								<!-- Como queremos que se nos muestren los topics en el select... -->
+							<?php endforeach; ?>
+
 						</select>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-big">Update post</button>
-                    </div>
+					</div>
+					<div>
+						<?php if (empty($published) && $published == 0) : ?>
+							<label>
+								<input type="checkbox" name="published">
+								Publish
+							</label>
+						<?php else : ?>
+							<label>
+								<input type="checkbox" name="published" checked>
+								Publish
+							</label>
+						<?php endif; ?>
+					</div>
+					<div>
+						<button type="submit" name="update-post" class="btn btn-big">Update post</button>
+					</div>
 
-                </form>
-            </div>
-        </div>
-        <!-- // Admin content -->
+				</form>
+			</div>
+		</div>
+		<!-- // Admin content -->
 	</div>
 	<!-- // PAGE WRAPPER -->
 

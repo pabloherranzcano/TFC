@@ -47,6 +47,8 @@ include ROOT_PATH . "/app/controllers/posts.php";
 			<div class="content">
 				<h2 class="page-title">Manage Posts</h2>
 
+				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
+
 				<table>
 					<thead>
 						<th>SN</th>
@@ -60,8 +62,8 @@ include ROOT_PATH . "/app/controllers/posts.php";
 								<td><?php echo $key + 1; ?></td>
 								<td><?php echo $post['title']; ?></td>
 								<td>Autor</td>
-								<td><a href="" class="edit">Edit</a></td>
-								<td><a href="" class="delete">Delete</a></td>
+								<td><a href="edit.php?id=<?php echo $post['id'] ?>" class="edit">Edit</a></td>
+								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Delete</a></td>
 								
 								<?php if ($post['published']) : ?>
 									<td><a href="" class="unpublish">Unpublish</a></td>
