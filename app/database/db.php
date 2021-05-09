@@ -1,7 +1,13 @@
 <?php 
 
 /*
-** Lo primero que hacemos aquí es un include (o require) del 
+** Lo primero que hacemos aquí es iniciar una sesión en este archivo,
+** porque así no tenemos que iniciarla en todos los demás.
+*/
+session_start();
+
+/*
+** Lo segundo que hacemos es un include (o require) del 
 ** archivo connection.php, que es el que nos permite conectarnos
 ** con la base de datos.
 */

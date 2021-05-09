@@ -3,10 +3,29 @@
 include ROOT_PATH . "/app/database/db.php";
 include ROOT_PATH . "/app/helpers/validateUser.php";
 
+$errors = array();
 $username = '';
 $email = '';
 $password = '';
 $passwordConf = '';
+$table = 'users';
+
+function loginUser($user)
+{
+	$_SESSION['id'] = $user['id'];
+	$_SESSION['username'] = $user['username'];
+	$_SESSION['admin'] = $user['admin'];
+	$_SESSION['message'] = 'You are now logged in';
+	$_SESSION['type'] = 'success';
+
+	/* Regresamos al index si el usuario no es admin. Si no, al control panel */
+	if ($_SESSION['admin'])
+		header('location: ' . BASE_URL . '/admin/dashboard.php');
+	header('location: ' . BASE_URL . '/index.php');
+
+	/* Acabamos la ejecución del script en este punto. */
+	exit();
+}
 
 if (isset($_POST["register-btn"])) {
 
@@ -33,11 +52,11 @@ if (isset($_POST["register-btn"])) {
 		$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		
 		// /* Creamos el usuario llamando a la función "create" dentro del CRUD de db.php */
-		$user_id = create('users', $_POST);
-		$user = selectOne('users', ['id' => $user_id]);
-		
-		
-		printData($user);
+		$user_id = create($table, $_POST);
+		$user = selectOne($table, ['id' => $user_id]);
+
+		/* Logueamos al usuario con sesiones */
+		loginUser($user);
 	}
 	else 
 	{
@@ -47,5 +66,22 @@ if (isset($_POST["register-btn"])) {
 		$passwordConf = $_POST['passwordConf'];
 	}
 	
+}
+
+if (isset($_POST['login-btn'])) {
+	$errors = validateLogin($_POST);
+	/* Si el usuario existe y la contraseña concuerda... */
+	if (count($errors) == 0) {
+		$user = selectOne($table, ['username' => $_POST['username']]);
+
+		if ($user && password_verify($_POST['password'], $user['password'])) {
+			/* Loguea y redirecciona */
+			loginUser($user);
+		}	
+		else
+			array_push($errors, "Wrong credentials.");
+	}
+	$username = $_POST['username'];
+	$password = $_POST['password'];
 }
 ?>

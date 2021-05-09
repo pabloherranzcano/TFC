@@ -24,19 +24,13 @@ include ROOT_PATH . "/app/controllers/users.php";
 	<?php include ROOT_PATH . "/app/includes/header.php"; ?>
     <!-- // HEADER -->
 
-    <div class="auth-content">
+    <div class="auth-content">`
         <form action="register.php" method="POST">
             <h2 class="form-title">REGISTRO</h2>
 
 			<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 			mostramos en este div una lista con los errores. -->
-			<?php if(count($errors) > 0) : ?>
-				<div class="msg error">
-					<?php foreach ($errors as $error) : ?>
-						<li><?php echo "- $error"; ?></li>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
+			<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
 			            
 			<div>
                 <label>Username</label>
@@ -48,11 +42,11 @@ include ROOT_PATH . "/app/controllers/users.php";
             </div>
             <div>
                 <label>Password</label>
-                <input type="text" name="password" value="<?php echo $password; ?>" id="" class="text-input">
+                <input type="password" name="password" value="<?php echo $password; ?>" id="" class="text-input">
             </div>
             <div>
                 <label>Password Confirmation</label>
-                <input type="text" name="passwordConf" value="<?php echo $passwordConf; ?>" id="" class="text-input">
+                <input type="password" name="passwordConf" value="<?php echo $passwordConf; ?>" id="" class="text-input">
             </div>
             <div>
                 <button type="submit" name="register-btn" class="btn btn-big">Register</button>
