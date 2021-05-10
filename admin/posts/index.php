@@ -1,6 +1,9 @@
 <?php
 include "../../path.php";
 include ROOT_PATH . "/app/controllers/posts.php";
+
+// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+adminOnly();
 ?>
 
 <!DOCTYPE html>
@@ -66,9 +69,9 @@ include ROOT_PATH . "/app/controllers/posts.php";
 								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Delete</a></td>
 								
 								<?php if ($post['published']) : ?>
-									<td><a href="" class="unpublish">Unpublish</a></td>
+									<td><a href="edit.php?published=0&p_id=<?php echo $post['id']; ?>" class="unpublish">Unpublish</a></td>
 								<?php else : ?>
-									<td><a href="" class="publish">Publish</a></td>
+									<td><a href="edit.php?published=1&p_id=<?php echo $post['id']; ?>" class="publish">Publish</a></td>
 								<?php endif; ?>
 							</tr>
 						<?php endforeach; ?>

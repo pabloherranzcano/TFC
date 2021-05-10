@@ -1,5 +1,5 @@
 <?php
-include "../../path.php";
+include "../path.php";
 include ROOT_PATH . "/app/controllers/users.php";
 
 // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
@@ -18,15 +18,15 @@ adminOnly();
 	<script src="https://kit.fontawesome.com/434ac71e85.js" crossorigin="anonymous"></script>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/style.css">
 
 	<!-- ADMIN CSS -->
-	<link rel="stylesheet" href="/assets/css/admin.css">
+	<link rel="stylesheet" href="../assets/css/admin.css">
 
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – MANAGE USERS</title>
+	<title>Admin section – DASHBOARD</title>
 </head>
 
 <body>
@@ -42,35 +42,12 @@ adminOnly();
 
 		<!-- Admin content -->
 		<div class="admin-content">
-			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Add Users</a>
-				<a href="index.php" class="btn btn-big">Manage Users</a>
-			</div>
-
 			<div class="content">
-				<h2 class="page-title">Manage Users</h2>
+
+				<h2 class="page-title">Bienvenido al panel de control de Admin</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 
-				<table>
-					<thead>
-						<th>SN</th>
-						<th>Username</th>
-						<th>Email</th>
-						<th colspan='2'>Action</th>
-					</thead>
-					<tbody>
-						<?php foreach ($admin_users as $key => $user) : ?>
-							<tr>
-								<td><?php echo $key + 1; ?></td>
-								<td><?php echo $user['username']; ?></td>
-								<td><?php echo $user['email']; ?></td>
-								<td><a href="edit.php?id=<?php echo $user['id']; ?>" class="edit">Edit</a></td>
-								<td><a href="edit.php?delete_id=<?php echo $user['id']; ?>" class="delete">Delete</a></td>
-							</tr>
-						<?php endforeach; ?>
-					</tbody>
-				</table>
 			</div>
 		</div>
 		<!-- // Admin content -->
@@ -83,7 +60,7 @@ adminOnly();
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	<!-- CUSTOM SCRIPT -->
-	<script src="/assets/js/scripts.js"></script>
+	<script src="../assets/js/scripts.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,9 @@
 <?php
 include "../../path.php"; 
 include ROOT_PATH . "/app/controllers/topics.php";
+
+// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+adminOnly();
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +65,7 @@ include ROOT_PATH . "/app/controllers/topics.php";
 								<td><?php echo $topic['name']; ?></td>
 								<!-- ?id junto para GET -->
 								<td><a href="edit.php?id=<?php echo $topic['id']; ?>" class="edit">Edit</a></td>
-								<td><a href="index.php?del_id=<?php echo $topic['id']; ?>" class="delete">Delete</a></td>
+								<td><a href="index.php?delete_id=<?php echo $topic['id']; ?>" class="delete">Delete</a></td>
 							</tr>
 						<?php endforeach; ?>
                     </tbody>

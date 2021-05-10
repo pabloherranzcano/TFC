@@ -2,6 +2,8 @@
 
 include ROOT_PATH . "/app/database/db.php";
 include ROOT_PATH . "/app/helpers/validateTopic.php";
+include ROOT_PATH . "/app/helpers/middleware.php";
+
 
 $table = 'topics';
 
@@ -14,6 +16,9 @@ $topics = selectAll($table);
 
 // CREATE
 if (isset($_POST['add-topic'])) {
+	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+	adminOnly();
+
 	$errors = validateTopic($_POST);
 	if (count($errors) == 0) {
 		unset($_POST['add-topic']);
@@ -44,6 +49,9 @@ if (isset($_GET['id'])) {
 
 // UPDATE
 if(isset($_POST['update-topic'])) {
+	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+	adminOnly();
+	
 	$errors = validateTopic($_POST);
 
 	if (count($errors) == 0) {
@@ -65,8 +73,11 @@ if(isset($_POST['update-topic'])) {
 }
 
 // DELETE
-if (isset($_GET['del_id'])) {
-	$id = $_GET['del_id'];
+if (isset($_GET['delete_id'])) {
+	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+	adminOnly();
+	
+	$id = $_GET['delete_id'];
 	$count = delete($table, $id);
 
 	$_SESSION['message'] = 'Topic deleted successfully.';

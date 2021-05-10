@@ -34,6 +34,38 @@ function printData($value) // SE ELIMINARÁ
 
 
 /********************************************/
+/**************** C R E A T E ***************/
+/********************************************/
+/*
+** Hay dos formas de insertar datos en una base de datos:
+** 		1- "INSERT INTO users (username, admin, email, password) VALUES (?, ?, ?, ?)"
+** 		2- "INSERT INTO users SET username=?, admin=?, email=?, password=?"
+**
+** En esta función nos centraremos en crear la query de la forma 2.
+*/
+function create($table, $data)
+{
+	global $connection;
+
+	$sql = "INSERT INTO $table SET";
+
+	/* ForEach para crear la query. Sentencia if para poner o no la coma que separa los campos. */
+	$i = 0;
+	foreach ($data as $key => $value) {
+		if ($i == 0)
+			$sql = $sql . " $key=?";
+		else
+			$sql = $sql . ", $key=?";
+		$i++;
+	}
+
+	$stmt = executeQuery($sql, $data);
+	$id = $stmt->insert_id;
+	
+	return ($id);
+}
+
+/********************************************/
 /****************** R E A D *****************/
 /********************************************/
 /* 
@@ -133,38 +165,6 @@ function selectOne($table, $conditions)
 }
 
 /********************************************/
-/**************** C R E A T E ***************/
-/********************************************/
-/*
-** Hay dos formas de insertar datos en una base de datos:
-** 		1- "INSERT INTO users (username, admin, email, password) VALUES (?, ?, ?, ?)"
-** 		2- "INSERT INTO users SET username=?, admin=?, email=?, password=?"
-**
-** En esta función nos centraremos en crear la query de la forma 2.
-*/
-function create($table, $data)
-{
-	global $connection;
-
-	$sql = "INSERT INTO $table SET";
-
-	/* ForEach para crear la query. Sentencia if para poner o no la coma que separa los campos. */
-	$i = 0;
-	foreach ($data as $key => $value) {
-		if ($i == 0)
-			$sql = $sql . " $key=?";
-		else
-			$sql = $sql . ", $key=?";
-		$i++;
-	}
-
-	$stmt = executeQuery($sql, $data);
-	$id = $stmt->insert_id;
-	
-	return ($id);
-}
-
-/********************************************/
 /**************** U P D A T E ***************/
 /********************************************/
 /*
@@ -218,16 +218,88 @@ function delete($table, $id)
 	return ($stmt->affected_rows);
 }
 
-// $data = [
-// 	'username' => 'Eugenio',
-// 	'admin' => 0,
-// 	'email' => 'pablo111@gmail.com',
-// 	'password' => 'Enrique'
-// ];
+/* Función para saber quién ha escrito un post, ya que user_id es foreign key de la tabla POSTS, y no podremos obtener
+el nombre del "user_id" sin hacer un inner join en la consulta
 
-// $user_id = create('users', $data);
-// $user = selectOne('users', ['id' => $user_id]);
+SELECT p.*, u.username
+			FROM posts AS p
+			JOIN users AS u
+			ON p.user_id=u.id
+			WHERE p.published=?
 
-// printData($user);
+Ponemos ? en p.published para poder pasarlo como condición a la hora de llamar a executeQuery, que recibe
+la query sql y una condición.
 
-?>
+*/
+function getPublishedPosts(){
+	global $connection;
+	
+	$sql = "SELECT p.*, u.username
+			FROM posts AS p
+			JOIN users AS u
+			ON p.user_id=u.id
+			WHERE p.published=?";
+	$stmt = executeQuery($sql, ['published' => 1]);
+	$records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	return ($records);
+}
+
+/*
+** Función para buscar posts. Le entra por parámetro la palabra a buscar. Es muy parecida a getPublishedPosts,
+** sólo que añadiendo AND y OR. Sería como decirle "búscame los posts publicados y cuyo título O cuerpo contenga
+** (%?%) la palabra que le entre por parámetro (la que metamos en el buscador). 
+
+SELECT p.*, u.username
+			FROM posts AS p
+			JOIN users AS u
+			ON p.user_id=u.id
+			WHERE p.published=?
+			AND p.title LIKE %?% 
+			OR p.body LIKE %?%
+
+Variable match necesaria para 'stringify' la variable $term, ya que a la query hay que pasarle un string.
+*/
+function searchPosts($term){
+	global $connection;
+
+	$match = '%' . $term . '%';
+	
+	$sql = "SELECT p.*, u.username
+			FROM posts AS p
+			JOIN users AS u
+			ON p.user_id=u.id
+			WHERE p.published=?
+			AND p.title LIKE ? 
+			OR p.body LIKE ?";
+	$stmt = executeQuery($sql, ['published' => 1, 'title' => $match, 'body'=> $match]);
+	$records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	return ($records);
+}
+
+/*
+** Función para buscar toos los posts de una temática determinada.Le entra por parámetro el id de la temática.
+Es muy parecida a getPublishedPosts, sólo que añadiendo AND. Sería como decirle "búscame los posts publicados 
+que pertenezcan a la temática (topic_id) X.
+
+SELECT p.*, u.username
+			FROM posts AS p
+			JOIN users AS u
+			ON p.user_id=u.id
+			WHERE p.published=?
+			AND topic_id =?
+
+Variable match necesaria para 'stringify' la variable $term, ya que a la query hay que pasarle un string.
+*/
+function getPostsByTopic($topic_id) {
+	global $connection;
+	
+	$sql = "SELECT p.*, u.username
+			FROM posts AS p
+			JOIN users AS u
+			ON p.user_id=u.id
+			WHERE p.published=?
+			AND topic_id =?";
+	$stmt = executeQuery($sql, ['published' => 1, 'topic_id' => $topic_id]);
+	$records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	return ($records);
+}

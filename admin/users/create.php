@@ -1,4 +1,10 @@
-<?php include "../../path.php"; ?>
+<?php
+include "../../path.php";
+include ROOT_PATH . "/app/controllers/users.php";
+
+// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+adminOnly();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,45 +42,54 @@
 
 		<!-- Admin content -->
 		<div class="admin-content">
-            <div class="btn-group">
-                <a href="create.php" class="btn btn-big">Add User</a>
-                <a href="index.php" class="btn btn-big">Manage User</a>
-            </div>
+			<div class="btn-group">
+				<a href="create.php" class="btn btn-big">Add User</a>
+				<a href="index.php" class="btn btn-big">Manage User</a>
+			</div>
 
-            <div class="content">
-                <h2 class="page-title">Add User</h2>
+			<div class="content">
+					<h2 class="page-title">Add User</h2>
 
-                <form action="create.php" method="POST">
-                    <div>
-                        <label>Username</label>
-                        <input type="text" name="username" id="" class="text-input">
-                    </div>
-                    <div>
-                        <label>Email</label>
-                        <input type="text" name="email" id="" class="text-input">
-                    </div>
-                    <div>
-                        <label>Password</label>
-                        <input type="text" name="password" id="" class="text-input">
-                    </div>
-                    <div>
-                        <label>Password Confirmation</label>
-                        <input type="text" name="passwordConf" id="" class="text-input">
-                    </div>
-                    <div>
-                        <label>Role</label>
-                        <select name="topic" class="text-input">
-							<option value="Admin">Admin</option>
-							<option value="Author">Author</option>
-						</select>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-big">Add user</button>
-                    </div>
+					<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
+					mostramos en este div una lista con los errores. -->
+					<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
 
-                </form>
-            </div>
-        </div>
+				<form action="create.php" method="POST">
+					<div>
+						<label>Username</label>
+						<input type="text" name="username" value="<?php echo $username; ?>" class="text-input">
+					</div>
+					<div>
+						<label>Email</label>
+						<input type="text" name="email" value="<?php echo $email; ?>" class="text-input">
+					</div>
+					<div>
+						<label>Password</label>
+						<input type="password" name="password" value="<?php echo $password; ?>" class="text-input">
+					</div>
+					<div>
+						<label>Password Confirmation</label>
+						<input type="password" name="passwordConf" value="<?php echo $passwordConf; ?>" class="text-input">
+					</div>
+					<div>
+					<?php if ($admin == 1) : ?>
+							<label>
+								<input type="checkbox" name="admin" checked>
+								Admin
+							</label>
+						<?php else : ?>
+							<label>
+								<input type="checkbox" name="admin">
+								Admin
+							</label>
+						<?php endif; ?>
+                    </div>
+					<div>
+						<button type="submit" name="create-admin" class="btn btn-big">Add user</button>
+					</div>
+				</form>
+			</div>
+		</div>
 		<!-- // Admin content -->
 	</div>
 	<!-- // PAGE WRAPPER -->

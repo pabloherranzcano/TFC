@@ -1,6 +1,10 @@
 <?php
 include "path.php";
 include ROOT_PATH . "/app/controllers/users.php";
+
+// Llamamos a guestsOnly(), para comprobar si el usuario está o no logueado.
+guestsOnly();
+	
 ?>
 
 <!DOCTYPE html>

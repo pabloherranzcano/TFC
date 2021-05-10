@@ -1,6 +1,6 @@
 <?php include "../../path.php" ?>
 <header>
-	<a href="<?php echo BASE_URL . 'index.php' ?>" class="logo">
+	<a href="<?php echo BASE_URL . '/index.php' ?>" class="logo">
 		<h1 class="logo-text"><span>TFC</span>BLOG</h1>
 	</a>
 	<i class="fa fa-bars burger"></i>
@@ -21,7 +21,7 @@
 
 				<ul>
 				<?php if ($_SESSION['admin']) : ?>
-					<li><a href="<?php echo BASE_URL . "/app/admin/dashboard.php" ?>">Dashboard</a></li>
+					<li><a href="<?php echo BASE_URL . "/admin/dashboard.php" ?>">Dashboard</a></li>
 				<?php endif; ?>
 					<li><a href="<?php echo BASE_URL . "/logout.php" ?>" class="logout">Log out</a></li>
 				</ul>

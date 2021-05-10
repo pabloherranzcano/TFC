@@ -1,6 +1,9 @@
 <?php
 include "../../path.php";
 include ROOT_PATH . "/app/controllers/posts.php";
+
+// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+adminOnly();
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +53,7 @@ include ROOT_PATH . "/app/controllers/posts.php";
 				<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 				mostramos en este div una lista con los errores. -->
 				<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
+				
 				<!-- Enctype para poder subir imágenes -->
 				<form action="create.php" method="POST" enctype="multipart/form-data">
 					<div>

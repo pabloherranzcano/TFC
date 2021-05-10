@@ -1,6 +1,33 @@
 <?php
 include "path.php";
 include ROOT_PATH . "/app/controllers/topics.php";
+
+/* Lo primero, hacemos fetch de todos los posts de la base de datos que
+queremos que se muestren (publish = 1). 
+
+$posts = selectAll('posts', ['published' => 1]);
+
+Eso sería lo lógico, pero en cambio llamamos a la fución getPublishedPosts,
+ya que con ella se nos incluirá el nombre de usuario que ha publicado los
+posts por el método POST.
+*/
+$posts = array();
+// Para mostrar "Posts de temática ...", "Posts recientes" o "Resultados de búsqueda".
+$postsTitle = "Recent posts";
+
+if (isset($_GET['topic_id']))
+{
+	$posts = getPostsByTopic($_GET['topic_id']);
+	$postsTitle = "You searched for posts under '" . $_GET['name'] . "'";
+}
+else if(isset($_POST['search-term']))
+{
+	$postsTitle = "You searched for '" . $_POST['search-term'] . "'";
+	$posts = searchPosts($_POST['search-term']);
+}
+else {
+	$posts = getPublishedPosts();
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,48 +65,24 @@ include ROOT_PATH . "/app/controllers/topics.php";
 			<i class="fas fa-chevron-right next"></i>
 			<!-- // Botones del slider -->
 
+			<!-- Post-wrapper -->
 			<div class="post-wrapper">
-				<div class="post">
-					<img src="/assets/images/image1.png" alt="" class="slider-img">
-					<div class="post-info">
-						<h4><a href="#">1er post!!</a></h4>
-						<i class="far fa-user">Pablito</i>
-						<i class="far fa-calendar">27 abril 2021</i>
+				<?php foreach ($posts as $post) : ?>
+					<div class="post">
+						<img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="slider-img">
+						<div class="post-info">
+							<!-- Tenemos que enviar el id del post para recoger ese post específico de la base de datos y mostrarlo
+							en single.php -->
+							<h4><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h4>
+							<i class="far fa-user"><?php echo $post['username']; ?></i>
+							<!-- Para mostrar la fecha de creaciónd el post, usamos la función date, a la que pasaremos la forma
+							en la que queremos que se muestre la fecha, y el string de la fecha -->
+							<i class="far calendar"><?php echo date('j F, Y', strtotime($post['created_at'])); ?></i>
+						</div>
 					</div>
-				</div>
-				<div class="post">
-					<img src="/assets/images/image1.png" alt="" class="slider-img">
-					<div class="post-info">
-						<h4><a href="#">2o post!!</a></h4>
-						<i class="far fa-user">Pablito</i>
-						<i class="far fa-calendar">27 abril 2021</i>
-					</div>
-				</div>
-				<div class="post">
-					<img src="/assets/images/image1.png" alt="" class="slider-img">
-					<div class="post-info">
-						<h4><a href="#">3o post!!</a></h4>
-						<i class="far fa-user">Pablito</i>
-						<i class="far fa-calendar">27 abril 2021</i>
-					</div>
-				</div>
-				<div class="post">
-					<img src="/assets/images/image1.png" alt="" class="slider-img">
-					<div class="post-info">
-						<h4><a href="#">4o post!!</a></h4>
-						<i class="far fa-user">Pablito</i>
-						<i class="far fa-calendar">27 abril 2021</i>
-					</div>
-				</div>
-				<div class="post">
-					<img src="/assets/images/image1.png" alt="" class="slider-img">
-					<div class="post-info">
-						<h4><a href="#">5o post!!</a></h4>
-						<i class="far fa-user">Pablito</i>
-						<i class="far fa-calendar">27 abril 2021</i>
-					</div>
-				</div>
+				<?php endforeach; ?>
 			</div>
+			<!-- // Post-wrapper -->
 		</div>
 		<!-- // Post slider -->
 
@@ -89,49 +92,30 @@ include ROOT_PATH . "/app/controllers/topics.php";
 		<div class="content clearfix">
 			<!-- Main content -->
 			<div class="main-content">
-				<h1 class="recent-post-title">RECENT POSTS</h1>
+				<h1 class="recent-post-title"><?php echo $postsTitle; ?></h1>
 
+				<?php foreach ($posts as $post) : ?>
 				<!-- Post -->
 				<div class="post clearfix">
-					<img src="/assets/images/image1.png" alt="" class="post-img">
+					<img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="post-img">
 					<div class="post-preview">
-						<h2><a href="#">Titleeeeeeeeeeeeeeeeee</a></h2>
-						<i class="far fa-user">Pablito</i> &nbsp;
-						<i class="far calendar">27 abril 2021</i>
-						<p class="prevew-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dignissimos nemo non obcaecati aperiam dolores! Laborum recusandae sint hic earum, blanditiis
+						<h2><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h2>
+						<i class="far fa-user"><?php echo $post['username']; ?></i>
+						&nbsp;
+						<i class="far calendar"><?php echo date('j F, Y', strtotime($post['created_at'])); ?></i>
+						<!-- Utilzamos la función substr para cortar mostrar un preview del texto del post.
+						La función html_entity_decode nos permie deshacenos de las etiquetas html que se guardan por
+						defecto en la base de datos a la hora de crear un pos. -->
+						<p class="preview-text">
+							<?php echo html_entity_decode(substr($post['body'], 0, 130). '...'); ?>
 						</p>
-						<a href="#" class="btn read-more">Read more...</a>
+						<a href="single.html?id=<?php echo $post['id']; ?>" class="btn read-more">Read more...</a>
 					</div>
 				</div>
 				<!-- // Post -->
+				<?php endforeach; ?>
 
-				<!-- Post -->
-				<div class="post clearfix">
-					<img src="/assets/images/image1.png" alt="" class="post-img">
-					<div class="post-preview">
-						<h2><a href="#">Titleeeeeeeeeeeeeeeeee</a></h2>
-						<i class="far fa-user">Pablito</i> &nbsp;
-						<i class="far calendar">27 abril 2021</i>
-						<p class="prevew-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dignissimos nemo non obcaecati aperiam dolores! Laborum recusandae sint hic earum, blanditiis
-						</p>
-						<a href="#" class="btn read-more">Read more...</a>
-					</div>
-				</div>
-				<!-- // Post -->
 
-				<!-- Post -->
-				<div class="post clearfix">
-					<img src="/assets/images/image1.png" alt="" class="post-img">
-					<div class="post-preview">
-						<h2><a href="#">Titleeeeeeeeeeeeeeeeee</a></h2>
-						<i class="far fa-user">Pablito</i> &nbsp;
-						<i class="far calendar">27 abril 2021</i>
-						<p class="prevew-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime dignissimos nemo non obcaecati aperiam dolores! Laborum recusandae sint hic earum, blanditiis
-						</p>
-						<a href="#" class="btn read-more">Read more...</a>
-					</div>
-				</div>
-				<!-- // Post -->
 
 			</div>
 			<!-- // Main content -->
@@ -141,8 +125,9 @@ include ROOT_PATH . "/app/controllers/topics.php";
 				<!-- Buscador -->
 				<div class="section search">
 					<h2 class="section-title">SEARCH</h2>
-					<form action="index.html" method="POST">
+					<form action="index.php" method="POST">
 						<input type="text" name="search-term" class="text-input" placeholder="Search...">
+						<!-- No es necesario un botón, porque al darle a intro, se envía el formulario -->
 					</form>
 				</div>
 				<!-- Topics -->
@@ -150,7 +135,7 @@ include ROOT_PATH . "/app/controllers/topics.php";
 					<h2 class="section-title">TOPICS</h2>
 					<ul>
 						<?php foreach ($topics as $key => $topic) : ?>
-							<li><a href="#"><?php echo $topic['name']; ?></a></li>
+							<li><a href="<?php echo BASE_URL . "/index.php?topic_id=" . $topic['id'] . "&name=" . $topic['name']; ?>"><?php echo $topic['name']; ?></a></li>
 						<?php endforeach; ?>
 					</ul>
 				</div>

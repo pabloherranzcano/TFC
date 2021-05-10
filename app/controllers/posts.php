@@ -2,6 +2,7 @@
 
 include ROOT_PATH . "/app/database/db.php";
 include ROOT_PATH . "/app/helpers/validatePost.php";
+include ROOT_PATH . "/app/helpers/middleware.php";
 
 $table = 'posts';
 
@@ -18,6 +19,8 @@ $published = "";
  
 // CREATE
 if (isset($_POST['add-post'])) {
+	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+	adminOnly();
 	$errors = validatePost($_POST);
 	
 	/* Comprobamos que haya una imgen seleccionada. No pueden tener el mismo nombre por lo que usamos la función time() para que
@@ -41,7 +44,7 @@ if (isset($_POST['add-post'])) {
 
 	if (count($errors) == 0) {
 		unset($_POST['add-post']);
-		$_POST['user_id'] = 1;
+		$_POST['user_id'] = $_SESSION['id'];
 		$_POST['published'] = isset($_POST['published']) ? 1 : 0; // Ternario: si se ha marcado la opción de publicarlo, le asignamos 1, si no, 0.
 		
 		/* Como es inseguro dejar etiquetas html en la base de datos, le aplicamos un paso extra de seguridad con el método 
@@ -74,14 +77,17 @@ if (isset($_GET['id'])){
 	// printData($post);
 
 	$id = $_GET['id'];
-	$title = $_GET['title'];
-	$body = $_GET['body'];
-	$topic_id = $_GET['topic_id'];
-	$published = $_GET['published'];
+	$title = $post['title'];
+	$body = $post['body'];
+	$topic_id = $post['topic_id'];
+	$published = $post['published'];
 }
 
 //UPDATE
 if (isset($_POST['update-post'])) {
+	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+	adminOnly();
+	
 	$errors = validatePost($_POST);
 	
 	/* Comprobamos que haya una imgen seleccionada. No pueden tener el mismo nombre por lo que usamos la función time() para que
@@ -109,7 +115,7 @@ if (isset($_POST['update-post'])) {
 		lo borramos, porque el id no se puede modificar. */
 		$id = $_POST['id'];
 		unset($_POST['update-post'], $_POST['id']);
-		$_POST['user_id'] = 1;
+		$_POST['user_id'] = $_SESSION['id'];;
 		$_POST['published'] = isset($_POST['published']) ? 1 : 0; // Ternario: si se ha marcado la opción de publicarlo, le asignamos 1, si no, 0.
 		
 		/* Como es inseguro dejar etiquetas html en la base de datos, le aplicamos un paso extra de seguridad con el método 
@@ -137,11 +143,36 @@ if (isset($_POST['update-post'])) {
 
 // DELETE
 if (isset($_GET['delete_id'])){
-	$count = delete($table, $_GET['delete_id']);
 
+	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+	adminOnly();
+
+	$id = $_GET['delete_id'];
+	$count = delete($table, $id);
+	
 	$_SESSION['message'] = 'Post deleted successfully.';
-		$_SESSION['type'] = 'success';
-
-		header('location: ' . BASE_URL . '/admin/posts/index.php');
+	$_SESSION['type'] = 'success';
+	
+	header('location: ' . BASE_URL . '/admin/posts/index.php');
 }
+
+// PUBLISH
+if (isset($_GET['published']) && isset($_GET['p_id'])){
+	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+	adminOnly();
+
+	$published = $_GET['published'];
+	$p_id = $_GET['p_id'];
+
+	// Ahora hacemos update.
+	$count = update($table, $p_id, ['published' => $published]);
+	// Mostramos el mensaje.
+	$_SESSION['message'] = 'Post published state changed.';
+	$_SESSION['type'] = 'success';
+	
+	header('location: ' . BASE_URL . '/admin/posts/index.php');
+
+}
+
+
 ?>
