@@ -5,7 +5,7 @@
 	</a>
 	<i class="fa fa-bars burger"></i>
 	<ul class="nav">
-		<?php if (isset($_POST['username'])) : ?>
+		<?php if (isset($_SESSION['id'])) : ?>
 			<li>
 				<a href="#">
 					<i class="fa fa-user"></i>
@@ -14,7 +14,7 @@
 				</a>
 
 				<ul>
-					<li><a href="<?php echo BASE_URL . '/logout.php' ?>" class="logout">Log out</a></li>
+					<li><a href="<?php echo BASE_URL . "/logout.php" ?>" class="logout">Log out</a></li>
 				</ul>
 			</li>
 		<?php endif; ?>
