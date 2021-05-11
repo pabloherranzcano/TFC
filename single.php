@@ -46,6 +46,7 @@ $posts = selectAll('posts', ['published' => 1]);
 			<!-- Main content wrapper -->
 			<div class="main-content-wrapper">
 				<div class="main-content single">
+					<img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="single-img" alt="">
 					<h1 class="post-title"><?php echo $post['title']; ?></h1>
 					<div class="post-content">
 						<?php echo html_entity_decode($post['body']); ?>
@@ -63,7 +64,7 @@ $posts = selectAll('posts', ['published' => 1]);
 						<div class="post clearfix">
 							<img src="<?php echo BASE_URL . '/assets/images/' . $p['image']; ?>" alt="">
 							<a href="<?php echo BASE_URL . "/single.php?id=", $p['id']; ?>" class="title">
-								<h4><?php echo $post['title']; ?></h4>
+								<h4><?php echo $p['title']; ?></h4>
 							</a>
 						</div>
 					<?php endforeach; ?>

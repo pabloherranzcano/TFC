@@ -17,7 +17,7 @@ $postsTitle = "Recent posts";
 
 if (isset($_GET['topic_id']))
 {
-	$posts = getPostsByTopic($_GET['topic_id']);
+	$posts = getPostsByTopic($_GET['topic_id']);	
 	$postsTitle = "You searched for posts under '" . $_GET['name'] . "'";
 }
 else if(isset($_POST['search-term']))
@@ -27,6 +27,10 @@ else if(isset($_POST['search-term']))
 }
 else {
 	$posts = getPublishedPosts();
+
+	/* Como nos interesa que los últimos posts nos salgan los primeros, le damos la vuelta al array
+	con la función "array_reverse()" de php. */
+	$posts = array_reverse($posts);
 }
 ?>
 
@@ -74,10 +78,11 @@ else {
 							<!-- Tenemos que enviar el id del post para recoger ese post específico de la base de datos y mostrarlo
 							en single.php -->
 							<h4><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h4>
-							<i class="far fa-user"><?php echo $post['username']; ?></i>
+							<i class="far fa-user"><?php echo "<span style='font-family: ubuntu; color: #18232;'>" . $post['username'] . "</span>"; ?></i>
+							<br>
 							<!-- Para mostrar la fecha de creaciónd el post, usamos la función date, a la que pasaremos la forma
 							en la que queremos que se muestre la fecha, y el string de la fecha -->
-							<i class="far calendar"><?php echo date('j F, Y', strtotime($post['created_at'])); ?></i>
+							<i class="far fa-calendar"><?php echo "<span style='font-family: ubuntu; color: #18232;'>" . date('j F, Y', strtotime($post['created_at'])) . "</span>"; ?></i>
 						</div>
 					</div>
 				<?php endforeach; ?>
@@ -109,7 +114,7 @@ else {
 						<p class="preview-text">
 							<?php echo html_entity_decode(substr($post['body'], 0, 130). '...'); ?>
 						</p>
-						<a href="single.html?id=<?php echo $post['id']; ?>" class="btn read-more">Read more...</a>
+						<a href="single.php?id=<?php echo $post['id']; ?>" class="btn read-more">Read more...</a>
 					</div>
 				</div>
 				<!-- // Post -->

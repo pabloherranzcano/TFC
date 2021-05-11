@@ -14,6 +14,9 @@ adminOnly();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="app/assets/images/favicon.ico">
+
 	<!-- FontAwesome -->
 	<script src="https://kit.fontawesome.com/434ac71e85.js" crossorigin="anonymous"></script>
 
@@ -57,6 +60,7 @@ adminOnly();
 						<th>SN</th>
 						<th>Username</th>
 						<th>Email</th>
+						<th>Admin</th>
 						<th colspan='2'>Action</th>
 					</thead>
 					<tbody>
@@ -65,6 +69,7 @@ adminOnly();
 								<td><?php echo $key + 1; ?></td>
 								<td><?php echo $user['username']; ?></td>
 								<td><?php echo $user['email']; ?></td>
+								<td><?php echo $user['admin'] ? "Sí" : "No"; ?></td>
 								<td><a href="edit.php?id=<?php echo $user['id']; ?>" class="edit">Edit</a></td>
 								<td><a href="edit.php?delete_id=<?php echo $user['id']; ?>" class="delete">Delete</a></td>
 							</tr>
