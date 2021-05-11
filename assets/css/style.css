@@ -4,14 +4,14 @@
 	    font-family: 'Ubuntu';
 	    font-style: normal;
 	    font-weight: 300;
-	    src: url(/../fonts/Ubuntu/Ubuntu-Regular.ttf);
+	    src: url(../fonts/Ubuntu/Ubuntu-Regular.ttf);
 	}
 	
 	@font-face {
 	    font-family: 'Ubuntu';
 	    font-style: bold;
 	    font-weight: bold;
-	    src: url(/../fonts/Ubuntu/Ubuntu-bold.ttf);
+	    src: url(../fonts/Ubuntu/Ubuntu-bold.ttf);
 	}
 	/**************************/
 	/******** GLOBALES ********/
