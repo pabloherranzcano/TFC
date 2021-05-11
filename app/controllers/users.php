@@ -65,6 +65,11 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 		para quedarnos con lo que nos interesa. */
 		unset($_POST['passwordConf'], $_POST['register-btn'], $_POST['create-admin']);
 
+		/* Encriptamos las contraseñas como elemento de seguridad. De este modo, 
+		cualquiera que tenga acceso a la base de datos no podrá saber la contraseña
+		del usuario. */
+		$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
 		/* Si "admin" llega por POST, es porque tenemos que crear al usuario con permisos
 		de administrador (1 –true– en la DB) */
 		if ($_POST['admin']) {
@@ -81,11 +86,6 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 			/* Cuando se registre un usuario, queremos que NO sea admin por defecto, 
 			por lo tanto, le asignamos el valor "false" */
 			$_POST['admin'] = 0;
-
-			/* Encriptamos las contraseñas como elemento de seguridad. De este modo, 
-			cualquiera que tenga acceso a la base de datos no podrá saber la contraseña
-			del usuario. */
-			$_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 			// /* Creamos el usuario llamando a la función "create" dentro del CRUD de db.php */
 			$user_id = create($table, $_POST);
@@ -124,8 +124,11 @@ if (isset($_POST['login-btn'])) {
 		if ($user && password_verify($_POST['password'], $user['password'])) {
 			/* Loguea y redirecciona */
 			loginUser($user);
-		} else
+		} else {
 			array_push($errors, "Wrong credentials.");
+			// printData($user);
+			// printData($_POST['password']);
+		}
 	}
 	$username = $_POST['username'];
 	$password = $_POST['password'];
