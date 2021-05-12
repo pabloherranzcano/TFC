@@ -1,8 +1,11 @@
 <?php include "../../path.php" ?>
 <header>
-	<a href="<?php echo BASE_URL . '/index.php' ?>" class="logo">
-		<h1 class="logo-text"><span>TFC</span>BLOG</h1>
-	</a>
+	<div class="logo">
+		<a href="<?php echo BASE_URL . '/index.php' ?>">
+			<h1 class="logo-text"><span>Pablo</span>Herranz</h1>
+			<h5 class="logo-description">42 Madrid Student | Desarrollador de aplicaciones web</h5>
+		</a>
+	</div>
 	<i class="fa fa-bars burger"></i>
 	<ul class="nav">
 		<li><a href="/index.php">Home</a></li>
@@ -20,15 +23,15 @@
 				</a>
 
 				<ul>
-				<?php if ($_SESSION['admin']) : ?>
-					<li><a href="<?php echo BASE_URL . "/admin/dashboard.php" ?>">Dashboard</a></li>
-				<?php endif; ?>
-					<li><a href="<?php echo BASE_URL . "/logout.php" ?>" class="logout">Log out</a></li>
+					<?php if ($_SESSION['admin']) : ?>
+						<li><a href="<?php echo BASE_URL . "/admin/dashboard.php" ?>">Dashboard</a></li>
+					<?php endif; ?>
+					<li><a href="<?php echo BASE_URL . "/logout.php" ?>" class="logout">Cerrar sesión</a></li>
 				</ul>
 			</li>
-		<?php else: ?>
-			<li><a href="<?php echo BASE_URL . "/register.php" ?>">Sign up</a></li>
-			<li><a href="<?php echo BASE_URL . "/login.php" ?>">Log in</a></li>
+		<?php else : ?>
+			<li><a href="<?php echo BASE_URL . "/register.php" ?>">Regístrarse</a></li>
+			<li><a href="<?php echo BASE_URL . "/login.php" ?>">Iniciar sesión</a></li>
 		<?php endif; ?>
 	</ul>
 </header>

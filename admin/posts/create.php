@@ -26,7 +26,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – ADD POST</title>
+	<title>CREAR POSTS | Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -43,12 +43,12 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Add post</a>
-				<a href="index.php" class="btn btn-big">Manage posts</a>
+				<a href="create.php" class="btn btn-big">Crear&nbsp;post</a>
+				<a href="index.php" class="btn btn-big">Adminsitrar&nbsp;posts</a>
 			</div>
 
 			<div class="content">
-				<h2 class="page-title">ADD Posts</h2>
+				<h2 class="page-title">CREAR POST</h2>
 
 				<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 				mostramos en este div una lista con los errores. -->
@@ -57,11 +57,11 @@ adminOnly();
 				<!-- Enctype para poder subir imágenes -->
 				<form action="create.php" method="POST" enctype="multipart/form-data">
 					<div>
-						<label>Title</label>
+						<label>Título</label>
 						<input type="text" name="title" value="<?php echo $title; ?>" class="text-input">
 					</div>
 					<div>
-						<label>Body</label>
+						<label>Texto</label>
 						<textarea name="body" id="body"><?php echo $body; ?></textarea>
 						<script>
 							ClassicEditor
@@ -72,7 +72,7 @@ adminOnly();
 						</script>
 					</div>
 					<div>
-						<label>Image</label>
+						<label>Imagen</label>
 						<input type="file" name="image" class="text-input">
 					</div>
 					<div>
@@ -105,7 +105,7 @@ adminOnly();
 						<?php endif; ?>
 					</div>
 					<div>
-						<button type="submit" name="add-post" class="btn btn-big">Add post</button>
+						<button type="submit" name="add-post" class="btn btn-big">Crear&nbsp;post</button>
 					</div>
 
 				</form>

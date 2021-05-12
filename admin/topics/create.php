@@ -26,7 +26,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – ADD TOPIC</title>
+	<title>TOPICS | Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -43,17 +43,17 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Add topics</a>
-				<a href="index.php" class="btn btn-big">Manage topics</a>
+				<a href="create.php" class="btn btn-big">Crear&nbsp;post</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a>
 			</div>
 
 			<div class="content">
-				<h2 class="page-title">Add Topic</h2>
-				
+				<h2 class="page-title">CREAR TOPIC</h2>
+
 				<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 				mostramos en este div una lista con los errores. -->
 				<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
-				
+
 				<form action="create.php" method="POST">
 					<div>
 						<label>Name</label>

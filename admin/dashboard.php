@@ -26,7 +26,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>Admin section – DASHBOARD</title>
+	<title>Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -44,7 +44,7 @@ adminOnly();
 		<div class="admin-content">
 			<div class="content">
 
-				<h2 class="page-title">Bienvenido al panel de control de Admin</h2>
+				<h2 class="page-title">Bienvenido al panel de control del administrador</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 

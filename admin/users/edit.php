@@ -26,7 +26,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – EDIT USERS</title>
+	<title>USUARIOS | Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -43,8 +43,8 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Add User</a>
-				<a href="index.php" class="btn btn-big">Manage User</a>
+			<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuario</a>
 			</div>
 
 			<div class="content">
@@ -55,10 +55,10 @@ adminOnly();
 					<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
 
 				<form action="edit.php" method="POST">
-				<!-- Necesario para editarlo, sólo para saber qué user necesitamos editar. Por eo hidden. -->
+				<!-- Necesario para editarlo, sólo para saber qué user necesitamos editar. Por eso hidden. -->
 				<input type="hidden" name="id" value="<?php echo $id; ?>">
 					<div>
-						<label>Username</label>
+						<label>Nombre de usuario</label>
 						<input type="text" name="username" value="<?php echo $username; ?>" class="text-input">
 					</div>
 					<div>
@@ -66,11 +66,11 @@ adminOnly();
 						<input type="text" name="email" value="<?php echo $email; ?>" class="text-input">
 					</div>
 					<div>
-						<label>Password</label>
+						<label>Contraseña</label>
 						<input type="password" name="password" value="<?php echo $password; ?>" class="text-input">
 					</div>
 					<div>
-						<label>Password Confirmation</label>
+						<label>Confirma la contraseña</label>
 						<!-- Imaginemos que queremos hacer admin a un usuario normal, para ello necesitaríamos entrar
 						en el panel de edición de usuario, con los campos de password y password confirmation rellenos
 						con la contraseña original del usuario. Por eso en este caso volvemos a mostrar la contraseña, 

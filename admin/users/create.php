@@ -26,7 +26,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – CREATE USERS</title>
+	<title>USUARIOS | Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -38,17 +38,17 @@ adminOnly();
 	<div class="admin-wrapper">
 		<!-- Left sidebar -->
 		<?php include ROOT_PATH . "/app/includes/adminSidebar.php" ?>
-		<!-- // Left sidebar -->
+		<!-- // Left sidebar -->-
 
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Add User</a>
-				<a href="index.php" class="btn btn-big">Manage User</a>
+				<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuario</a>
 			</div>
 
 			<div class="content">
-					<h2 class="page-title">Add User</h2>
+					<h2 class="page-title">CREAR USUARIO</h2>
 
 					<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 					mostramos en este div una lista con los errores. -->
@@ -56,7 +56,7 @@ adminOnly();
 
 				<form action="create.php" method="POST">
 					<div>
-						<label>Username</label>
+						<label>Nombre de usuario</label>
 						<input type="text" name="username" value="<?php echo $username; ?>" class="text-input">
 					</div>
 					<div>
@@ -64,11 +64,11 @@ adminOnly();
 						<input type="text" name="email" value="<?php echo $email; ?>" class="text-input">
 					</div>
 					<div>
-						<label>Password</label>
+						<label>Contraseña</label>
 						<input type="password" name="password" value="<?php echo $password; ?>" class="text-input">
 					</div>
 					<div>
-						<label>Password Confirmation</label>
+						<label>Confirma la contraseña</label>
 						<input type="password" name="passwordConf" value="<?php echo $passwordConf; ?>" class="text-input">
 					</div>
 					<div>

@@ -26,7 +26,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – MANAGE TOPIC</title>
+	<title>TOPICS | Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -43,20 +43,20 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
             <div class="btn-group">
-                <a href="create.php" class="btn btn-big">Add Topic</a>
-                <a href="index.php" class="btn btn-big">Manage Topics</a> 
+                <a href="create.php" class="btn btn-big">Crear&nbsp;post</a>
+                <a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a> 
             </div>
 
             <div class="content">
-                <h2 class="page-title">Manage Topics</h2>
+                <h2 class="page-title">TOPICS</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 
                 <table>
                     <thead>
-                        <th>SN</th>
-                        <th>Title</th>
-                        <th colspan='2'>Action</th>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th colspan='2'>Opciones</th>
                     </thead>
                     <tbody>
 						<?php foreach ($topics as $key => $topic): ?>
@@ -64,8 +64,8 @@ adminOnly();
 								<td><?php echo $key + 1; ?></td>
 								<td><?php echo $topic['name']; ?></td>
 								<!-- ?id junto para GET -->
-								<td><a href="edit.php?id=<?php echo $topic['id']; ?>" class="edit">Edit</a></td>
-								<td><a href="index.php?delete_id=<?php echo $topic['id']; ?>" class="delete">Delete</a></td>
+								<td><a href="edit.php?id=<?php echo $topic['id']; ?>" class="edit">Editar</a></td>
+								<td><a href="index.php?delete_id=<?php echo $topic['id']; ?>" class="delete">Eliminar</a></td>
 							</tr>
 						<?php endforeach; ?>
                     </tbody>

@@ -26,7 +26,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – MANAGE POSTS</title>
+	<title>POSTS | Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -43,35 +43,35 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Add post</a>
-				<a href="index.php" class="btn btn-big">Manage posts</a>
+				<a href="create.php" class="btn btn-big">Crear&nbsp;post</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a>
 			</div>
 
 			<div class="content">
-				<h2 class="page-title">Manage Posts</h2>
+				<h2 class="page-title">POSTS</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 
 				<table>
 					<thead>
-						<th>SN</th>
-						<th>Title</th>
-						<th>Author</th>
-						<th colspan='3'>Action</th>
+						<th>#</th>
+						<th>Título</th>
+						<th>Autor</th>
+						<th colspan='3'>Opciones</th>
 					</thead>
 					<tbody>
 						<?php foreach ($posts as $key => $post) : ?>
 							<tr>
 								<td><?php echo $key + 1; ?></td>
 								<td><?php echo $post['title']; ?></td>
-								<td>Autor</td>
-								<td><a href="edit.php?id=<?php echo $post['id'] ?>" class="edit">Edit</a></td>
-								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Delete</a></td>
-								
+								<td><?php echo $post['username']; ?></td>
+								<td><a href="edit.php?id=-<?php echo $post['id'] ?>-" class="edit">Editar</a></td>
+								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Eliminar</a></td>
+
 								<?php if ($post['published']) : ?>
-									<td><a href="edit.php?published=0&p_id=<?php echo $post['id']; ?>" class="unpublish">Unpublish</a></td>
+									<td><a href="edit.php?published=0&p_id=<?php echo $post['id']; ?>" class="unpublish">Ocultar</a></td>
 								<?php else : ?>
-									<td><a href="edit.php?published=1&p_id=<?php echo $post['id']; ?>" class="publish">Publish</a></td>
+									<td><a href="edit.php?published=1&p_id=<?php echo $post['id']; ?>" class="publish">Publicar</a></td>
 								<?php endif; ?>
 							</tr>
 						<?php endforeach; ?>

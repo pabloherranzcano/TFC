@@ -26,7 +26,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – EDIT POST</title>
+	<title>EDITAR POST | Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -43,12 +43,12 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Add post</a>
-				<a href="index.php" class="btn btn-big">Manage posts</a>
+				<a href="create.php" class="btn btn-big">Crear&nbsp;post</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a>
 			</div>
 
 			<div class="content">
-				<h2 class="page-title">EDIT Posts</h2>
+				<h2 class="page-title">EDITAR POST</h2>
 				
 				<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 				mostramos en este div una lista con los errores. -->
@@ -58,11 +58,11 @@ adminOnly();
 					<form action="edit.php" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="<?php echo $id; ?>">
 					<div>
-						<label>Title</label>
+						<label>Título</label>
 						<input type="text" name="title" value="<?php echo $title; ?>" class="text-input">
 					</div>
 					<div>
-						<label>Body</label>
+						<label>Texto</label>
 						<textarea name="body" id="body"><?php echo $body; ?></textarea>
 						<script>
 							ClassicEditor
@@ -73,8 +73,8 @@ adminOnly();
 						</script>
 					</div>
 					<div>
-						<label>Image</label>
-						<input type="file" name="image" class="text-input">
+						<label>Imagen</label>
+						<input type="file" name="image" value="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" class="text-input">
 					</div>
 					<div>
 						<label>Topic</label>
@@ -96,12 +96,12 @@ adminOnly();
 						<?php if (empty($published) && $published == 0) : ?>
 							<label>
 								<input type="checkbox" name="published">
-								Publish
+								Publicar
 							</label>
 						<?php else : ?>
 							<label>
 								<input type="checkbox" name="published" checked>
-								Publish
+								Publicar
 							</label>
 						<?php endif; ?>
 					</div>

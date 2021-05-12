@@ -34,3 +34,9 @@ $('.post-wrapper').slick({
         }
     ]
 });
+
+// CKEditor
+CKEDITOR.replace('editor', {
+    filebrowserUploadUrl: '../images',
+    filebrowserUploadMethod: 'form'
+});

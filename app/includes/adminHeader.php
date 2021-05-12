@@ -1,8 +1,12 @@
 <!-- ADMIN HEADER -->
 <header>
-	<a href="<?php echo BASE_URL . "/index.php" ?>" class="logo">
-		<h1 class="logo-text"><span>TFC</span>BLOG</h1>
-	</a>
+	<div class="logo">
+		<a href="<?php echo BASE_URL . '/index.php' ?>">
+			<h1 class="logo-text"><span>Pablo</span>Herranz</h1>
+			<h5 class="logo-description">42 Madrid Student | Desarrollador de aplicaciones web</h5>
+		</a>
+	</div>
+	<h1 class="central">PANEL DE ADMINISTRADOR</h1>
 	<i class="fa fa-bars burger"></i>
 	<ul class="nav">
 		<?php if (isset($_SESSION['id'])) : ?>

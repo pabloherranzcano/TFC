@@ -1,14 +1,21 @@
 <?php
 
+/* 
+** Archivo para controlar los accesos a unas partes u otras de la web
+** dependiendo del tipo de usuario que sea.
+*/
 
-/* Función para restingir el acceso a los usuarios no admin dependiendo
-de la funcionalidad a la que se quiera acceder */ 
+/*
+** Función destinada a los visitantes que todavía no se han logueado.
+**
+** Si el usuario no está logueado, o sea, si no hay id en la
+** variable global SESSION, se lanza el mensaje para que se loguee, y
+** le redireccionamos al index.
+*/
 function usersOnly($redirect = '/index.php')
 {
-	/* Si el usuario no está logueado, o sea, si no hay id en la
-	variable global SESSION... */
 	if (empty($_SESSION['id'])) {
-		$_SESSION['message'] = 'You need to log in first';
+		$_SESSION['message'] = 'Primero necesitas loguearte.';
 		$_SESSION['type'] = 'error';
 		
 		header('location: ' . BASE_URL . $redirect);
@@ -17,15 +24,19 @@ function usersOnly($redirect = '/index.php')
 	}
 }
 
-/* Función para restingir parte de nuestro código sólo a los usuarios
-admin. No queremos que cualquiera pueda acceder a todos los apartados
-de nuestro blog. */
+/*
+** Función para permitir parte de nuestro código sólo a los usuarios
+** admin. No queremos que cualquiera pueda acceder a todos los apartados
+** de nuestro blog.
+**
+** Si el usuario no está registrado, o sea, si no hay id en la
+** variable global SESSION... se lanza el mensaje de aviso, y
+** le redireccionamos al index.
+*/
 function adminOnly($redirect = '/index.php')
 {
-	/* Si el usuario no está registrado, o sea, si no hay id en la
-	variable global SESSION... O no es admin */
-	if (empty($_SESSION['admin']) || empty($_SESSION['admin'])) {
-		$_SESSION['message'] = 'You are not authorized';
+	if (empty($_SESSION['admin'])) {
+		$_SESSION['message'] = 'No estás autorizado.';
 		$_SESSION['type'] = 'error';
 		
 		header('location: ' . BASE_URL . $redirect);
@@ -34,12 +45,14 @@ function adminOnly($redirect = '/index.php')
 	}
 }
 
-/* Función para restingir el acceso páginas como el login o el registro
-a usuarios que ya se han logueado. */ 
+/*
+** Función para los usuarios ya logueados.
+**
+** Si el usuario está logueado, no necesitamos mostrar ningún mensaje.
+** Simplemnte le redireccionamos al index.
+*/
 function guestsOnly($redirect = '/index.php')
 {
-	/* Si el usuario está logueado, no necesitamos mostrar ningún mensaje.
-	Simplemnteo lo redireccionamos al index. */
 	if (isset($_SESSION['id'])) {
 		
 		header('location: ' . BASE_URL . $redirect);
@@ -47,5 +60,3 @@ function guestsOnly($redirect = '/index.php')
 		exit();
 	}
 }
-
-?>

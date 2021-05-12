@@ -1,9 +1,9 @@
 <div class="footer">
         <div class="footer-content">
             <div class="footer-section about">
-                <h1 class="logo-text"><span>TFC</span>BLOG</h1>
+                <h1 class="logo-text"><span>Pablo</span>Herranz</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita fugit quod, mollitia voluptates enim
+                   Estudiante de 42 Madrid y desarrollador de aplicaciones web. Si quieres saber más de mí, sígueme en las redes sociales.
                 </p>
                 <div class="contact">
                     <span><i class="fas fa-phone"></i> &nbsp; +34 650271373</span>
@@ -17,38 +17,19 @@
                     <a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                 </div>
             </div>
-            <div class="footer-section links">
-                <h2>Quick Links</h2>
-                <br>
-                <ul>
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                </ul>
-            </div>
+           
             <div class="footer-section contact-form">
                 <h2>Contact us</h2>
                 <br>
                 <form action="index.html" method="POST">
-                    <input type="email" name="email" class="text-input contact-input" placeholder="Your email adress">
-                    <textarea name="message" class="text-input contact-input" rows=4 placeholder="Your message"></textarea>
+                    <input type="text" name="name" class="text-input contact-input" placeholder="Tu nombre">
+                    <input type="email" name="email" class="text-input contact-input" placeholder="Tu email">
+                    <textarea name="message" class="text-input contact-input" rows="2" placeholder="Mensaje..."></textarea>
                     <button type="submit" class="btn btn-big contact-btn"><i class="fas fa-envelope"></i> Send</button>
                 </form>
             </div>
         </div>
         <div class="footer-bottom">
-            Trabajo de Fin de Ciclo | &copy; Pablo Herranz Cano
+            Blog para el Trabajo de Fin de Ciclo | &copy; Pablo Herranz Cano
         </div>
     </div>

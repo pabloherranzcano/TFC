@@ -1,8 +1,14 @@
 <?php
+
+/*
+** Esta es la pantalla para realizar el login del usuario.
+** Llamamos a guestsOnly() del archio middleware, para comprobar
+** que el usuario , para comprobar si el usuario está o no logueado.
+*/
+
 include "path.php";
 include ROOT_PATH . "/app/controllers/users.php";
 
-// Llamamos a guestsOnly(), para comprobar si el usuario está o no logueado.
 guestsOnly();
 	
 ?>
@@ -20,7 +26,7 @@ guestsOnly();
 
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
-    <title>LOG IN</title>
+    <title>Login | TFCBLOG</title>
 </head>
 
 <body>
@@ -35,11 +41,11 @@ guestsOnly();
 			<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
 			
 			<div>
-                <label>Username</label>
+                <label>Nombre de usuario</label>
                 <input type="text" name="username" value="<?php echo $username; ?>" id="" class="text-input">
             </div>
             <div>
-                <label>Password</label>
+                <label>Contraseña</label>
                 <input type="password" name="password" value="<?php echo $password; ?>" id="" class="text-input">
             </div>
             <div>

@@ -24,7 +24,7 @@ function loginUser($user)
 	$_SESSION['admin'] = $user['admin'];
 	$_SESSION['id'] = $user['id'];
 	$_SESSION['username'] = $user['username'];
-	$_SESSION['message'] = 'You are now logged in';
+	$_SESSION['message'] = '¡Ya estás logueado!';
 	$_SESSION['type'] = 'success';
 
 	/* Regresamos al index si el usuario no es admin. Si no, al control panel */
@@ -76,7 +76,7 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 			$_POST['admin'] = 1;
 			$user_id = create($table, $_POST);
 
-			$_SESSION['message'] = 'Admin user created succesfully.';
+			$_SESSION['message'] = 'Administrador creado con éxito.';
 			$_SESSION['type'] = 'success';
 
 			/* No nos interesa hacer login en el panel de control */
@@ -97,7 +97,7 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 			if ($register)
 				loginUser($user);
 			else {
-				$_SESSION['message'] = 'User created succesfully.';
+				$_SESSION['message'] = 'Usuario creado con éxito.';
 				$_SESSION['type'] = 'success';
 
 				/* No nos interesa hacer login en el panel de control */
@@ -185,7 +185,7 @@ if (isset($_GET['delete_id'])) {
 	$id = $_GET['delete_id'];
 	$count = delete($table, $id);
 
-	$_SESSION['message'] = 'User deleted successfully.';
+	$_SESSION['message'] = 'Usuario eliminado con éxito.';
 	$_SESSION['type'] = 'success';
 
 	header('location: ' . BASE_URL . '/admin/users/index.php');

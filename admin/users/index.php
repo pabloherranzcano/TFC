@@ -29,7 +29,7 @@ adminOnly();
 	<!-- CKEDITOR -->
 	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
-	<title>ADMIN SECTION – MANAGE USERS</title>
+	<title>USUARIOS | Panel de administrador | TFCBLOG</title>
 </head>
 
 <body>
@@ -46,22 +46,22 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Add Users</a>
-				<a href="index.php" class="btn btn-big">Manage Users</a>
+			<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuario</a>
 			</div>
 
 			<div class="content">
-				<h2 class="page-title">Manage Users</h2>
+				<h2 class="page-title">USUARIOS</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 
 				<table>
 					<thead>
-						<th>SN</th>
-						<th>Username</th>
+						<th>#</th>
+						<th>Nombre de usuario</th>
 						<th>Email</th>
 						<th>Admin</th>
-						<th colspan='2'>Action</th>
+						<th colspan='2'>Opciones</th>
 					</thead>
 					<tbody>
 						<?php foreach ($admin_users as $key => $user) : ?>
@@ -70,8 +70,8 @@ adminOnly();
 								<td><?php echo $user['username']; ?></td>
 								<td><?php echo $user['email']; ?></td>
 								<td><?php echo $user['admin'] ? "Sí" : "No"; ?></td>
-								<td><a href="edit.php?id=<?php echo $user['id']; ?>" class="edit">Edit</a></td>
-								<td><a href="edit.php?delete_id=<?php echo $user['id']; ?>" class="delete">Delete</a></td>
+								<td><a href="edit.php?id=<?php echo $user['id']; ?>" class="edit">Editar</a></td>
+								<td><a href="edit.php?delete_id=<?php echo $user['id']; ?>" class="delete">Eliminar</a></td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

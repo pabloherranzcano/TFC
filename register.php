@@ -19,7 +19,7 @@ guestsOnly();
 
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
-    <title>REGISTRO</title>
+    <title>Registro | TFCBLOG</title>
 </head>
 
 <body>
@@ -36,7 +36,7 @@ guestsOnly();
 			<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
 			            
 			<div>
-                <label>Username</label>
+                <label>Nombre de usuario</label>
                 <input type="text" name="username" value="<?php echo $username; ?>" class="text-input">
             </div>
             <div>
@@ -44,11 +44,11 @@ guestsOnly();
                 <input type="text" name="email" value="<?php echo $email; ?>" class="text-input">
             </div>
             <div>
-                <label>Password</label>
+                <label>Contraseña</label>
                 <input type="password" name="password" value="<?php echo $password; ?>" class="text-input">
             </div>
             <div>
-                <label>Password Confirmation</label>
+                <label>Confirma la contraseña</label>
                 <input type="password" name="passwordConf" value="<?php echo $passwordConf; ?>" class="text-input">
             </div>
             <div>

@@ -50,7 +50,7 @@
 	}
 	
 	.btn:hover {
-	    background-color: #01c1d7;
+	    background-color: #00e5ff;
 	}
 	
 	.btn-big {
@@ -63,10 +63,10 @@
 	    padding: .7rem 1rem;
 	    display: block;
 	    width: 100%;
-	    border: 1px solid #e0e0e0;
+	    border: 1px solid #ececec;
 	    border-radius: 5px;
 	    outline: none;
-	    color: rgb(28, 40, 46);
+	    color: #222831;
 	    line-height: 1.5rem;
 	    font-size: 1.2em;
 	}
@@ -112,9 +112,9 @@
 	/**************************/
 	
 	header {
-	    background-color: rgb(0, 166, 255);
-	    background-color: #182324;
-	    height: 66px;
+	    background-color: #00e5ff;
+	    background-color: #222831;
+	    height: 90px;
 	}
 	
 	header * {
@@ -125,12 +125,13 @@
 	header .logo {
 	    float: left;
 	    height: inherit;
-	    margin-left: 2em;
+	    margin-left: 6em;
+	    margin-top: 10px;
 	}
 	
-	header .logo-text {
-	    margin: 14px;
-	}
+	header .logo-text {}
+	
+	header .logo-description {}
 	
 	header .logo-text span {
 	    color: #00e5ff;
@@ -139,6 +140,7 @@
 	
 	header .nav {
 	    float: right;
+	    height: 100%;
 	}
 	/* Lista de botones del navbar */
 	
@@ -157,23 +159,26 @@
 	/* Cada uno de los links del navbar */
 	
 	header ul li a {
-	    padding: 23px;
+	    height: 90px;
+	    padding: 35px;
 	    font-size: 1.1em;
 	    display: block;
 	    text-decoration: none;
+	    transition: 1s;
 	}
 	
 	header ul li a:hover {
 	    background-color: rgb(119, 206, 252);
-	    transition: 0.5s;
+	    transition: 1s;
 	}
 	/* HEADER -> Navbar -> Dropdown */
 	
 	header ul li ul {
 	    position: absolute;
-	    top: 66px;
+	    top: 90px;
 	    right: 0;
-	    width: 180px;
+	    height: 250px;
+	    width: 250px;
 	    display: none;
 	    z-index: 9999;
 	}
@@ -189,13 +194,13 @@
 	/* Cada uno de los links del dropdown */
 	
 	header ul li ul li a {
-	    padding: 10px;
+	    padding: 35px;
 	    color: gray;
-	    background-color: rgb(28, 40, 46);
+	    background-color: #222831;
 	}
 	
 	header ul li ul li a:hover {
-	    background-color: lightgray;
+	    background-color: rgb(119, 206, 252);
 	}
 	/* Link de log out, queremos que salga en rojo */
 	
@@ -216,28 +221,30 @@
 	    min-height: 100%;
 	    margin: auto;
 	    background-color: #f6f6f6;
+	    background-image: url("../images/wave.svg");
+	    background-repeat: no-repeat;
 	}
 	
 	.page-wrapper a:hover {
-	    color: rgb(0, 166, 255);
+	    color: #00e5ff;
 	}
 	/**************************/
-	/******* POST SLIDER ******/
+	/********* CAROUSEL *******/
 	/**************************/
 	
-	.post-slider {
+	.carousel {
 	    position: relative;
 	}
 	/* Título del slider */
 	
-	.post-slider .slider-title {
+	.carousel .slider-title {
 	    font-weight: bold;
 	    text-align: center;
 	    margin: 30px auto;
 	}
 	/* Botones del slider */
 	
-	.post-slider .prev {
+	.carousel .prev {
 	    position: absolute;
 	    top: 50%;
 	    left: 30px;
@@ -245,7 +252,7 @@
 	    cursor: pointer;
 	}
 	
-	.post-slider .next {
+	.carousel .next {
 	    position: absolute;
 	    top: 50%;
 	    right: 30px;
@@ -254,7 +261,7 @@
 	}
 	/* Contenedor de posts del slider */
 	
-	.post-slider .post-wrapper {
+	.carousel .post-wrapper {
 	    width: 85%;
 	    height: 350px;
 	    margin: 0 auto;
@@ -263,7 +270,7 @@
 	}
 	/* Cada post individual del slider */
 	
-	.post-slider .post-wrapper .post {
+	.carousel .post-wrapper .post {
 	    width: 300px;
 	    height: 330px;
 	    display: inline-block;
@@ -274,12 +281,12 @@
 	    box-shadow: 1rem 1rem 1rem -1rem #a0a0a033;
 	}
 	
-	.post-slider .post-wrapper .post .slider-img {
+	.carousel .post-wrapper .post .slider-img {
 	    width: 100%;
 	    height: 200px;
 	}
 	
-	.post-slider .post-wrapper .post .post-info {
+	.carousel .post-wrapper .post .post-info {
 	    height: 130px;
 	    padding: 0 5px;
 	}
@@ -294,7 +301,7 @@
 	/* Título del content */
 	
 	.content .main-content .recent-post-title {
-	    margin: 39px;
+	    margin: 40px;
 	}
 	/* Container del content */
 	
@@ -330,19 +337,19 @@
 	    position: absolute;
 	    bottom: 20px;
 	    right: 10px;
-	    border: 1px solid #00adc1;
+	    border: 1px solid #00e5ff;
 	    background-color: transparent;
-	    color: #00adc1;
+	    color: #00e5ff;
 	}
 	
 	.content .main-content .post .read-more:hover {
-	    background-color: #01c1d7;
+	    background-color: #00e5ff;
 	    color: white;
 	    transition: .25s;
 	}
 	
 	.content .popular .post {
-	    border-top: 1px solid #e0e0e0;
+	    border-top: 1px solid #ececec;
 	    margin-top: 10px;
 	    padding-top: 10px;
 	}
@@ -372,7 +379,7 @@
 	.content .main-content-wrapper .single img {
 	    width: 50%;
 	    display: block;
-	    margin: auto;
+	    margin: 40px auto;
 	}
 	/* Sidebar */
 	
@@ -396,21 +403,25 @@
 	    margin: 10px 0;
 	}
 	
-	.content .sidebar .section.search {
+	.content .sidebar .section.about {
 	    margin-top: 115px;
+	}
+	
+	.content .sidebar .section.search {
+	    margin-top: 0px;
 	}
 	
 	.content .sidebar .section.topics ul {
 	    margin: 0;
 	    padding: 0;
 	    list-style: none;
-	    border-top: 1px solid #e0e0e0;
+	    border-top: 1px solid #ececec;
 	}
 	
 	.content .sidebar .section.topics ul li a {
 	    display: block;
 	    padding: 15px 0;
-	    border-bottom: 1px solid #e0e0e0;
+	    border-bottom: 1px solid #ececec;
 	    transition: all .3s;
 	}
 	
@@ -451,7 +462,7 @@
 	/*********************************/
 	
 	.footer {
-	    background-color: #182324;
+	    background-color: #222831;
 	    color: white;
 	    height: 400px;
 	    position: relative;
@@ -467,12 +478,13 @@
 	
 	.footer .footer-content .footer-section {
 	    flex: 1;
+	    padding: 0 2%;
 	}
 	/* Títulos del footer */
 	
 	.footer .footer-content h1,
 	.footer .footer-content h2 {
-	    color: #e0e0e0;
+	    color: #ececec;
 	}
 	/* Color para el logo en el footer */
 	
@@ -678,10 +690,10 @@
 	        display: block;
 	        text-align: center;
 	    }
-	    .post-slider .prev {
+	    .carousel .prev {
 	        left: 10px;
 	    }
-	    .post-slider .next {
+	    .carousel .next {
 	        right: 10px;
 	    }
 	}
