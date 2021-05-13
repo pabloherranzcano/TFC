@@ -125,7 +125,13 @@ if (isset($_POST['login-btn'])) {
 			/* Loguea y redirecciona */
 			loginUser($user);
 		} else {
+<<<<<<< HEAD
 			array_push($errors, "Usuario o contraseña inválidos.");
+=======
+			array_push($errors, "Usuario o contraseña incorrectos.");
+			// printData($user);
+			// printData($_POST['password']);
+>>>>>>> 4c15febdb1a3d68ca2e11dba6184c59782de5f3d
 		}
 	}
 	$username = $_POST['username'];

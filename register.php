@@ -54,7 +54,11 @@ guestsOnly();
             <div>
                 <button type="submit" name="register-btn" class="btn btn-big">Register</button>
             </div>
+<<<<<<< HEAD
             <p>O <a href="<?php echo BASE_URL . "/login.php" ?>">Loguétae</a></p>
+=======
+            <p>O <a href="<?php echo BASE_URL . "/login.php" ?>">Loguéate</a></p>
+>>>>>>> 4c15febdb1a3d68ca2e11dba6184c59782de5f3d
         </form>
     </div>
 

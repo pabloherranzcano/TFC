@@ -43,8 +43,8 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-				<a href="create.php" class="btn btn-big">Crear&nbsp;post</a>
-				<a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a>
+				<a href="create.php" class="btn btn-big">Crear&nbsp;topic</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;topics</a>
 			</div>
 
 			<div class="content">

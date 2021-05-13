@@ -4,7 +4,10 @@ body {
     background-color: #f6f6f6;
     background-image: url("../../assets/images/waves/waveAdmin.svg");
     background-repeat: no-repeat;
+<<<<<<< HEAD
     background-position-y: 90px;
+=======
+>>>>>>> 4c15febdb1a3d68ca2e11dba6184c59782de5f3d
 }
 
 header {
