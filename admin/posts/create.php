@@ -95,12 +95,12 @@ adminOnly();
 						<?php if (empty($published)) : ?>
 							<label>
 								<input type="checkbox" name="published">
-								Publish
+								Publicar
 							</label>
 						<?php else : ?>
 							<label>
 								<input type="checkbox" name="published" checked>
-								Publish
+								Publicar
 							</label>
 						<?php endif; ?>
 					</div>

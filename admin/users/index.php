@@ -46,7 +46,7 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-			<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
+				<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
 				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuario</a>
 			</div>
 

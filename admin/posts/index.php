@@ -4,6 +4,8 @@ include ROOT_PATH . "/app/controllers/posts.php";
 
 // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 adminOnly();
+
+$records = getPostRecords();
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +58,6 @@ adminOnly();
 					<thead>
 						<th>#</th>
 						<th>Título</th>
-						<th>Autor</th>
 						<th colspan='3'>Opciones</th>
 					</thead>
 					<tbody>
@@ -64,10 +65,9 @@ adminOnly();
 							<tr>
 								<td><?php echo $key + 1; ?></td>
 								<td><?php echo $post['title']; ?></td>
-								<td><?php echo $post['username']; ?></td>
 								<td><a href="edit.php?id=-<?php echo $post['id'] ?>-" class="edit">Editar</a></td>
 								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Eliminar</a></td>
-
+								
 								<?php if ($post['published']) : ?>
 									<td><a href="edit.php?published=0&p_id=<?php echo $post['id']; ?>" class="unpublish">Ocultar</a></td>
 								<?php else : ?>

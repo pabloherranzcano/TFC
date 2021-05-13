@@ -44,7 +44,7 @@ adminOnly();
 		<div class="admin-content">
 			<div class="content">
 
-				<h2 class="page-title">Bienvenido al panel de control del administrador</h2>
+				<h2 class="dashboard-message">Bienvenido al panel de control del administrador</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 

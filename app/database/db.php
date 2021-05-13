@@ -224,7 +224,7 @@ function delete($table, $id)
 }
 
 /*
-** unción para saber quién ha escrito un post, ya que user_id es foreign key de la tabla POSTS, y no podremos obtener
+** Función para saber quién ha escrito un post publicado, ya que user_id es foreign key de la tabla POSTS, y no podremos obtener
 ** el nombre del "user_id" sin hacer un inner join en la consulta
 ** 
 ** SELECT p.*, u.username
@@ -250,6 +250,34 @@ function getPublishedPosts()
 	return ($records);
 }
 
+/*
+** Función para saber quién ha escrito un post. Recogemos todos los datos de los posts, y de ahí extraemos
+** quién es el autor.
+** 
+** SELECT p.*, u.username
+** 			FROM posts AS p
+** 			JOIN users AS u
+** 			ON p.user_id=u.id;
+** 			WHERE published=1
+** 			AND published=0"
+** 
+** Ponemos ? en p.published para poder pasarlo como condición a la hora de llamar a executeQuery, que recibe
+** la query sql y una condición.
+*/
+function getPostRecords()
+{
+	global $connection;
+
+	$sql = "SELECT p.*, u.username
+			FROM posts AS p
+			JOIN users AS u
+			ON p.user_id=u.id
+			WHERE p.published=1
+			OR p.published=0";
+	$stmt = executeQuery($sql, ['published' => 1]);
+	$records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	return ($records);
+}
 /*
 ** Función para buscar posts. Le entra por parámetro la palabra a buscar. Es muy parecida a getPublishedPosts,
 ** sólo que añadiendo AND y OR. Sería como decirle "búscame los posts publicados y cuyo título O cuerpo contenga
@@ -284,7 +312,7 @@ function searchPosts($term)
 }
 
 /*
-** Función para buscar toos los posts de una temática determinada.Le entra por parámetro el id de la temática.
+** Función para buscar toos los posts de una temática determinada. Le entra por parámetro el id de la temática.
 ** Es muy parecida a getPublishedPosts, sólo que añadiendo AND. Sería como decirle "búscame los posts publicados 
 ** que pertenezcan a la temática (topic_id) X.
 ** 

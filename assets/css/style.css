@@ -64,7 +64,7 @@
 	    display: block;
 	    width: 100%;
 	    border: 1px solid #ececec;
-	    border-radius: 5px;
+	    border-radius: 9px;
 	    outline: none;
 	    color: #222831;
 	    line-height: 1.5rem;
@@ -85,6 +85,8 @@
 	    margin: 0;
 	    /* background-color: #212121; */
 	    background-color: #f6f6f6;
+	    background-image: url("../images/waves/waveIndex.svg");
+	    background-repeat: no-repeat;
 	}
 	/* MENSAJE REGISTRO */
 	
@@ -92,7 +94,7 @@
 	    width: 100%;
 	    margin: 5px auto;
 	    padding: 8px;
-	    border-radius: 5px;
+	    border-radius: 9px;
 	    list-style: none;
 	}
 	
@@ -220,9 +222,6 @@
 	    /* width: 80%; */
 	    min-height: 100%;
 	    margin: auto;
-	    background-color: #f6f6f6;
-	    background-image: url("../images/wave.svg");
-	    background-repeat: no-repeat;
 	}
 	
 	.page-wrapper a:hover {
@@ -276,7 +275,7 @@
 	    display: inline-block;
 	    margin: 0 10px;
 	    background-color: white;
-	    border-radius: 5px;
+	    border-radius: 9px;
 	    overflow: hidden;
 	    box-shadow: 1rem 1rem 1rem -1rem #a0a0a033;
 	}
@@ -315,7 +314,7 @@
 	    background-color: white;
 	    padding: 20px 50px;
 	    font-size: 1.1em;
-	    border-radius: 5px;
+	    border-radius: 9px;
 	}
 	
 	.content .main-content.single .post-title {
@@ -328,7 +327,7 @@
 	    width: 95%;
 	    height: 270px;
 	    margin: 20px auto;
-	    border-radius: 5px;
+	    border-radius: 9px;
 	    background-color: white;
 	    position: relative;
 	}
@@ -395,7 +394,7 @@
 	.content .sidebar .section {
 	    background-color: white;
 	    padding: 20px;
-	    border-radius: 5px;
+	    border-radius: 9px;
 	    margin-bottom: 20px;
 	}
 	
@@ -405,6 +404,15 @@
 	
 	.content .sidebar .section.about {
 	    margin-top: 115px;
+	}
+	
+	.content .sidebar .section.about img {
+	    width: 70%;
+	    height: auto;
+	    border-radius: 30px;
+	    margin: auto;
+	    display: block;
+	    margin: 20px auto;
 	}
 	
 	.content .sidebar .section.search {
@@ -438,7 +446,7 @@
 	    margin: 50px auto;
 	    padding: 20px;
 	    background-color: white;
-	    border-radius: 5px;
+	    border-radius: 9px;
 	}
 	
 	.auth-content form div {
@@ -511,7 +519,7 @@
 	    text-align: center;
 	    display: inline-block;
 	    font-size: 1.3em;
-	    border-radius: 5px;
+	    border-radius: 9px;
 	    transition: all .3s;
 	}
 	

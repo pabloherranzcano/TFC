@@ -2,7 +2,7 @@
 include "path.php";
 include ROOT_PATH . "/app/controllers/topics.php";
 
-/* Lo primero, hacemos fetch de todos los posts de la base de datos que
+/* Hacemos fetch de todos los posts de la base de datos que
 ** queremos que se muestren (publish = 1). 
 ** 
 ** $posts = selectAll('posts', ['published' => 1]);
@@ -109,7 +109,7 @@ if (isset($_GET['topic_id'])) {
 							<p class="preview-text">
 								<?php echo html_entity_decode(substr($post['body'], 0, 230) . '...'); ?>
 							</p>
-							<a href="single.php?id=<?php echo $post['id']; ?>" class="btn read-more">Read more...</a>
+							<a href="single.php?id=<?php echo $post['id']; ?>" class="btn read-more">Seguir leyendo...</a>
 						</div>
 					</div>
 					<!-- // Post -->
@@ -124,6 +124,7 @@ if (isset($_GET['topic_id'])) {
 			<div class="sidebar">
 				<!-- Sobre mí -->
 				<div class="section about">
+					<img src="<?php echo BASE_URL . "/assets/images/linkedin.png";?>" alt="">
 					<h2 class="section-title">SOBRE MÍ</h2>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis porro odit optio, libero, accusantium in ipsum deserunt expedita temporibus nihil nisi! Non eius magnam id alias rem nobis provident laudantium.</p>
 				</div>
