@@ -65,7 +65,7 @@ $records = getPostRecords();
 							<tr>
 								<td><?php echo $key + 1; ?></td>
 								<td><?php echo $post['title']; ?></td>
-								<td><a href="edit.php?id=-<?php echo $post['id'] ?>-" class="edit">Editar</a></td>
+								<td><a href="edit.php?id=<?php echo $post['id'] ?>" class="edit">Editar</a></td>
 								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Eliminar</a></td>
 								
 								<?php if ($post['published']) : ?>

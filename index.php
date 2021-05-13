@@ -104,8 +104,8 @@ if (isset($_GET['topic_id'])) {
 							&nbsp;
 							<i class="far calendar"><?php echo date('j F, Y', strtotime($post['created_at'])); ?></i>
 							<!-- Utilzamos la función substr para cortar mostrar un preview del texto del post.
-						La función html_entity_decode nos permie deshacenos de las etiquetas html que se guardan por
-						defecto en la base de datos a la hora de crear un pos. -->
+							La función html_entity_decode nos permie deshacenos de las etiquetas html que se guardan por
+							defecto en la base de datos a la hora de crear un pos. -->
 							<p class="preview-text">
 								<?php echo html_entity_decode(substr($post['body'], 0, 230) . '...'); ?>
 							</p>
