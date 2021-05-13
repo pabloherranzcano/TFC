@@ -14,10 +14,10 @@
 */
 
 $local = "http://localhost:3000";
-$heroku = "https://pabloherranzcano.herokuapp.com";
+$heroku = "https://pherranz.herokuapp.com";
 
 /* BASE_URL */
-define("BASE_URL", $local);
+define("BASE_URL", $heroku);
 
 /* ROOT_URL */
 define("ROOT_PATH", realpath(dirname(__FILE__)));
