@@ -6,7 +6,6 @@
 			<h5 class="logo-description">42 Madrid Student | Desarrollador de aplicaciones web</h5>
 		</a>
 	</div>
-	<h1 class="central">PANEL DE ADMINISTRADOR</h1>
 	<i class="fa fa-bars burger"></i>
 	<ul class="nav">
 		<?php if (isset($_SESSION['id'])) : ?>

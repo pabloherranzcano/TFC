@@ -125,9 +125,7 @@ if (isset($_POST['login-btn'])) {
 			/* Loguea y redirecciona */
 			loginUser($user);
 		} else {
-			array_push($errors, "Wrong credentials.");
-			// printData($user);
-			// printData($_POST['password']);
+			array_push($errors, "Usuario o contraseña inválidos.");
 		}
 	}
 	$username = $_POST['username'];
@@ -136,7 +134,6 @@ if (isset($_POST['login-btn'])) {
 // READ
 if (isset($_GET['id'])) {
 	$user =	selectOne($table, ['id' => $_GET['id']]);
-	// printData($user);
 
 	$id = $user['id'];
 	$username = $user['username'];

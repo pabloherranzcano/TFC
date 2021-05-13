@@ -1,19 +1,29 @@
 /* NAVBAR ADMIN SECTION */
 
-header {
-    background-color: #30475e;
-    display: flex;
+body {
+    background-color: #f6f6f6;
+    background-image: url("../../assets/images/waves/waveAdmin.svg");
+    background-repeat: no-repeat;
+    background-position-y: 90px;
 }
 
-.central {
-    margin: auto;
-    font-size: 1.4em;
-    font-weight: bold;
+header {
+    background-color: #17283a;
+    display: flex;
 }
 
 header .nav {
     position: absolute;
     right: 0;
+}
+
+
+/* DASHBOARD MESSAGE */
+
+.dashboard-message {
+    display: block;
+    text-align: center;
+    margin-top: 150px;
 }
 
 .admin-wrapper {
@@ -33,6 +43,7 @@ header .nav {
 .admin-wrapper .admin-content {
     flex: 8;
     height: 100%;
+    margin-top: 22px;
 }
 
 .admin-wrapper .left-sidebar ul {
@@ -48,8 +59,8 @@ header .nav {
     border-bottom: 1px solid #ececec;
     transition: all .3s;
     text-align: right;
-    border-radius: 10px;
     margin: 15px 0;
+    font-weight: bold;
 }
 
 .admin-wrapper .left-sidebar ul li a:hover {
