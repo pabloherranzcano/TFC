@@ -125,7 +125,7 @@ if (isset($_POST['login-btn'])) {
 			/* Loguea y redirecciona */
 			loginUser($user);
 		} else {
-			array_push($errors, "Wrong credentials.");
+			array_push($errors, "Usuario o contraseña incorrectos.");
 			// printData($user);
 			// printData($_POST['password']);
 		}
