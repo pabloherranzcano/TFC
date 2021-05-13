@@ -273,7 +273,7 @@ function getPostRecords()
 			JOIN users AS u
 			ON p.user_id=u.id
 			WHERE p.published=1
-			OR p.published=0";
+			OR p.published=?";
 	$stmt = executeQuery($sql, ['published' => 1]);
 	$records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 	return ($records);
