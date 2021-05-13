@@ -16,7 +16,7 @@
 define("ROOT_PATH", realpath(dirname(__FILE__)));
 
 /* LOCAL */
-define("BASE_URL", "http://localhost:3000");
+// define("BASE_URL", "http://localhost:3000");
 
 /* DEPLOYED */
-// define("BASE_URL", "https://pabloherranzcano.herokuapp.com");
+define("BASE_URL", "https://pabloherranzcano.herokuapp.com");
