@@ -8,17 +8,17 @@
 */
 
 /* LOCAL */
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db_name = 'tfcblog';
-// $db_name = 'comment-reply-system';
+// $host = 'localhost';
+// $user = 'root';
+// $pass = '';
+// $db_name = 'tfcblog';
+
 
 /* DEPLOYED */
-// $host = 'remotemysql.com';
-// $user = 'O4JnLPhRnn';
-// $pass = 'YbASczJrKQ';
-// $db_name = 'O4JnLPhRnn';
+$host = 'remotemysql.com';
+$user = 'O4JnLPhRnn';
+$pass = 'YbASczJrKQ';
+$db_name = 'O4JnLPhRnn';
 
 $connection = new MySQLi($host, $user, $pass, $db_name);
 
