@@ -5,7 +5,8 @@
 */
 
 /*
-** Función para comprobar que un usuario ha metido los datos bien al registrarse.
+** Función para comprobar que un usuario ha metido los datos bien al registrarse:
+** que no haya dejado nada en blanco, que no haya espacios en el nombre, el captcha...
 ** 
 ** Tenemos que hacer la última comprobación para saber si el usuario se está creando
 ** por primera vez o estamos editándolo desde el panel de admin, ya que si lo editamos y
@@ -21,21 +22,31 @@ function validateUser($user)
 	if (empty($user['username']))
 		array_push($errors, 'Es necesario introducir un nombre de usuario.');
 	
+	// Comprobamos que no haya espacios ni caracteres no imprimibles
+	if(strpos($user['username'], " ") || !ctype_print($user['username']))
+		array_push($errors, 'El nombre de usuario no puede contener espacios en blanco ni caracteres raros.');
+	
 	if (empty($user['email']))
 		array_push($errors, 'Es necesario introducir un email.');	
 	
 	if (empty($user['password']))
 		array_push($errors, 'Es necesario introducir una contraseña.');
-
+	
 	if ($user['password'] != $user['passwordConf'])
 		array_push($errors, 'Las contraseñas no coinciden.');
-
+	
+	//CAPTCHA
+	if(isset($user['register-btn'])){
+		if (empty($user['captcha']) || ($user['captcha'] != $user['captchaResult']))
+			array_push($errors, 'El captcha es incorrecto.');
+	}
 	// Comprobamos que no exista un usuario con ese nombre.
 	$existingUser= selectOne('users', ['username' => $user['username']]);
 	if (isset($existingUser)) {
 		if ((isset($user['update-user']) && $existingUser['id'] != $user['id']) || isset($_POST['create-admin']))
 			array_push($errors, 'Ese nombre de usuario ya está registrado.');
 	}
+	
 	// Comprobamos que no exista un usuario con ese email.
 	$existingUser = selectOne('users', ['email' => $user['email']]);
 	if ($existingUser){

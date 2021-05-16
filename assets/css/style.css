@@ -1,4 +1,7 @@
-	/* FONT DEL BLOG */
+	/*********************************************************/
+	/************************ GLOBALES ***********************/
+	/*********************************************************/
+	/* FONT */
 	
 	@font-face {
 	    font-family: 'Ubuntu';
@@ -13,14 +16,14 @@
 	    font-weight: bold;
 	    src: url(../fonts/Ubuntu/Ubuntu-Bold.ttf);
 	}
-	/**************************/
-	/******** GLOBALES ********/
-	/**************************/
+	/* A todos los elementos */
 	
 	* {
+	    /* Esto es para que la altura adicional que se da en algunos elementos. */
 	    box-sizing: border-box;
 	    font-family: 'Ubuntu';
 	}
+	/* Textos */
 	
 	h1,
 	h2,
@@ -51,11 +54,17 @@
 	
 	.btn:hover {
 	    background-color: #00e5ff;
+	    color: black
 	}
 	
 	.btn-big {
 	    padding: .7rem 1.3rem;
 	    line-height: 1.3rem;
+	}
+	
+	.auth-btn {
+	    display: block;
+	    margin: auto;
 	}
 	/* INPUT TEXT */
 	
@@ -70,7 +79,7 @@
 	    line-height: 1.5rem;
 	    font-size: 1.2em;
 	}
-	/* Para que el content tenga un tamaño cuadrado */
+	/* Para que el content tenga un tamaño cuadrado, aunque el sidebar o el main content sean de diferente tamaño. */
 	
 	.clearfix::after {
 	    content: '';
@@ -87,8 +96,12 @@
 	    background-color: #f6f6f6;
 	    background-image: url("../images/waves/waveIndex.svg");
 	    background-repeat: no-repeat;
+	    background-size: 100%;
+	    background-position-y: 85px;
+	    position: absolute;
+	    width: 100%;
 	}
-	/* MENSAJE REGISTRO */
+	/* MENSAJE DE REGISTRO */
 	
 	.msg {
 	    width: 100%;
@@ -109,42 +122,46 @@
 	    border: 1px solid #884b4b;
 	    background-color: #eec2c2;
 	}
-	/**************************/
-	/********* HEADER *********/
-	/**************************/
+	/*********************************************************/
+	/************************* HEADER ************************/
+	/*********************************************************/
 	
 	header {
-	    background-color: #00e5ff;
 	    background-color: #222831;
 	    height: 90px;
 	}
+	/* Le damos color blanco a todo elemento dentro del header */
 	
 	header * {
 	    color: white;
 	}
-	/* HEADER -> Logo */
+	/********* LOGO *********/
+	/************************/
 	
 	header .logo {
 	    float: left;
 	    height: inherit;
-	    margin-left: 6em;
-	    margin-top: 10px;
+	    margin-left: 3em;
 	}
 	
-	header .logo-text {}
-	
-	header .logo-description {}
+	header .logo-text {
+	    margin-top: 10px;
+	}
 	
 	header .logo-text span {
 	    color: #00e5ff;
 	}
-	/* HEADER -> Navbar */
+	
+	header .logo-description {
+	    padding: 9px 0;
+	}
+	/********* NAVBAR *********/
+	/**************************/
 	
 	header .nav {
 	    float: right;
-	    height: 100%;
 	}
-	/* Lista de botones del navbar */
+	/* LISTA */
 	
 	header ul {
 	    float: right;
@@ -152,74 +169,81 @@
 	    padding: 0;
 	    list-style: none;
 	}
-	/* Cada uno de los botones del navbar, no confundir con los links */
+	/* ELEMENTOS DE LA LISTA */
 	
 	header ul li {
 	    float: left;
 	    position: relative;
 	}
-	/* Cada uno de los links del navbar */
+	/* A DE LOS ELEMENTOS */
 	
 	header ul li a {
-	    height: 90px;
-	    padding: 35px;
+	    padding: 30px;
 	    font-size: 1.1em;
 	    display: block;
 	    text-decoration: none;
+	    border-radius: 3px;
 	    transition: 1s;
 	}
 	
 	header ul li a:hover {
 	    background-color: rgb(119, 206, 252);
+	    color: black;
 	    transition: 1s;
 	}
-	/* HEADER -> Navbar -> Dropdown */
+	/******** DROPDOWN ********/
+	/**************************/
+	
+	.showing {
+	    max-height: 100em;
+	}
 	
 	header ul li ul {
 	    position: absolute;
-	    top: 90px;
+	    top: 80px;
 	    right: 0;
-	    height: 250px;
-	    width: 250px;
+	    width: 180px;
 	    display: none;
 	    z-index: 9999;
 	}
+	/* HOVER PARA MOSTRAR DROPDOWN */
 	
 	header ul li:hover ul {
 	    display: block;
 	}
-	/* Cada uno de los botones del dropdown, no confundir con los links */
+	/* CADA ELEMENTO DE LA LISTA DEL DROPDOWN */
 	
 	header ul li ul li {
 	    width: 100%;
 	}
-	/* Cada uno de los links del dropdown */
 	
 	header ul li ul li a {
-	    padding: 35px;
+	    padding: 10px;
 	    color: gray;
-	    background-color: #222831;
+	    background-color: #193758;
 	}
-	
-	header ul li ul li a:hover {
-	    background-color: rgb(119, 206, 252);
-	}
-	/* Link de log out, queremos que salga en rojo */
+	/* Damos un color rojo al link de log out. */
 	
 	header ul li ul li a.logout {
 	    color: red;
 	}
-	/* Icono del menú hamburguesa */
+	
+	header ul li ul li a:hover {
+	    background-color: #fed800;
+	    color: black;
+	}
+	/* ICONO BURGER */
 	
 	header .burger {
 	    display: none;
 	}
-	/**************************/
-	/****** PAGE WRAPPER ******/
-	/**************************/
+	/**********************************************************/
+	/*********************** PAGE WRAPPER *********************/
+	/**********************************************************/
+	/* ENTRE HEADER Y FOOTER */
 	
 	.page-wrapper {
-	    /* width: 80%; */
+	    width: 100%;
 	    min-height: 100%;
 	    margin: auto;
 	}
@@ -227,88 +251,77 @@
 	.page-wrapper a:hover {
 	    color: #00e5ff;
 	}
-	/**************************/
-	/********* CAROUSEL *******/
-	/**************************/
-	
-	.carousel {
-	    position: relative;
-	}
-	/* Título del slider */
-	
-	.carousel .slider-title {
-	    font-weight: bold;
-	    text-align: center;
-	    margin: 30px auto;
-	}
-	/* Botones del slider */
-	
-	.carousel .prev {
-	    position: absolute;
-	    top: 50%;
-	    left: 30px;
-	    font-size: 2em;
-	    cursor: pointer;
-	}
-	
-	.carousel .next {
-	    position: absolute;
-	    top: 50%;
-	    right: 30px;
-	    font-size: 2em;
-	    cursor: pointer;
-	}
-	/* Contenedor de posts del slider */
-	
-	.carousel .post-wrapper {
-	    width: 85%;
-	    height: 350px;
-	    margin: 0 auto;
-	    overflow: hidden;
-	    padding: 10px 0;
-	}
-	/* Cada post individual del slider */
-	
-	.carousel .post-wrapper .post {
-	    width: 300px;
-	    height: 330px;
-	    display: inline-block;
-	    margin: 0 10px;
-	    background-color: white;
-	    border-radius: 9px;
-	    overflow: hidden;
-	    box-shadow: 1rem 1rem 1rem -1rem #a0a0a033;
-	}
-	
-	.carousel .post-wrapper .post .slider-img {
-	    width: 100%;
-	    height: 200px;
-	}
-	
-	.carousel .post-wrapper .post .post-info {
-	    height: 130px;
-	    padding: 0 5px;
-	}
-	/**************************/
-	/********* CONTENT ********/
-	/**************************/
+	/************************************************/
+	/******************** CONTENT *******************/
+	/************************************************/
 	
 	.content {
-	    width: 90%;
+	    width: 80%;
 	    margin: 30px auto;
 	}
-	/* Título del content */
-	
-	.content .main-content .recent-post-title {
-	    margin: 40px;
-	}
-	/* Container del content */
+	/**************************************/
+	/**************** POSTS ***************/
+	/**************************************/
 	
 	.content .main-content {
 	    width: 70%;
 	    float: left;
 	}
-	/* Container del SINGLE POST */
+	/********* INDEX *********/
+	/*************************/
+	/* TÍTULO DEL CONTENT */
+	
+	.content .main-content .recent-post-title {
+	    margin: 40px;
+	}
+	/* CONTAINER DEL CONTENT */
+	
+	.content .main-content .post {
+	    width: 95%;
+	    height: 100%;
+	    margin: 20px auto;
+	    padding-bottom: 30px;
+	    border-radius: 9px;
+	    position: relative;
+	    overflow: hidden;
+	    background-color: white;
+	}
+	
+	.content .main-content .post .post-img {
+	    width: 100%;
+	    height: auto;
+	}
+	
+	.content .main-content .post .post-preview {
+	    width: 100%;
+	    padding: 25px;
+	    height: 110%;
+	}
+	
+	.content .main-content .post .post-preview h2 {
+	    padding: 0;
+	    margin: 0;
+	    padding-bottom: 10px;
+	}
+	
+	.content .main-content .post .read-more {
+	    position: static;
+	    float: right;
+	    bottom: 20px;
+	    right: 20px;
+	    border: 1px solid #00e5ff;
+	    background-color: transparent;
+	    color: #00e5ff;
+	    width: fit-content;
+	}
+	
+	.content .main-content .post .read-more:hover {
+	    background-color: #00e5ff;
+	    color: black;
+	    transition: .25s;
+	}
+	/********* SINGLE POST *********/
+	/*******************************/
 	
 	.content .main-content.single {
 	    background-color: white;
@@ -317,35 +330,20 @@
 	    border-radius: 9px;
 	}
 	
+	.content .main-content-wrapper .single img {
+	    width: 75%;
+	    display: block;
+	    margin: 40px auto;
+	}
+	
 	.content .main-content.single .post-title {
 	    text-align: center;
 	    margin-bottom: 40px;
 	}
-	/* POSTS */
+	/********* POPULAR *********/
+	/***************************/
 	
-	.content .main-content .post {
-	    width: 95%;
-	    height: 270px;
-	    margin: 20px auto;
-	    border-radius: 9px;
-	    background-color: white;
-	    position: relative;
-	}
-	
-	.content .main-content .post .read-more {
-	    position: absolute;
-	    bottom: 20px;
-	    right: 10px;
-	    border: 1px solid #00e5ff;
-	    background-color: transparent;
-	    color: #00e5ff;
-	}
-	
-	.content .main-content .post .read-more:hover {
-	    background-color: #00e5ff;
-	    color: white;
-	    transition: .25s;
-	}
+	.content .section.popular {}
 	
 	.content .popular .post {
 	    border-top: 1px solid #ececec;
@@ -359,36 +357,15 @@
 	    float: left;
 	    margin-right: 10px;
 	}
-	/* Post preview */
-	
-	.content .main-content .post .post-preview {
-	    padding: 10px;
-	    width: 60%;
-	    float: right;
-	}
-	/* Imagen del post preview */
-	
-	.content .main-content .post .post-img {
-	    width: 40%;
-	    height: 100%;
-	    float: left;
-	}
-	/* SINGLE POST*/
-	
-	.content .main-content-wrapper .single img {
-	    width: 50%;
-	    display: block;
-	    margin: 40px auto;
-	}
-	/* Sidebar */
+	/**************************************/
+	/**************** SIDEBAR *************/
+	/**************************************/
+	/********* GENERALES *********/
+	/*****************************/
 	
 	.content .sidebar {
 	    width: 30%;
 	    float: left;
-	}
-	
-	.content .sidebar.single {
-	    padding: 0 10px;
 	}
 	
 	.content .sidebar .section {
@@ -400,23 +377,6 @@
 	
 	.content .sidebar .section .section-title {
 	    margin: 10px 0;
-	}
-	
-	.content .sidebar .section.about {
-	    margin-top: 115px;
-	}
-	
-	.content .sidebar .section.about img {
-	    width: 70%;
-	    height: auto;
-	    border-radius: 30px;
-	    margin: auto;
-	    display: block;
-	    margin: 20px auto;
-	}
-	
-	.content .sidebar .section.search {
-	    margin-top: 0px;
 	}
 	
 	.content .sidebar .section.topics ul {
@@ -437,25 +397,53 @@
 	    padding-left: 20px;
 	    transition: all .3s;
 	}
+	/********* INDEX *********/
+	/*************************/
+	
+	.content .sidebar .section.about {
+	    margin-top: 117px;
+	}
+	
+	.content .sidebar .section.about img {
+	    width: 70%;
+	    height: auto;
+	    border-radius: 30px;
+	    margin: auto;
+	    display: block;
+	    margin: 20px auto;
+	}
+	
+	.content .sidebar .section.search {
+	    margin-top: 0px;
+	}
+	/********* SINGLE POST *********/
+	/*******************************/
+	
+	.content .sidebar.single {
+	    padding: 0 10px;
+	}
 	/*********************************/
 	/*********** AUTH PAGES **********/
 	/*********************************/
+	/* DIV FORMULARIO LOGIN Y REGISTRO */
 	
 	.auth-content {
-	    width: 30%;
+	    width: 560px;
 	    margin: 50px auto;
 	    padding: 20px;
 	    background-color: white;
 	    border-radius: 9px;
 	}
 	
-	.auth-content form div {
-	    margin-bottom: 10px;
-	}
-	
 	.auth-content .form-title {
 	    text-align: center;
 	}
+	/* CADA UNO DE LOS CAMPOS DEL FORMULARIO */
+	
+	.auth-content form div {
+	    margin-bottom: 10px;
+	}
+	/* O REGÍSTRATE O LOGUÉATE */
 	
 	.auth-content form p {
 	    text-align: center;
@@ -465,9 +453,16 @@
 	    color: #00e5ff;
 	    text-decoration: underline;
 	}
-	/*********************************/
-	/************* FOOTER ************/
-	/*********************************/
+	/* Para ocultar las fechas del input:number del captcha */
+	
+	input[type=number]::-webkit-inner-spin-button,
+	input[type=number]::-webkit-outer-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
+	}
+	/**********************************************************/
+	/************************** FOOTER ************************/
+	/**********************************************************/
 	
 	.footer {
 	    background-color: #222831;
@@ -475,7 +470,7 @@
 	    height: 400px;
 	    position: relative;
 	}
-	/* Parte de arriba del footer, la de las tres secciones */
+	/* PARTE SUPERIOR DEL FOOTER (3 SECCIONES) */
 	
 	.footer .footer-content {
 	    height: 350px;
@@ -545,7 +540,7 @@
 	/*** PARTE DERECHA DEL FOOTER ***/
 	
 	.footer .footer-content .contact-form .contact-input {
-	    background-color: #272727;
+	    background-color: #363636;
 	    color: #bebdbd;
 	    margin-bottom: 10px;
 	    line-height: 1.5rem;
@@ -577,77 +572,115 @@
 	    left: 0;
 	    padding-top: 20px;
 	}
-	/*********************************/
-	/********* MEDIA QUERIES *********/
-	/*********************************/
+	/*********************************************************/
+	/********************** MEDIA QUERIES ********************/
+	/*********************************************************/
+	/************************************************/
+	/******************** CONTENT *******************/
+	/************************************************/
+	/* Este media query es para hacer aparecer el menú hamburguesa, entre otros. */
 	
-	@media only screen and (max-width: 934px) {
+	@media only screen and (max-width: 1400px) {
 	    .content {
 	        width: 100%;
-	    }
-	    .auth-content {
-	        width: 50%;
+	        margin: 30px auto;
 	    }
 	}
 	
-	@media only screen and (max-width: 900px) {
+	@media only screen and (max-width: 1100px) {
+	    /*********************************************************/
+	    /************************* HEADER ************************/
+	    /*********************************************************/
 	    header {
 	        position: relative;
 	    }
-	    /* Lista de botones del navbar */
+	    /********* NAVBAR *********/
+	    /**************************/
+	    /* LISTA */
 	    header ul {
 	        width: 100%;
-	        background-color: rgb(51, 184, 255);
+	        background-color: #193758;
 	        max-height: 0;
 	        overflow: hidden;
 	    }
-	    /* Cada uno de los botones del navbar, no confundir con los links */
+	    /* ELEMENTOS DE LA LISTA */
 	    header ul li {
 	        width: 100%;
 	    }
-	    .auth-content {
-	        width: 50%;
-	    }
-	    .showing {
-	        max-height: 100em;
-	    }
-	    /* Dropdown */
+	    /******** DROPDOWN ********/
+	    /**************************/
 	    header ul li ul {
 	        position: static;
 	        display: block;
 	        width: 100%;
 	    }
-	    /* Cada uno de los links del dropdown */
+	    /* CADA LINK DE LA LISTA DEL DROPDOWN */
 	    header ul li ul li a {
 	        padding: 10px;
-	        background-color: rgb(28, 40, 46);
+	        background-color: #222831;
 	        color: white;
 	        padding-left: 50px;
 	    }
-	    /* Link de log out, queremos que salga en rojo */
 	    header ul li ul li a.logout {
 	        color: red;
 	    }
 	    header ul li ul li a:hover {
-	        background-color: rgb(119, 206, 252);
+	        background-color: #fed800;
+	        color: black;
 	    }
+	    /* ICONO BURGER */
 	    header .burger {
 	        display: block;
 	        position: absolute;
 	        right: 20px;
-	        top: 20px;
+	        top: 31px;
 	        font-size: 1.9em;
 	    }
-	}
-	
-	@media only screen and (max-width: 834px) {
+	    /************************************************/
+	    /******************** CONTENT *******************/
+	    /************************************************/
+	    /**************************************/
+	    /**************** POSTS ***************/
+	    /**************************************/
 	    .content .main-content {
 	        width: 100%;
 	        padding: 10px;
 	    }
+	    /* CAROUSEL */
+	    .carousel .prev {
+	        left: 10px;
+	    }
+	    .carousel .next {
+	        right: 10px;
+	    }
+	    /********* INDEX *********/
+	    /*************************/
 	    .content .main-content .post {
+	        height: auto;
 	        width: 100%;
 	    }
+	    .content .main-content .post .post-img {
+	        width: 100%;
+	    }
+	    .content .main-content .post .post-preview {
+	        width: 100%;
+	    }
+	    .content .main-content .post .read-more {
+	        position: static;
+	        width: 100%;
+	        display: block;
+	        text-align: center;
+	    }
+	    /********* SINGLE POST *********/
+	    /*******************************/
+	    .content .main-content.single {
+	        padding: 10px 20px;
+	    }
+	    /********* INDEX *********/
+	    /*************************/
+	    /**************************************/
+	    /*************** SIDEBAR **************/
+	    /**************************************/
 	    .content .sidebar {
 	        width: 100%;
 	        padding: 10px;
@@ -656,10 +689,16 @@
 	        margin-top: 30px;
 	        padding: 10px;
 	    }
+	    .main-content-wrapper {
+	        padding: 10px;
+	    }
+	    /************************************************/
+	    /********************* FOOTER *******************/
+	    /************************************************/
 	    .footer {
 	        height: auto;
 	    }
-	    /* Parte de arriba del footer, la de las tres secciones */
+	    /* PARTE SUPERIOR DEL FOOTER (3 SECCIONES) */
 	    .footer .footer-content {
 	        height: auto;
 	        flex-direction: column;
@@ -670,38 +709,13 @@
 	    .footer .footer-content .contact-form .contact-btn {
 	        width: 100%;
 	    }
-	    .main-content-wrapper {
-	        padding: 10px;
-	    }
 	}
 	
-	@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: 700px) {
+	    /*********************************/
+	    /*********** AUTH PAGES **********/
+	    /*********************************/
 	    .auth-content {
-	        width: 90%;
-	    }
-	    .content .main-content .post {
-	        height: auto;
-	    }
-	    .content .main-content.single {
-	        padding: 10px 20px;
-	    }
-	    .content .main-content .post .post-img {
-	        width: 100%;
-	    }
-	    /* Post preview */
-	    .content .main-content .post .post-preview {
-	        width: 100%;
-	    }
-	    .content .main-content .post .read-more {
-	        position: static;
-	        width: 100%;
-	        display: block;
-	        text-align: center;
-	    }
-	    .carousel .prev {
-	        left: 10px;
-	    }
-	    .carousel .next {
-	        right: 10px;
+	        width: 80%;
 	    }
 	}

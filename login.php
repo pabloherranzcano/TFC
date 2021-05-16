@@ -49,9 +49,9 @@ guestsOnly();
                 <input type="password" name="password" value="<?php echo $password; ?>" id="" class="text-input">
             </div>
             <div>
-                <button type="submit" name="login-btn" class="btn btn-big">Login</button>
+                <button type="submit" name="login-btn" class="btn btn-big auth-btn">Log In</button>
             </div>
-            <p>O <a href="<?php echo BASE_URL . "/register.php" ?>">Regístrate</a></p>
+            <p>ó <a href="<?php echo BASE_URL . "/register.php" ?>">Regístrate</a></p>
         </form>
     </div>
 

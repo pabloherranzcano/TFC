@@ -47,7 +47,7 @@ adminOnly();
 		<div class="admin-content">
 			<div class="btn-group">
 				<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
-				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuario</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuarios</a>
 			</div>
 
 			<div class="content">
@@ -61,7 +61,7 @@ adminOnly();
 						<th>Nombre de usuario</th>
 						<th>Email</th>
 						<th>Admin</th>
-						<th colspan='2'>Opciones</th>
+						<th colspan='2' class="actions">Opciones</th>
 					</thead>
 					<tbody>
 						<?php foreach ($admin_users as $key => $user) : ?>

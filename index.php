@@ -13,7 +13,7 @@ include ROOT_PATH . "/app/controllers/topics.php";
 */
 $posts = array();
 // Para mostrar "Posts de temática ...", "Posts recientes" o "Resultados de búsqueda".
-$postsTitle = "Recent posts";
+$postsTitle = "ÚLTIMOS POSTS";
 
 if (isset($_GET['topic_id'])) {
 	$posts = getPostsByTopic($_GET['topic_id']);
@@ -43,7 +43,8 @@ if (isset($_GET['topic_id'])) {
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="/assets/css/style.css">
-	<title>TFCBLOG</title>
+
+	<title>Pablo Herranz Cano</title>
 </head>
 
 <body>
@@ -55,38 +56,6 @@ if (isset($_GET['topic_id'])) {
 
 	<!-- PAGE WRAPPER -->
 	<div class="page-wrapper">
-		<!-- Carousel-->
-		<div class="carousel" hidden>
-			<h1 class="slider-title">TRENDING POSTS</h1>
-
-			<!-- Botones del carousel -->
-			<i class="fas fa-chevron-left prev"></i>
-			<i class="fas fa-chevron-right next"></i>
-			<!-- // Botones del carousel -->
-
-			<!-- Post-wrapper -->
-			<div class="post-wrapper">
-				<?php foreach ($posts as $post) : ?>
-					<div class="post">
-						<img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="slider-img">
-						<div class="post-info">
-							<!-- Tenemos que enviar el id del post para recoger ese post específico de la base de datos y mostrarlo
-							en single.php -->
-							<h4><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h4>
-							<i class="far fa-user"><?php echo "<span style='font-family: ubuntu; color: #18232;'>" . $post['username'] . "</span>"; ?></i>
-							<br>
-							<!-- Para mostrar la fecha de creación del post, usamos la función date, a la que pasaremos la forma
-							en la que queremos que se muestre la fecha, y el string de la fecha -->
-							<i class="far fa-calendar"><?php echo "<span style='font-family: ubuntu; color: #18232;'>" . date('j F, Y', strtotime($post['created_at'])) . "</span>"; ?></i>
-						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
-			<!-- // Post-wrapper -->
-		</div>
-		<!-- // Carousel -->
-
-
 		<!-- CONTENT -->
 
 		<div class="content clearfix"> 
@@ -100,9 +69,10 @@ if (isset($_GET['topic_id'])) {
 						<img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="post-img">
 						<div class="post-preview">
 							<h2><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h2>
-							<i class="far fa-user"><?php echo $post['username']; ?></i>
+							<i class="far fa-user"><?php echo "<span style='font-family: ubuntu; color: #18232;'>&nbsp;" . $post['username'] . "</span>"; ?></i>
 							&nbsp;
-							<i class="far calendar"><?php echo date('j F, Y', strtotime($post['created_at'])); ?></i>
+							<i class="far fa-calendar"><?php echo "<span style='font-family: ubuntu; color: #18232;'>&nbsp;" . date('j F, Y', strtotime($post['created_at'])) . "</span>"; ?></i>
+
 							<!-- Utilzamos la función substr para cortar mostrar un preview del texto del post.
 							La función html_entity_decode nos permie deshacenos de las etiquetas html que se guardan por
 							defecto en la base de datos a la hora de crear un pos. -->

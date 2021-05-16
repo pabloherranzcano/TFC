@@ -17,7 +17,7 @@
 		<?php if (isset($_SESSION['id'])) : ?>
 			<li>
 				<a href="#">
-					<i class="fa fa-user"></i>
+					<i class="fa fa-user"></i> &nbsp;
 					<?php echo $_SESSION['username']; ?>
 					<i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
 				</a>
@@ -30,7 +30,7 @@
 				</ul>
 			</li>
 		<?php else : ?>
-			<li><a href="<?php echo BASE_URL . "/register.php" ?>">Regístrarse</a></li>
+			<li><a href="<?php echo BASE_URL . "/register.php" ?>">Registrarse</a></li>
 			<li><a href="<?php echo BASE_URL . "/login.php" ?>">Iniciar sesión</a></li>
 		<?php endif; ?>
 	</ul>

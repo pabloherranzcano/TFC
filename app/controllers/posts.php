@@ -16,6 +16,7 @@ $title = "";
 $body = "";
 $topic_id = "";
 $published = "";
+$image_name = "";
  
 /********************************************/
 /**************** C R E A T E ***************/
@@ -26,9 +27,9 @@ $published = "";
 ** Comprobamos que haya una imagen seleccionada. No pueden tener el mismo nombre por lo que usamos la función time() para que
 ** tengan siempre un nombre diferente (empezarán con la hora y día en que se subió) seguido del nombre original.
 ** 
-** Si se ha subido con éxito
+** Si se ha subido con éxito, le damos la ruta creada en $image_name.
 ** 
-** Como es inseguro dejar etiquetas html en la base de datos, le aplicamos un paso extra de seguridad con el método 
+** Como es inseguro dejar etiquetas html en la base de datos, podríamos aplicar un paso extra de seguridad con el método 
 ** htmlentities, que se encargará de quitar las etiquetas <p> y </p>
 ** // $_POST['body'] = htmlentities($_POST['body']);
 ** 
@@ -40,7 +41,7 @@ if (isset($_POST['add-post'])) {
 	adminOnly();
 	$errors = validatePost($_POST);
 	
-	if(!empty($_FILES['image']['name'])) {
+	if (!empty($_FILES['image']['name'])) {
 		$image_name = time() . '_' . $_FILES['image']['name'];
 		$destination = ROOT_PATH . "/assets/images/" . $image_name;
 
@@ -53,6 +54,9 @@ if (isset($_POST['add-post'])) {
 			array_push($errors, "Ha habido un error al subir la imagen.");
 		}
 	}
+	// else if ($_FILES['image']['name'] = "" && isset($_POST['update-post'])) {
+
+	// }
 	else
 		array_push($errors, "Es necesario subir una imagen.");
 

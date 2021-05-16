@@ -4,6 +4,8 @@ include ROOT_PATH . "/app/controllers/users.php";
 
 // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 adminOnly();
+
+
 ?>
 
 <!DOCTYPE html>

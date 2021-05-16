@@ -1,8 +1,9 @@
 <?php
 
 include ROOT_PATH . "/app/database/db.php";
-include ROOT_PATH . "/app/helpers/validateUser.php";
 include ROOT_PATH . "/app/helpers/middleware.php";
+include ROOT_PATH . "/app/helpers/validateUser.php";
+include ROOT_PATH . "/app/helpers/captcha.php";
 
 
 $table = 'users';
@@ -17,6 +18,7 @@ $admin = '';
 $email = '';
 $password = '';
 $passwordConf = '';
+$captcha = randomCaptcha();
 
 //FUNCIÓN DE LOGINUSER
 function loginUser($user)
@@ -50,6 +52,7 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 	creamos un array en el que iremos almacenando cada error existente. */
 	$errors = validateUser($_POST);
 
+	unset($_POST['captcha'], $_POST['captchaResult']);
 	/* En el caso de que no haya ningún error, añadimos al usuario a nuestra BBDD. */
 	if (count($errors) == 0) {
 
@@ -125,13 +128,7 @@ if (isset($_POST['login-btn'])) {
 			/* Loguea y redirecciona */
 			loginUser($user);
 		} else {
-<<<<<<< HEAD
 			array_push($errors, "Usuario o contraseña inválidos.");
-=======
-			array_push($errors, "Usuario o contraseña incorrectos.");
-			// printData($user);
-			// printData($_POST['password']);
->>>>>>> 4c15febdb1a3d68ca2e11dba6184c59782de5f3d
 		}
 	}
 	$username = $_POST['username'];
@@ -160,13 +157,15 @@ if (isset($_POST['update-user'])) {
 		$id = $_POST['id'];
 		unset($_POST['passwordConf'], $_POST['update-user'], $_POST['id']);
 
-		unset($_POST['passwordConf'], $_POST['register-btn'], $_POST['create-admin']);
+		unset($_POST['passwordConf'], $_POST['register-btn'], $_POST['create-admin'], $_POST['create-admin']);
 
 		// Podemos quitarle los permisos de administrador al usuario que estemos editando.
 		$_POST['admin'] = isset($_POST['admin']) ? 1 : 0;
-		$count = update($table, $id, $_POST); //update y create devuelven el número de filas afectadas.
 
-		$_SESSION['message'] = 'Admin user update succesfully.';
+		//update y create devuelven el número de filas afectadas.
+		$count = update($table, $id, $_POST); 
+
+		$_SESSION['message'] = 'Usuario actualizado con éxito.';
 		$_SESSION['type'] = 'success';
 
 		header('location: ' . BASE_URL . '/admin/users/index.php');

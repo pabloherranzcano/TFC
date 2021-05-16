@@ -1,4 +1,4 @@
-// Mostrar menú al hacer click en la hamburguesa
+// Mostrar dropdown al hacer click en el icono hamburguesa
 $(document).ready(function() {
     $('.burger').on('click', function() {
         $('.nav').toggleClass('showing');

@@ -5,7 +5,20 @@ include ROOT_PATH . "/app/controllers/posts.php";
 // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 adminOnly();
 
-$records = getPostRecords();
+/* Recogemos todos los datos de todos los posts con la función getAllPostsRecords,
+la cual hace una consulta con un INNER JOIN para que podamos mostrar el nombre del 
+autor del post */
+$records = getAllPostsRecords();
+
+/*
+Le damos la vuelta al array para que los más recientes salgan primero. En esta parte,
+necesitamos contar cuántos post hay escritos, para poder asignar el número de post más
+reciente al primer post que aparecerá en la lista (el número más alto será el último escrito,ç
+o sea, el más reciente). 
+*/
+$records = array_reverse($records);
+$i = count($records) + 1;
+
 ?>
 
 <!DOCTYPE html>
@@ -58,13 +71,17 @@ $records = getPostRecords();
 					<thead>
 						<th>#</th>
 						<th>Título</th>
-						<th colspan='3'>Opciones</th>
+						<th>Autor</th>
+
+						<th colspan='3' class="actions">Opciones</th>
 					</thead>
 					<tbody>
-						<?php foreach ($posts as $key => $post) : ?>
+						<?php foreach ($records as $post) : ?>
 							<tr>
-								<td><?php echo $key + 1; ?></td>
+								<td><?php echo $i = $i - 1; ?></td>
 								<td><?php echo $post['title']; ?></td>
+								<td><?php echo $post['username']; ?></td>
+								<td><?php echo $post['name']; ?></td>
 								<td><a href="edit.php?id=<?php echo $post['id'] ?>" class="edit">Editar</a></td>
 								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Eliminar</a></td>
 								
@@ -93,3 +110,4 @@ $records = getPostRecords();
 </body>
 
 </html>
+

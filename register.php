@@ -4,12 +4,13 @@ include ROOT_PATH . "/app/controllers/users.php";
 
 // Llamamos a guestsOnly(), para comprobar si el usuario está o no logueado.
 guestsOnly();
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,14 +52,16 @@ guestsOnly();
                 <label>Confirma la contraseña</label>
                 <input type="password" name="passwordConf" value="<?php echo $passwordConf; ?>" class="text-input">
             </div>
-            <div>
-                <button type="submit" name="register-btn" class="btn btn-big">Register</button>
+			<div>
+                <label>¿Cuánto es <?php echo $captcha[0] ?> + <?php echo $captcha[1] ?>?</label>
+                <input type="number" name="captcha" class="text-input">
+				<input type="hidden" name="captchaResult" value="<?php echo $captcha[0] + $captcha[1] ?>">
             </div>
-<<<<<<< HEAD
-            <p>O <a href="<?php echo BASE_URL . "/login.php" ?>">Loguétae</a></p>
-=======
-            <p>O <a href="<?php echo BASE_URL . "/login.php" ?>">Loguéate</a></p>
->>>>>>> 4c15febdb1a3d68ca2e11dba6184c59782de5f3d
+			
+            <div>
+                <button type="submit" name="register-btn" class="btn btn-big auth-btn">Registrarse</button>
+            </div>
+            <p>ó <a href="<?php echo BASE_URL . "/login.php" ?>">Loguéate</a></p>
         </form>
     </div>
 

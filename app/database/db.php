@@ -258,13 +258,13 @@ function getPublishedPosts()
 ** 			FROM posts AS p
 ** 			JOIN users AS u
 ** 			ON p.user_id=u.id;
-** 			WHERE published=1
-** 			AND published=0"
+** 			WHERE published=0
+** 			AND published=1"
 ** 
 ** Ponemos ? en p.published para poder pasarlo como condición a la hora de llamar a executeQuery, que recibe
 ** la query sql y una condición.
 */
-function getPostRecords()
+function getAllPostsRecords()
 {
 	global $connection;
 
@@ -272,7 +272,7 @@ function getPostRecords()
 			FROM posts AS p
 			JOIN users AS u
 			ON p.user_id=u.id
-			WHERE p.published=1
+			WHERE p.published=0
 			OR p.published=?";
 	$stmt = executeQuery($sql, ['published' => 1]);
 	$records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);

@@ -56,7 +56,7 @@ adminOnly();
                     <thead>
                         <th>#</th>
                         <th>Nombre</th>
-                        <th colspan='2'>Opciones</th>
+                        <th colspan='2' class="actions">Opciones</th>
                     </thead>
                     <tbody>
 						<?php foreach ($topics as $key => $topic): ?>

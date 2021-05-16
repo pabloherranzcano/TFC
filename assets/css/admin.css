@@ -1,124 +1,186 @@
-/* NAVBAR ADMIN SECTION */
-
-body {
-    background-color: #f6f6f6;
-    background-image: url("../../assets/images/waves/waveAdmin.svg");
-    background-repeat: no-repeat;
-<<<<<<< HEAD
-    background-position-y: 90px;
-=======
->>>>>>> 4c15febdb1a3d68ca2e11dba6184c59782de5f3d
-}
-
-header {
-    background-color: #17283a;
-    display: flex;
-}
-
-header .nav {
-    position: absolute;
-    right: 0;
-}
-
-
-/* DASHBOARD MESSAGE */
-
-.dashboard-message {
-    display: block;
-    text-align: center;
-    margin-top: 150px;
-}
-
-.admin-wrapper {
-    height: calc(100% - 66px);
-    display: flex;
-}
-
-.admin-wrapper .left-sidebar {
-    flex: 2;
-    height: 80%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 9px;
-    margin: 50px;
-}
-
-.admin-wrapper .admin-content {
-    flex: 8;
-    height: 100%;
-    margin-top: 22px;
-}
-
-.admin-wrapper .left-sidebar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    color: #182324;
-}
-
-.admin-wrapper .left-sidebar ul li a {
-    padding: 18px;
-    display: block;
-    border-bottom: 1px solid #ececec;
-    transition: all .3s;
-    text-align: right;
-    margin: 15px 0;
-    font-weight: bold;
-}
-
-.admin-wrapper .left-sidebar ul li a:hover {
-    background-color: white;
-    padding-right: 40px;
-    transition: all .3s;
-    ;
-}
-
-.admin-wrapper .admin-content {
-    padding: 40px 100px 100px;
-    overflow-y: scroll;
-    /* Para hacer scroll en los posts sólo en la zona donde se muestran */
-}
-
-.admin-content .page-title {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 1.1rem;
-}
-
-th,
-td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #d3d3d3;
-}
-
-.edit {
-    color: #aacc00;
-}
-
-.delete {
-    color: #de3c4b;
-}
-
-.publish {
-    color: #fca311;
-}
-
-.unpublish {
-    color: #4cc9f0;
-}
-
-.edit:hover,
-.delete:hover,
-.publish:hover {
-    text-decoration: underline;
-}
-
-form div {
-    margin-bottom: 15px;
-}
+	/*********************************************************/
+	/************************ GLOBALES ***********************/
+	/*********************************************************/
+	
+	body {
+	    background-color: #f6f6f6;
+	    background-image: url("../../assets/images/waves/waveAdmin.svg");
+	    background-repeat: no-repeat;
+	    background-position-y: 90px;
+	}
+	/* BOTONES EDITAR Y ADMINISTRAR */
+	
+	.btn-group a {
+	    background-color: #222831;
+	}
+	/*********************************************************/
+	/************************* HEADER ************************/
+	/*********************************************************/
+	
+	header {
+	    background-color: #193758;
+	}
+	/******** DROPDOWN ********/
+	/**************************/
+	
+	header ul li ul li a {
+	    background-color: #222831;
+	}
+	/**********************************************************/
+	/******************** ADMIN PAGE WRAPPER ******************/
+	/**********************************************************/
+	/* DASHBOARD MESSAGE */
+	
+	.dashboard-message {
+	    display: block;
+	    text-align: center;
+	    margin-top: 150px;
+	}
+	
+	.admin-wrapper {
+	    height: calc(100% - 66px);
+	    display: flex;
+	}
+	/************************************************/
+	/******************** CONTENT *******************/
+	/************************************************/
+	
+	.content {
+	    width: 100%;
+	    padding-top: 50px;
+	}
+	
+	.admin-wrapper .admin-content {
+	    flex: 8;
+	    height: 100%;
+	    margin-top: 31px;
+	    padding: 30px 10px;
+	    /* Para hacer scroll en los posts sólo en la zona donde se muestran */
+	    overflow-y: scroll;
+	}
+	/************************************************/
+	/******************** SIDEBAR *******************/
+	/************************************************/
+	
+	.admin-wrapper .left-sidebar {
+	    flex: 2;
+	    height: 400px;
+	    background-color: white;
+	    padding: 20px;
+	    border-radius: 9px;
+	    margin: 50px;
+	}
+	/* LISTA */
+	
+	.admin-wrapper .left-sidebar ul {
+	    list-style: none;
+	    margin: 0;
+	    padding: 0;
+	    color: #182324;
+	}
+	/* A DE LOS ELEMENTOS */
+	
+	.admin-wrapper .left-sidebar ul li a {
+	    padding: 18px;
+	    display: block;
+	    border-bottom: 1px solid #ececec;
+	    transition: all .3s;
+	    text-align: right;
+	    margin: 15px 0;
+	    font-weight: bold;
+	}
+	
+	.admin-wrapper .left-sidebar ul li a:hover {
+	    background-color: white;
+	    padding-right: 40px;
+	    transition: all .3s;
+	    ;
+	}
+	/************************************************/
+	/******************** SECTIONS ******************/
+	/************************************************/
+	/* TÍTULO SECCIÓN */
+	
+	.admin-content .page-title {
+	    text-align: center;
+	    margin-bottom: 2rem;
+	}
+	/* TABLAS */
+	
+	table {
+	    width: 100%;
+	    border-collapse: collapse;
+	    font-size: 1.1rem;
+	}
+	
+	th,
+	td {
+	    padding: 15px;
+	    text-align: left;
+	    border-bottom: 1px solid #d3d3d3;
+	}
+	/* BOTONES DE ACCIONES */
+	
+	th {
+	    font-size: larger;
+	}
+	
+	.edit {
+	    color: #aacc00;
+	}
+	
+	.delete {
+	    color: #de3c4b;
+	}
+	
+	.publish {
+	    color: #fca311;
+	}
+	
+	.unpublish {
+	    color: #4cc9f0;
+	}
+	
+	.edit:hover,
+	.delete:hover,
+	.publish:hover {
+	    text-decoration: underline;
+	}
+	/* FORMULARIOS (CREAR Y EDITAR) */
+	
+	form div {
+	    margin-bottom: 15px;
+	}
+	/*********************************************************/
+	/********************** MEDIA QUERIES ********************/
+	/*********************************************************/
+	
+	@media only screen and (max-width: 1150px) {
+	    /**********************************************************/
+	    /******************** ADMIN PAGE WRAPPER ******************/
+	    /**********************************************************/
+	    /************************************************/
+	    /******************** CONTENT *******************/
+	    /************************************************/
+	    .admin-wrapper {
+	        height: fit-content;
+	        flex-direction: column;
+	    }
+	    .admin-wrapper .admin-content {
+	        flex: 1;
+	        overflow-y: visible;
+	        overflow-x: scroll;
+	    }
+	    /************************************************/
+	    /******************** SIDEBAR *******************/
+	    /************************************************/
+	    .admin-wrapper .left-sidebar {
+	        flex: 1;
+	        width: 400px;
+	        margin: auto;
+	    }
+	    /* A DE LOS ELEMENTOS */
+	    .admin-wrapper .left-sidebar ul li a {
+	        text-align: center;
+	    }
+	}
