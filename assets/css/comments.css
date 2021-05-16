@@ -5,6 +5,7 @@
 	textarea {
 	    display: block;
 	    margin-bottom: 10px;
+	    width: 600px;
 	}
 	/*post*/
 	
@@ -16,7 +17,8 @@
 	
 	.comments-section {
 	    margin-top: 10px;
-	    border: 1px solid #ccc;
+	    width: 1000px;
+	    margin: 150px auto;
 	}
 	
 	.comment {
@@ -39,7 +41,7 @@
 	
 	.comment-details {
 	    width: 91.5%;
-	    float: left;
+	    float: right;
 	}
 	
 	.comment-details p {
@@ -50,8 +52,9 @@
 	    width: 35px;
 	    height: 35px;
 	    margin-right: 5px;
-	    float: left;
 	    border-radius: 50%;
+	    float: left;
+	    border: 3px solid green;
 	}
 	/*replies*/
 	

@@ -1,9 +1,10 @@
 <?php
 include "path.php";
 include ROOT_PATH . "/app/controllers/topics.php";
+include ROOT_PATH . "/app/helpers/phpmailer/contact.php";
 
 /* Hacemos fetch de todos los posts de la base de datos que
-** queremos que se muestren (publish = 1). 
+** estén publicados (published = 1). 
 ** 
 ** $posts = selectAll('posts', ['published' => 1]);
 ** 
@@ -28,6 +29,7 @@ if (isset($_GET['topic_id'])) {
 	con la función "array_reverse()" de php. */
 	$posts = array_reverse($posts);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +70,7 @@ if (isset($_GET['topic_id'])) {
 					<div class="post clearfix">
 						<img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="post-img">
 						<div class="post-preview">
-							<h2><a href="single.php?id=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h2>
+							<h2><a href="single.php?id=<?php echo $post['id'] . "&topic_id=" . $post['topic_id']; ?>"><?php echo $post['title']; ?></a></h2>
 							<i class="far fa-user"><?php echo "<span style='font-family: ubuntu; color: #18232;'>&nbsp;" . $post['username'] . "</span>"; ?></i>
 							&nbsp;
 							<i class="far fa-calendar"><?php echo "<span style='font-family: ubuntu; color: #18232;'>&nbsp;" . date('j F, Y', strtotime($post['created_at'])) . "</span>"; ?></i>

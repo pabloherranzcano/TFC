@@ -104,11 +104,12 @@
 	/* MENSAJE DE REGISTRO */
 	
 	.msg {
-	    width: 100%;
-	    margin: 5px auto;
+	    width: 90%;
+	    margin: 25px auto;
 	    padding: 8px;
 	    border-radius: 9px;
 	    list-style: none;
+	    transition: 5s;
 	}
 	
 	.success {
@@ -218,7 +219,7 @@
 	}
 	
 	header ul li ul li a {
-	    padding: 10px;
+	    padding: 25px;
 	    color: gray;
 	    background-color: #193758;
 	}
@@ -343,7 +344,9 @@
 	/********* POPULAR *********/
 	/***************************/
 	
-	.content .section.popular {}
+	.content .section.popular {
+	    border: 1px solid red;
+	}
 	
 	.content .popular .post {
 	    border-top: 1px solid #ececec;
@@ -353,7 +356,7 @@
 	
 	.content .popular .post img {
 	    height: 60px;
-	    width: 60px;
+	    width: auto;
 	    float: left;
 	    margin-right: 10px;
 	}
@@ -477,17 +480,18 @@
 	    padding: 2%;
 	    display: flex;
 	}
-	/* Cada una de las secciones del footer */
+	/* SECCIONES */
 	
 	.footer .footer-content .footer-section {
 	    flex: 1;
 	    padding: 0 2%;
 	}
-	/* Títulos del footer */
+	/* TÍTULOS */
 	
 	.footer .footer-content h1,
 	.footer .footer-content h2 {
 	    color: #ececec;
+	    margin: 0;
 	}
 	/* Color para el logo en el footer */
 	
@@ -504,8 +508,12 @@
 	}
 	/* Social media parte izquierda del footer */
 	
+	.footer .footer-content .about .socials {
+	    margin-top: 50px;
+	    margin-bottom: 50px;
+	}
+	
 	.footer .footer-content .about .socials a {
-	    border: 1px solid gray;
 	    margin-bottom: 8px;
 	    width: 45px;
 	    height: 41px;
@@ -513,14 +521,13 @@
 	    margin-right: 5px;
 	    text-align: center;
 	    display: inline-block;
-	    font-size: 1.3em;
+	    font-size: 2em;
 	    border-radius: 9px;
 	    transition: all .3s;
 	}
 	
 	.footer .footer-content .about .socials a:hover {
-	    border: 1px solid white;
-	    color: white;
+	    color: #00e5ff;
 	    transition: all .3s;
 	}
 	
@@ -710,6 +717,7 @@
 	        width: 100%;
 	    }
 	}
+	/* Este media query es para controlar el tamaño del div del login y register */
 	
 	@media only screen and (max-width: 700px) {
 	    /*********************************/

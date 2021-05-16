@@ -1,119 +1,39 @@
-<div class="comment-form-container">
-	<form id="frm-comment">
-		<div class="input-row">
-			<input type="hidden" name="comment_id" id="commentId" placeholder="Name" /> <input class="input-field" type="text" name="name" id="name" placeholder="Name" />
-		</div>
-		<div class="input-row">
-			<textarea class="input-field" type="text" name="comment" id="comment" placeholder="Add a Comment">  </textarea>
-		</div>
-		<div>
-			<input type="button" class="btn-submit" id="submitButton" value="Publish" />
-			<div id="comment-message">Comments Added Successfully!</div>
-		</div>
+<?php 
+	// Set logged in user id: This is just a simulation of user login. We haven't implemented user log in
+	// But we will assume that when a user logs in, 
+	// they are assigned an id in the session variable to identify them across pages
+	$user_id = 1;
+	// connect to database
+	$db = mysqli_connect("localhost", "root", "", "comment-reply-system");
+	// get post with id 1 from database
+	$post_query_result = mysqli_query($db, "SELECT * FROM posts WHERE id=1");
+	$post = mysqli_fetch_assoc($post_query_result);
 
-	</form>
-</div>
-<div id="output"></div>
-<script>
-	function postReply(commentId) {
-		$('#commentId').val(commentId);
-		$("#name").focus();
+	// Get all comments from database
+	$comments_query_result = mysqli_query($db, "SELECT * FROM comments WHERE post_id=" . $post['id'] . " ORDER BY created_at DESC");
+	$comments = mysqli_fetch_all($comments_query_result, MYSQLI_ASSOC);
+
+	// Receives a user id and returns the username
+	function getUsernameById($id)
+	{
+		global $db;
+		$result = mysqli_query($db, "SELECT username FROM users WHERE id=" . $id . " LIMIT 1");
+		// return the username
+		return mysqli_fetch_assoc($result)['username'];
 	}
-
-	$("#submitButton").click(function() {
-		$("#comment-message").css('display', 'none');
-		var str = $("#frm-comment").serialize();
-
-		$.ajax({
-			url: "comment-add.php",
-			data: str,
-			type: 'post',
-			success: function(response) {
-				var result = eval('(' + response + ')');
-				if (response) {
-					$("#comment-message").css('display', 'inline-block');
-					$("#name").val("");
-					$("#comment").val("");
-					$("#commentId").val("");
-					listComment();
-				} else {
-					alert("Failed to add comments !");
-					return false;
-				}
-			}
-		});
-	});
-
-	$(document).ready(function() {
-		listComment();
-	});
-
-	function listComment() {
-		$
-			.post(
-				"comment-list.php",
-				function(data) {
-					var data = JSON.parse(data);
-
-					var comments = "";
-					var replies = "";
-					var item = "";
-					var parent = -1;
-					var results = new Array();
-
-					var list = $("<ul class='outer-comment'>");
-					var item = $("<li>").html(comments);
-
-					for (var i = 0;
-						(i < data.length); i++) {
-						var commentId = data[i]['comment_id'];
-						parent = data[i]['parent_comment_id'];
-
-						if (parent == "0") {
-							comments = "<div class='comment-row'>" +
-								"<div class='comment-info'><span class='commet-row-label'>from</span> <span class='posted-by'>" +
-								data[i]['comment_sender_name'] +
-								" </span> <span class='commet-row-label'>at</span> <span class='posted-at'>" +
-								data[i]['date'] +
-								"</span></div>" +
-								"<div class='comment-text'>" +
-								data[i]['comment'] +
-								"</div>" +
-								"<div><a class='btn-reply' onClick='postReply(" +
-								commentId + ")'>Reply</a></div>" +
-								"</div>";
-
-							var item = $("<li>").html(comments);
-							list.append(item);
-							var reply_list = $('<ul>');
-							item.append(reply_list);
-							listReplies(commentId, data, reply_list);
-						}
-					}
-					$("#output").html(list);
-				});
+	// Receives a comment id and returns the username
+	function getRepliesByCommentId($id)
+	{
+		global $db;
+		$result = mysqli_query($db, "SELECT * FROM replies WHERE comment_id=$id");
+		$replies = mysqli_fetch_all($result, MYSQLI_ASSOC);
+		return $replies;
 	}
-
-	function listReplies(commentId, data, list) {
-		for (var i = 0;
-			(i < data.length); i++) {
-			if (commentId == data[i].parent_comment_id) {
-				var comments = "<div class='comment-row'>" +
-					" <div class='comment-info'><span class='commet-row-label'>from</span> <span class='posted-by'>" +
-					data[i]['comment_sender_name'] +
-					" </span> <span class='commet-row-label'>at</span> <span class='posted-at'>" +
-					data[i]['date'] + "</span></div>" +
-					"<div class='comment-text'>" + data[i]['comment'] +
-					"</div>" +
-					"<div><a class='btn-reply' onClick='postReply(" +
-					data[i]['comment_id'] + ")'>Reply</a></div>" +
-					"</div>";
-				var item = $("<li>").html(comments);
-				var reply_list = $('<ul>');
-				list.append(item);
-				item.append(reply_list);
-				listReplies(data[i].comment_id, data, reply_list);
-			}
-		}
+	// Receives a post id and returns the total number of comments on that post
+	function getCommentsCountByPostId($post_id)
+	{
+		global $db;
+		$result = mysqli_query($db, "SELECT COUNT(*) AS total FROM comments");
+		$data = mysqli_fetch_assoc($result);
+		return $data['total'];
 	}
-</script>
