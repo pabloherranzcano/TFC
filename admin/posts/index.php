@@ -82,7 +82,7 @@ $i = count($records) + 1;
 								<td><?php echo $post['title']; ?></td>
 								<td><?php echo $post['username']; ?></td>
 								<td><?php echo $post['name']; ?></td>
-								<td><a href="edit.php?id=<?php echo $post['id'] ?>" class="edit">Editar</a></td>
+								<td><a href="edit.php?id=<?php echo $post['id']. "&image=" . $post['image'] ?>" class="edit">Editar</a></td>
 								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Eliminar</a></td>
 								
 								<?php if ($post['published']) : ?>

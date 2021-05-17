@@ -310,9 +310,8 @@
 	    float: right;
 	    bottom: 20px;
 	    right: 20px;
-	    border: 1px solid #00e5ff;
-	    background-color: transparent;
-	    color: #00e5ff;
+	    background-color: #193758;
+	    color: white;
 	    width: fit-content;
 	}
 	
@@ -344,14 +343,12 @@
 	/********* POPULAR *********/
 	/***************************/
 	
-	.content .section.popular {
-	    border: 1px solid red;
-	}
+	.content .section.popular {}
 	
 	.content .popular .post {
 	    border-top: 1px solid #ececec;
 	    margin-top: 10px;
-	    padding-top: 10px;
+	    padding: 5px;
 	}
 	
 	.content .popular .post img {

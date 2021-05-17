@@ -77,7 +77,7 @@ adminOnly();
 						<input type="file" name="image" class="text-input">
 					</div>
 					<div>
-						<label>Topic</label>
+						<label>Categoría</label>
 						<select name="topic_id" class="text-input">
 							<option value=""></option>
 							<?php foreach ($topics as $key => $topic) : ?>
@@ -87,7 +87,7 @@ adminOnly();
 								<?php else : ?>
 									<option value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
 								<?php endif; ?>
-								<!-- Como queremos que se nos muestren los topics en el select... -->
+								<!-- Como queremos que se nos muestren las categorías en el select... -->
 							<?php endforeach; ?>
 
 						</select>

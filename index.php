@@ -1,7 +1,7 @@
 <?php
 include "path.php";
 include ROOT_PATH . "/app/controllers/topics.php";
-include ROOT_PATH . "/app/helpers/phpmailer/contact.php";
+// include ROOT_PATH . "/app/helpers/phpmailer/contact.php";
 
 /* Hacemos fetch de todos los posts de la base de datos que
 ** estén publicados (published = 1). 
@@ -24,11 +24,31 @@ if (isset($_GET['topic_id'])) {
 	$posts = searchPosts($_POST['search-term']);
 } else {
 	$posts = getPublishedPosts();
-
-	/* Como nos interesa que los últimos posts nos salgan los primeros, le damos la vuelta al array
-	con la función "array_reverse()" de php. */
-	$posts = array_reverse($posts);
 }
+
+/* Como nos interesa que los últimos posts nos salgan los primeros, le damos la vuelta al array
+con la función "array_reverse()" de php. */
+$posts = array_reverse($posts);
+
+// MAIL
+
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+    $from = 'From: yoursite.com';
+    $to = 'pablo.hc9@gmail.com';
+    $subject = 'Customer Inquiry';
+    $body = "From: $name\n E-Mail: $email\n Message:\n $message";
+
+    if ($_POST['contact-btn']) {
+        if (mail($to, $subject, $body, $from)) {
+            echo '<p>Your message has been sent!</p>';
+        } else {
+            echo '<p>Something went wrong, go back and try again!</p>';
+        }
+    }
+
 
 ?>
 
@@ -81,7 +101,7 @@ if (isset($_GET['topic_id'])) {
 							<p class="preview-text">
 								<?php echo html_entity_decode(substr($post['body'], 0, 230) . '...'); ?>
 							</p>
-							<a href="single.php?id=<?php echo $post['id']; ?>" class="btn read-more">Seguir leyendo...</a>
+							<a href="single.php?id=<?php echo $post['id'] . "&topic_id=" . $post['topic_id'];; ?>" class="btn read-more">Seguir leyendo...</a>
 						</div>
 					</div>
 					<!-- // Post -->
@@ -96,7 +116,7 @@ if (isset($_GET['topic_id'])) {
 			<div class="sidebar">
 				<!-- Sobre mí -->
 				<div class="section about">
-					<img src="<?php echo BASE_URL . "/assets/images/linkedin.png";?>" alt="">
+					<img src="<?php echo BASE_URL . "/assets/images/maliciosa.jpg";?>" alt="">
 					<h2 class="section-title">SOBRE MÍ</h2>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis porro odit optio, libero, accusantium in ipsum deserunt expedita temporibus nihil nisi! Non eius magnam id alias rem nobis provident laudantium.</p>
 				</div>
@@ -109,9 +129,9 @@ if (isset($_GET['topic_id'])) {
 						<!-- No es necesario un botón, porque al darle a intro, se envía el formulario -->
 					</form>
 				</div>
-				<!-- Topics -->
+				<!-- Categorías (topics) -->
 				<div class="section topics">
-					<h2 class="section-title">TOPICS</h2>
+					<h2 class="section-title">CATEGORÍAS</h2>
 					<ul>
 						<?php foreach ($topics as $key => $topic) : ?>
 							<li><a href="<?php echo BASE_URL . "/index.php?topic_id=" . $topic['id'] . "&name=" . $topic['name']; ?>"><?php echo $topic['name']; ?></a></li>

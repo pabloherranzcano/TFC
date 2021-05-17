@@ -11,7 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 /**********************************************************************/
 /********* CAMBIAR POR LA RUTA EN LA QUE ESTÉ EN TU ORDENADOR *********/
 /**********************************************************************/
-require 'PHPMailer/src/PHPMailer.php';
+require 'app/src/PHPMailer.php';
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/SMTP.php';
 

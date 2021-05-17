@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include ROOT_PATH . "/app/database/db.php";
 include ROOT_PATH . "/app/helpers/validatePost.php";
@@ -17,8 +17,8 @@ $body = "";
 $topic_id = "";
 $published = "";
 $image_name = "";
-$sql_img = "";
- 
+$image = "";
+
 /********************************************/
 /**************** C R E A T E ***************/
 /********************************************/
@@ -41,31 +41,26 @@ $sql_img = "";
 if (isset($_POST['add-post'])) {
 	adminOnly();
 	$errors = validatePost($_POST);
-	
+
 	if (!empty($_FILES['image']['name'])) {
 		$image_name = time() . '_' . $_FILES['image']['name'];
 		$destination = ROOT_PATH . "/assets/images/" . $image_name;
 
-		$result = move_uploaded_file($_FILES['image']['tmp_name'], $destination); 
-		
-		if($result) {
+		$result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+		if ($result) {
 			$_POST['image'] = $image_name;
-		}
-		else {
+		} else {
 			array_push($errors, "Ha habido un error al subir la imagen.");
 		}
-	}
-	// else if ($_FILES['image']['name'] = "" && isset($_POST['update-post'])) {
-
-	// }
-	else
+	} else {
 		array_push($errors, "Es necesario subir una imagen.");
-
+	}
 	if (count($errors) == 0) {
 		unset($_POST['add-post']);
 		$_POST['user_id'] = $_SESSION['id'];
 		$_POST['published'] = isset($_POST['published']) ? 1 : 0; // Ternario: si se ha marcado la opción de publicarlo, le asignamos 1, si no, 0.
-		
+
 
 		$post_id = create($table, $_POST);
 
@@ -73,8 +68,7 @@ if (isset($_POST['add-post'])) {
 		$_SESSION['type'] = 'success';
 
 		header('location: ' . BASE_URL . '/admin/posts/index.php');
-	}
-	else{
+	} else {
 		$title = $_POST['title'];
 		$body = $_POST['body'];
 		$topic_id = $_POST['topic_id'];
@@ -87,16 +81,16 @@ if (isset($_POST['add-post'])) {
 /********************************************/
 /****************** R E A D *****************/
 /********************************************/
-if (isset($_GET['id'])){
+if (isset($_GET['id'])) {
 	$post =	selectOne($table, ['id' => $_GET['id']]);
-	// printData($post);
-
 	$id = $_GET['id'];
 	$title = $post['title'];
 	$body = $post['body'];
 	$topic_id = $post['topic_id'];
 	$published = $post['published'];
+	$image = $post['image'];
 }
+
 
 /********************************************/
 /**************** U P D A T E ***************/
@@ -104,27 +98,26 @@ if (isset($_GET['id'])){
 if (isset($_POST['update-post'])) {
 	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 	adminOnly();
-	
+
 	$errors = validatePost($_POST);
-	
-	/* Comprobamos que haya una imgen seleccionada. No pueden tener el mismo nombre por lo que usamos la función time() para que
-	tengan siempre un nombre diferente (empezarán con la hora y día en que se subió) seguido del nombre original. */
-	if(!empty($_FILES['image']['name'])) {
+
+	/* Si no se ha subido ninguna imagen borramos el atributo imagen, para actualizar todos los campos de la base
+	de datos menos ese. Así podremos edita un post (actualizarlo) sin estar obligados a subir una nueva imagen. */
+	if (empty($_FILES['image']['name'])) {
+		unset($_POST['image']);
+	}
+	else {
 		$image_name = time() . '_' . $_FILES['image']['name'];
 		$destination = ROOT_PATH . "/assets/images/" . $image_name;
 
-		$result = move_uploaded_file($_FILES['image']['tmp_name'], $destination); 
-		
-		// Si se ha subido con éxito
-		if($result) {
+		$result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+		if ($result) {
 			$_POST['image'] = $image_name;
-		}
-		else {
+		} else {
 			array_push($errors, "Ha habido un error al subir la imagen.");
 		}
 	}
-	else
-		array_push($errors, "Es necesario subir una imagen.");
 
 	if (count($errors) == 0) {
 
@@ -134,7 +127,7 @@ if (isset($_POST['update-post'])) {
 		unset($_POST['update-post'], $_POST['id']);
 		$_POST['user_id'] = $_SESSION['id'];;
 		$_POST['published'] = isset($_POST['published']) ? 1 : 0; // Ternario: si se ha marcado la opción de publicarlo, le asignamos 1, si no, 0.
-		
+
 		/* Como es inseguro dejar etiquetas html en la base de datos, le aplicamos un paso extra de seguridad con el método 
 		htmlentities, que se encargará de quitar las etiquetas <p> y </p> */
 		// $_POST['body'] = htmlentities($_POST['body']);
@@ -145,8 +138,7 @@ if (isset($_POST['update-post'])) {
 		$_SESSION['type'] = 'success';
 
 		header('location: ' . BASE_URL . '/admin/posts/index.php');
-	}
-	else{
+	} else {
 		$title = $_POST['title'];
 		$body = $_POST['body'];
 		$topic_id = $_POST['topic_id'];
@@ -161,22 +153,22 @@ if (isset($_POST['update-post'])) {
 /********************************************/
 /**************** D E L E T E ***************/
 /********************************************/
-if (isset($_GET['delete_id'])){
+if (isset($_GET['delete_id'])) {
 
 	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 	adminOnly();
 
 	$id = $_GET['delete_id'];
 	$count = delete($table, $id);
-	
+
 	$_SESSION['message'] = 'Post eliminado con éxito.';
 	$_SESSION['type'] = 'success';
-	
+
 	header('location: ' . BASE_URL . '/admin/posts/index.php');
 }
 
 // PUBLISH
-if (isset($_GET['published']) && isset($_GET['p_id'])){
+if (isset($_GET['published']) && isset($_GET['p_id'])) {
 	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 	adminOnly();
 
@@ -193,7 +185,6 @@ if (isset($_GET['published']) && isset($_GET['p_id'])){
 		$_SESSION['message'] = 'El post ya no es visible en el blog.';
 
 	$_SESSION['type'] = 'success';
-	
-	header('location: ' . BASE_URL . '/admin/posts/index.php');
 
+	header('location: ' . BASE_URL . '/admin/posts/index.php');
 }
