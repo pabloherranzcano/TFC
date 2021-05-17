@@ -44,9 +44,11 @@ if (isset($_POST['comment_posted'])) {
 	global $db;
 	// grab the comment that was submitted through Ajax call
 	$comment_text = $_POST['comment_text'];
+
 	// insert comment into database
-	$sql = "INSERT INTO comments (post_id, user_id, body, created_at, updated_at) VALUES (1, " . $user_id . ", '$comment_text', now(), null)";
+	$sql = "INSERT INTO comments (post_id, user_id, body, created_at, updated_at) VALUES (1, 1, '$comment_text', now(), null);";
 	$result = mysqli_query($db, $sql);
+
 	// Query same comment from database to send back to be displayed
 	$inserted_id = $db->insert_id;
 	$res = mysqli_query($db, "SELECT * FROM comments WHERE id=$inserted_id");
@@ -54,7 +56,7 @@ if (isset($_POST['comment_posted'])) {
 	// if insert was successful, get that same comment from the database and return it
 	if ($result) {
 		$comment = "<div class='comment clearfix'>
-					<img src='profile.png' alt='' class='profile_pic'>
+					<img src='../../assets/images/profile.png' alt='' class='profile_pic'>
 					<div class='comment-details'>
 						<span class='comment-name'>" . getUsernameById($inserted_comment['user_id']) . "</span>
 						<span class='comment-date'>" . date('F j, Y ', strtotime($inserted_comment['created_at'])) . "</span>
@@ -85,7 +87,7 @@ if (isset($_POST['reply_posted'])) {
 	$reply_text = $_POST['reply_text']; 
 	$comment_id = $_POST['comment_id']; 
 	// insert reply into database
-	$sql = "INSERT INTO replies (user_id, comment_id, body, created_at, updated_at) VALUES (" . $user_id . ", $comment_id, '$reply_text', now(), null)";
+	$sql = "INSERT INTO replies (user_id, comment_id, body, created_at, updated_at) VALUES ($user_id, $comment_id, '$reply_text', now(), null)";
 	$result = mysqli_query($db, $sql);
 	$inserted_id = $db->insert_id;
 	$res = mysqli_query($db, "SELECT * FROM replies WHERE id=$inserted_id");

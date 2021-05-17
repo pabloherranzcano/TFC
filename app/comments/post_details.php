@@ -37,7 +37,7 @@
 				<?php foreach ($comments as $comment): ?>
 				<!-- comment -->
 				<div class="comment clearfix">
-					<img src="profile.png" alt="" class="profile_pic">
+					<img src="../../assets/images/profile.png" alt="" class="profile_pic">
 					<div class="comment-details">
 						<span class="comment-name"><?php echo getUsernameById($comment['user_id']) ?></span>
 						<span class="comment-date"><?php echo date("F j, Y ", strtotime($comment["created_at"])); ?></span>
@@ -57,7 +57,7 @@
 							<?php foreach ($replies as $reply): ?>
 								<!-- reply -->
 								<div class="comment reply clearfix">
-									<img src="profile.png" alt="" class="profile_pic">
+									<img src="../../assets/images/profile.png" alt="" class="profile_pic">
 									<div class="comment-details">
 										<span class="comment-name"><?php echo getUsernameById($reply['user_id']) ?></span>
 										<span class="comment-date"><?php echo date("F j, Y ", strtotime($reply["created_at"])); ?></span>

@@ -51,64 +51,64 @@ $topicName = $topicName['name'];
 		<div class="content clearfix">
 			<!-- Main content wrapper -->
 			<div class="main-content-wrapper">
-				
-			<div class="main-content single">
+
+				<div class="main-content single">
 					<img src="<?php echo BASE_URL . '/assets/images/' . $post['image']; ?>" alt="" class="single-img" alt="">
 					<h1 class="post-title"><?php echo $post['title']; ?></h1>
 					<div class="post-content">
 						<?php echo html_entity_decode($post['body']); ?>
 					</div>
-					
 
 
 
-					
+
+
 					<!-- COMMENTS -->
-					<div class="col-md-6 col-md-offset-3 comments-section">
-						<!-- comment form -->
-						<form class="clearfix" action="single.php" method="post" id="comment_form">
-							<h4>Post a comment:</h4>
-							<textarea name="comment_text" id="comment_text" class="form-control" cols="30" rows="3"></textarea>
-							<button class="btn btn-primary btn-sm pull-right" id="submit_comment">Publicar comentario</button>
-						</form>
-						
+					<div class="comments-section">
+						<!-- if user is not signed in, tell them to sign in. If signed in, present them with comment form -->
+						<?php if (isset($user_id)) : ?>
+							<form class="clearfix" action="single.php" method="POST" id="comment_form">
+								<input type="text" id="postPostId" value="<?php echo $_GET['id'] ?>" hidden>
+								<textarea name="comment_text" id="comment_text" class="form-control" cols="30" rows="3"></textarea>
+								<button class="btn btn-primary btn-sm pull-right" id="submit_comment">Enviar comentario</button>
+							</form>
+						<?php else : ?>
+							<div class="well">
+								<h4 class="text-center">Debes <a href="register.php">registrarte</a> o <a href="login.php">loguearte</a> para comentar</h4>
+							</div>
+						<?php endif ?>
 						<!-- Display total number of comments on this post  -->
-						<h2><span id="comments_count">0</span> Comentario(s)</h2>
+						<h2><span id="comments_count"><?php echo count($comments) ?></span> Comentario(s)</h2>
 						<hr>
 						<!-- comments wrapper -->
 						<div id="comments-wrapper">
-							<div class="comment clearfix">
-								<img src="<?php echo BASE_URL . "/assets/images/profile.png?>"?>" alt="" class="profile_pic">
-								<div class="comment-details">
-									<span class="comment-name">Melvine</span>
-									<span class="comment-date">Apr 24, 2018</span>
-									<p>This is the first reply to this post on this website.</p>
-									<a class="reply-btn" href="#">reply</a>
-								</div>
-								<div>
-									<!-- reply -->
-									<div class="comment reply clearfix">
-										<img src="<?php echo BASE_URL . "/assets/images/profile.png?>"?>" alt="" class="profile_pic">
+							<?php if (isset($comments)) : ?>
+								<!-- Display comments -->
+								<?php foreach ($comments as $comment) : ?>
+									<!-- comment -->
+									<div class="comment clearfix">
+										<img src="../../assets/images/profile.png" alt="" class="profile_pic">
 										<div class="comment-details">
-											<span class="comment-name">Awa</span>
-											<span class="comment-date">Apr 24, 2018</span>
-											<p>Hey, why are you the first to comment on this post?</p>
-											<a class="reply-btn" href="#">reply</a>
+											<span class="comment-name"><?php echo getUsernameById($comment['user_id']) ?></span>
+											<span class="comment-date"><?php echo date("F j, Y ", strtotime($comment["created_at"])); ?></span>
+											<p><?php echo $comment['body']; ?></p>
 										</div>
 									</div>
-								</div>
-							</div>
-						</div>
-						<!-- // comments wrapper -->
-					</div>
+									<!-- // comment -->
+								<?php endforeach ?>
+							<?php else : ?>
+								<h2>¡Sé el primero en comentar este post!</h2>
+							<?php endif ?>
+						</div><!-- comments wrapper -->
+					</div><!-- // all comments -->
 					<!-- // COMMENTS -->
-				
-				
-				
-				
+
+
+
 				</div>
 
-					
+
+
 			</div>
 			<!-- // Main content -->
 
@@ -122,7 +122,7 @@ $topicName = $topicName['name'];
 					<?php foreach ($postsTopic as $p) : ?>
 						<div class="post clearfix">
 							<img src="<?php echo BASE_URL . '/assets/images/' . $p['image']; ?>" alt="">
-							<a href="<?php echo BASE_URL . "/single.php?id=" . $p['id']  . "&topic_id=" . $p['topic_id'];?>" class="title">
+							<a href="<?php echo BASE_URL . "/single.php?id=" . $p['id']  . "&topic_id=" . $p['topic_id']; ?>" class="title">
 								<h4><?php echo $p['title']; ?></h4>
 							</a>
 						</div>
@@ -140,14 +140,14 @@ $topicName = $topicName['name'];
 			<!-- // Sidebar -->
 		</div>
 		<!-- // CONTENT -->
-		
 
 
 
 
-				
-		
-		
+
+
+
+
 
 	</div>
 	<!-- // PAGE WRAPPER -->
@@ -170,6 +170,9 @@ $topicName = $topicName['name'];
 
 	<!-- CUSTOM SCRIPT -->
 	<script src="/assets/js/scripts.js"></script>
+
+	<!-- COMENTARIOS -->
+	<script src="/assets/js/comments.js"></script>
 </body>
 
 </html>

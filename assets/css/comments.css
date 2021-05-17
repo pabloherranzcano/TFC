@@ -1,28 +1,69 @@
-	form button {
-	    margin: 5px 0px;
-	}
-	
-	textarea {
-	    display: block;
-	    margin-bottom: 10px;
-	    width: 600px;
-	}
-	/*post*/
-	
-	.post {
-	    border: 1px solid #ccc;
-	    margin-top: 10px;
-	}
-	/*comments*/
+	/*********************************************************/
+	/******************** COMMENTS SECTION *******************/
+	/*********************************************************/
 	
 	.comments-section {
 	    margin-top: 10px;
-	    width: 1000px;
-	    margin: 150px auto;
+	    width: 750px;
+	    margin: 80px auto;
+	    align-items: center;
 	}
+	/********* FORM *********/
+	/************************/
+	
+	form {
+	    width: auto;
+	    display: block;
+	    margin: auto;
+	}
+	
+	form textarea {
+	    width: 600px;
+	    display: block;
+	    margin: 10px auto;
+	    resize: none;
+	}
+	
+	form button {
+	    display: block;
+	    margin: 5px auto;
+	}
+	/********* WELL *********/
+	/************************/
+	
+	.well {
+	    margin-bottom: 50px;
+	    text-align: center;
+	}
+	
+	.well a {
+	    color: #00e5ff;
+	}
+	/*** COMMENTS-WRAPPER ****/
+	/************************/
 	
 	.comment {
 	    margin-bottom: 10px;
+	    display: flex;
+	}
+	
+	.comment .profile_pic {
+	    width: 35px !important;
+	    height: 35px;
+	    margin-right: 5px;
+	    border-radius: 50%;
+	    float: left;
+	}
+	
+	.comment-details {
+	    width: 91.5%;
+	    flex: 9;
+	    padding: 15px;
+	    float: right;
+	}
+	
+	.comment-details p {
+	    margin-bottom: 0px;
 	}
 	
 	.comment .comment-name {
@@ -32,41 +73,4 @@
 	.comment .comment-date {
 	    font-style: italic;
 	    font-size: 0.8em;
-	}
-	
-	.comment .reply-btn,
-	.edit-btn {
-	    font-size: 0.8em;
-	}
-	
-	.comment-details {
-	    width: 91.5%;
-	    float: right;
-	}
-	
-	.comment-details p {
-	    margin-bottom: 0px;
-	}
-	
-	.comment .profile_pic {
-	    width: 35px;
-	    height: 35px;
-	    margin-right: 5px;
-	    border-radius: 50%;
-	    float: left;
-	    border: 3px solid green;
-	}
-	/*replies*/
-	
-	.reply {
-	    margin-left: 30px;
-	}
-	
-	.reply_form {
-	    margin-left: 40px;
-	    display: none;
-	}
-	
-	#comment_form {
-	    margin-top: 10px;
 	}

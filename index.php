@@ -30,26 +30,6 @@ if (isset($_GET['topic_id'])) {
 con la función "array_reverse()" de php. */
 $posts = array_reverse($posts);
 
-// MAIL
-
-
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
-    $from = 'From: yoursite.com';
-    $to = 'pablo.hc9@gmail.com';
-    $subject = 'Customer Inquiry';
-    $body = "From: $name\n E-Mail: $email\n Message:\n $message";
-
-    if ($_POST['contact-btn']) {
-        if (mail($to, $subject, $body, $from)) {
-            echo '<p>Your message has been sent!</p>';
-        } else {
-            echo '<p>Something went wrong, go back and try again!</p>';
-        }
-    }
-
-
 ?>
 
 <!DOCTYPE html>
