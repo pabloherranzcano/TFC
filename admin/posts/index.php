@@ -2,6 +2,7 @@
 include "../../path.php";
 include ROOT_PATH . "/app/controllers/posts.php";
 
+
 // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 adminOnly();
 
@@ -70,6 +71,7 @@ $i = count($records) + 1;
 				<table>
 					<thead>
 						<th>#</th>
+						<th>#Post</th>
 						<th>Título</th>
 						<th>Autor</th>
 
@@ -79,9 +81,9 @@ $i = count($records) + 1;
 						<?php foreach ($records as $post) : ?>
 							<tr>
 								<td><?php echo $i = $i - 1; ?></td>
+								<td><?php echo $post['id']; ?></td>
 								<td><?php echo $post['title']; ?></td>
 								<td><?php echo $post['username']; ?></td>
-								<td><?php echo $post['name']; ?></td>
 								<td><a href="edit.php?id=<?php echo $post['id']. "&image=" . $post['image'] ?>" class="edit">Editar</a></td>
 								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Eliminar</a></td>
 								

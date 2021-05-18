@@ -9,3 +9,4 @@ está este README) para modificar las variables ROOT_URL y BASE_URL, que son las
 Y seguidamente, el achivo connection.php que está dentro de /app/database.
 
 Este paso es necesario porque está configurado para que funcione todo correctamente una vez desplegada la web en heroku.
+

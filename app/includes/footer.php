@@ -19,12 +19,12 @@
 		</div>
 
 		<div class="footer-section contact-form">
-			<h2>Contacto</h2>
+			<h2 class="contactText">Contacto</h2>
 			<br>
 			<form action="index.php" method="POST" id="contact-form">
-				<input type="text" name="name" class="text-input contact-input" placeholder="Tu nombre">
-				<input type="email" name="email" class="text-input contact-input" placeholder="Tu email">
-				<textarea name="message" class="text-input contact-input" rows="2" placeholder="Mensaje..."></textarea>
+				<input type="text" name="name" class="text-input contact-input" placeholder="Tu nombre" requireed>
+				<input type="email" name="email" class="text-input contact-input" placeholder="Tu email" requireed>
+				<textarea name="message" class="text-input contact-input" rows="2" placeholder="Mensaje..." requireed></textarea>
 				<button type="submit" name="contact-btn" class="btn btn-big contact-btn"><i class="fas fa-envelope"></i> Enviar</button>
 			</form>
 		</div>
@@ -32,4 +32,4 @@
 	<div class="footer-bottom">
 		Blog para el Trabajo de Fin de Ciclo | &copy; Pablo Herranz Cano
 	</div>
-</div>
+	</div>

@@ -54,7 +54,7 @@ adminOnly();
 				<h2 class="page-title">USUARIOS</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
-
+	
 				<table>
 					<thead>
 						<th>#</th>

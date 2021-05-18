@@ -1,9 +1,8 @@
 <?php
+
 include "../../path.php"; 
 include ROOT_PATH . "/app/controllers/comments.php";
 
-// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
-// adminOnly();
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +51,8 @@ include ROOT_PATH . "/app/controllers/comments.php";
                 <table>
                     <thead>
                         <th>#</th>
-                        <th>Post_id</th>
-                        <th>Body</th>
+                        <th>#Post</th>
+                        <th>Comentario</th>
                         <th>Opciones</th>
                     </thead>
                     <tbody>

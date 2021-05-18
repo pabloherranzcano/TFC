@@ -104,7 +104,7 @@
 	/* MENSAJE DE REGISTRO */
 	
 	.msg {
-	    width: 90%;
+	    width: 100%;
 	    margin: 25px auto;
 	    padding: 8px;
 	    border-radius: 9px;
@@ -534,14 +534,9 @@
 	    font-size: 1.2em;
 	    transition: all .3s;
 	}
-	/*** PARTE CENTRAL DEL FOOTER ***/
+	/*** PARTE DERECHA DEL FOOTER (FORM) ***/
 	
-	.footer .footer-content .links ul a:hover {
-	    color: white;
-	    margin-left: 15px;
-	    transition: all .3s;
-	}
-	/*** PARTE DERECHA DEL FOOTER ***/
+	.footer-section h2 {}
 	
 	.footer .footer-content .contact-form .contact-input {
 	    background-color: #363636;

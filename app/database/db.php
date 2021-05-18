@@ -38,16 +38,22 @@ require("connection.php");
 function create($table, $data)
 {
 	global $connection;
+			echo var_dump($data);
+
 
 	$sql = "INSERT INTO $table SET";
 
 	$i = 0;
 	foreach ($data as $key => $value) {
 		if ($i == 0)
-			$sql = $sql . " $key=?";
+			$sql = $sql . " $key='$value'";
 		else
-			$sql = $sql . ", $key=?";
+			$sql = $sql . ", $key='$value'";
 		$i++;
+	}
+	if($table == "contact") {
+		$sql = $sql . ", created_at=now();";
+
 	}
 
 	$stmt = executeQuery($sql, $data);

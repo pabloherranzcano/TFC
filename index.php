@@ -1,7 +1,7 @@
 <?php
 include "path.php";
 include ROOT_PATH . "/app/controllers/topics.php";
-// include ROOT_PATH . "/app/helpers/phpmailer/contact.php";
+include ROOT_PATH . "/app/controllers/contact.php";
 
 /* Hacemos fetch de todos los posts de la base de datos que
 ** estén publicados (published = 1). 
@@ -76,8 +76,8 @@ $posts = array_reverse($posts);
 							<i class="far fa-calendar"><?php echo "<span style='font-family: ubuntu; color: #18232;'>&nbsp;" . date('j F, Y', strtotime($post['created_at'])) . "</span>"; ?></i>
 
 							<!-- Utilzamos la función substr para cortar mostrar un preview del texto del post.
-							La función html_entity_decode nos permie deshacenos de las etiquetas html que se guardan por
-							defecto en la base de datos a la hora de crear un pos. -->
+							La función html_entity_decode nos permite deshacernos de las etiquetas html que se guardan por
+							defecto en la base de datos a la hora de crear un post. -->
 							<p class="preview-text">
 								<?php echo html_entity_decode(substr($post['body'], 0, 230) . '...'); ?>
 							</p>
@@ -96,7 +96,7 @@ $posts = array_reverse($posts);
 			<div class="sidebar">
 				<!-- Sobre mí -->
 				<div class="section about">
-					<img src="<?php echo BASE_URL . "/assets/images/maliciosa.jpg";?>" alt="">
+					<img src="<?php echo BASE_URL . "/assets/images/about.jpg";?>" alt="">
 					<h2 class="section-title">SOBRE MÍ</h2>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis porro odit optio, libero, accusantium in ipsum deserunt expedita temporibus nihil nisi! Non eius magnam id alias rem nobis provident laudantium.</p>
 				</div>

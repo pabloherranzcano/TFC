@@ -36,10 +36,7 @@ $('.post-wrapper').slick({
 });
 
 // CKEditor
-CKEDITOR.replace('editor', {
-    filebrowserUploadUrl: '../../helpers/uploadImages.php',
-    filebrowserUploadMethod: 'form'
-});
+CKEDITOR.replace('editor', {});
 
 
 // COMENTARIOS

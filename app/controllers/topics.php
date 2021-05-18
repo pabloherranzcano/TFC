@@ -24,7 +24,7 @@ if (isset($_POST['add-topic'])) {
 		unset($_POST['add-topic']);
 		$topic_id = create($table, $_POST);
 		
-		$_SESSION['message'] = 'Topic creado correctamente..';
+		$_SESSION['message'] = 'Categoría creada correctamente..';
 		$_SESSION['type'] = 'success';
 		
 		header('location: ' . BASE_URL . '/admin/topics/index.php');
@@ -40,7 +40,7 @@ if (isset($_POST['add-topic'])) {
 // READ
 if (isset($_GET['id'])) {
 	$id = $_GET['id'];
-	$topic = selectOne('topics', ['id' => $id]);
+	$topic = selectOne($table, ['id' => $id]);
 	
 	$id = $topic['id'];
 	$name = $topic['name'];
@@ -59,7 +59,7 @@ if(isset($_POST['update-topic'])) {
 		unset($_POST['update-topic'], $_POST['id']);
 		$topic_id = update($table, $id, $_POST);
 
-		$_SESSION['message'] = 'Topic actualizado correctamente.';
+		$_SESSION['message'] = 'Categoría actualizada correctamente.';
 		$_SESSION['type'] = 'success';
 
 		header('location: ' . BASE_URL . '/admin/topics/index.php');
@@ -80,7 +80,7 @@ if (isset($_GET['delete_id'])) {
 	$id = $_GET['delete_id'];
 	$count = delete($table, $id);
 
-	$_SESSION['message'] = 'Topic eliminado correctamente.';
+	$_SESSION['message'] = 'Categoría eliminada correctamente.';
 	$_SESSION['type'] = 'success';
 
 	header('location: ' . BASE_URL . '/admin/topics/index.php');

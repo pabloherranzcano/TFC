@@ -3,6 +3,10 @@
 include "../../path.php"; 
 include ROOT_PATH . "/app/controllers/contact.php";
 
+
+$records = selectAll($table);
+$records = array_reverse($records);
+$i = count($records) + 1;
 ?>
 
 <!DOCTYPE html>
@@ -51,20 +55,21 @@ include ROOT_PATH . "/app/controllers/contact.php";
                 <table>
                     <thead>
                         <th>#</th>
-                        <th>#Email</th>
+                        <th>Fecha</th>
                         <th>Nombre</th>
                         <th>Email</th>
-                        <th>Body</th>
+                        <th>Mensaje</th>
 						<th colspan='2' class="actions">Opciones</th>
                     </thead>
                     <tbody>
-						<?php foreach ($emailsContact as $key => $email): ?>
+						<?php foreach ($records as $email):?>
 							<tr>
-								<td><?php echo $key + 1; ?></td>
-								<td><?php echo $email['name']; ?></td>
-								<td><?php echo $email['email']; ?></td>
-								<td><?php echo $email['body']; ?></td>
-								<td><a href="index.php?delete_id=<?php echo $email['id']; ?>" class="delete">Visualizar</a></td>
+								<td><?php echo $i = $i - 1; ?></td>
+								<td><?php echo $email['created_at']?></td>
+								<td><?php echo $email['name']?></td>
+								<td><?php echo $email['email']?></td>
+								<td> <?php echo substr($email['message'], 0, 30) . '...';?></td>
+								<td><a href="singleemail.php?read_id=<?php echo $email['id']; ?>" class="read">Leer</a></td>
 								<td><a href="index.php?delete_id=<?php echo $email['id']; ?>" class="delete">Eliminar</a></td>
 							</tr>
 						<?php endforeach; ?>

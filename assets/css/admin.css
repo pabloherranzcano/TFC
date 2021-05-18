@@ -68,7 +68,7 @@
 	
 	.admin-wrapper .left-sidebar {
 	    flex: 2;
-	    height: 400px;
+	    height: 470px;
 	    background-color: white;
 	    padding: 20px;
 	    border-radius: 9px;
@@ -129,7 +129,8 @@
 	    font-size: larger;
 	}
 	
-	.edit {
+	.edit,
+	.read {
 	    color: #aacc00;
 	}
 	
@@ -146,6 +147,7 @@
 	}
 	
 	.edit:hover,
+	.read:hover,
 	.delete:hover,
 	.publish:hover {
 	    text-decoration: underline;
@@ -154,6 +156,35 @@
 	
 	form div {
 	    margin-bottom: 15px;
+	}
+	/*********************************************************/
+	/*********************** SINGLE EMAIL ********************/
+	/*********************************************************/
+	
+	.content .mail {
+	    width: fit-content;
+	    display: block;
+	    margin: auto;
+	}
+	
+	.content label {
+	    font-size: 1.3em;
+	    font-weight: bold;
+	}
+	
+	.mail .contactName,
+	.mail .contactEmail,
+	.mail .contactBody {
+	    border-radius: 9px;
+	    width: 600px;
+	    padding: 10px;
+	    background-color: white;
+	    margin-bottom: 20px;
+	}
+	
+	.mail .contactBody {
+	    height: auto;
+	    background-color: white;
 	}
 	/*********************************************************/
 	/********************** MEDIA QUERIES ********************/
