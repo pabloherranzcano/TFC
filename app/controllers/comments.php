@@ -1,7 +1,6 @@
 <?php
 
 include "../../config.php";
-
 require_once ROOT_PATH . "/app/database/db.php";
 require_once ROOT_PATH . "/app/helpers/middleware.php";
 	
@@ -14,7 +13,7 @@ $user_id = $_SESSION['id'];
 $db = mysqli_connect($host, $user, $pass, $db_name);
 
 /* Recogemos por GET el id del post que vamos a leer. Más adelante esto no nos servirá cuando hagamos
-la petición por ajax, y tendremos que volver a recogerlo por POST. */
+la petición por AJAX, y tendremos que volver a recogerlo por POST. */
 $getPostId = $_GET['id'];
 
 /* Seleccionamos el post cuyo id acabamos de recoger en la base de datos. */
@@ -57,18 +56,18 @@ if (isset($_POST['comment_posted'])) {
 	global $db;
 	$postPostId = $_POST['postId'];
 
-	// grab the comment that was submitted through Ajax call
+	// Recogeemos el comentario que ha sido enviado a través de AJAX.
 	$comment_text = $_POST['comment_text'];
 
-	// insert comment into database
+	// Insertamos el comentario en la base de datos.
 	$sql = "INSERT INTO comments (post_id, user_id, body, created_at) VALUES ($postPostId, $user_id, '$comment_text', now());";
 	$result = mysqli_query($db, $sql);
 
-	// Query same comment from database to send back to be displayed
+	// Inssertamos el comentario que vamos a mostrar posteriormente.
 	$inserted_id = $db->insert_id;
 	$res = mysqli_query($db, "SELECT * FROM comments WHERE id=$inserted_id");
 	$inserted_comment = mysqli_fetch_assoc($res);
-	// if insert was successful, get that same comment from the database and return it
+	// Si se ha insertado con éxito, recogemos el comentario de la base de datos, y lo devolvemos a la web
 	if ($result) {
 		$comment = "<div class='comment clearfix'>
 					<img src='../../assets/images/profile.png' alt='' class='profile_pic'>
