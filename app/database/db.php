@@ -44,12 +44,19 @@ function create($table, $data)
 	$i = 0;
 	foreach ($data as $key => $value) {
 		if ($i == 0)
-			$sql = $sql . " $key='$value'";
+			$sql = $sql . " $key=?";
 		else
-			$sql = $sql . ", $key='$value'";
+			$sql = $sql . ", $key=?";
 		$i++;
 	}
-	if($table == "contact") {
+	if($table == "contact" || $table == "comments") {
+		foreach ($data as $key => $value) {
+			if ($i == 0)
+				$sql = $sql . " $key='$value'";
+			else
+				$sql = $sql . ", $key='$value'";
+			$i++;
+		}
 		$sql = $sql . ", created_at=now();";
 	}
 	
