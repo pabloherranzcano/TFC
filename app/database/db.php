@@ -61,7 +61,7 @@ function create($table, $data)
 		}
 	}
 
-	echo var_dump($sql);
+	// echo var_dump($sql);
 
 	$stmt = executeQuery($sql, $data);
 	$id = $stmt->insert_id;
