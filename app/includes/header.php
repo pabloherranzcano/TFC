@@ -3,14 +3,14 @@
 	<div class="logo">
 		<a href="<?php echo BASE_URL . '/index.php' ?>">
 			<h1 class="logo-text"><span>Pablo</span>Herranz</h1>
-			<h5 class="logo-description">42 Madrid Student | Desarrollador de aplicaciones web</h5>
+			<h5 class="logo-description">Estudiante de 42 Madrid | Desarrollador de aplicaciones web</h5>
 		</a>
 	</div>
 	<i class="fa fa-bars burger"></i>
 	<ul class="nav">
 		<li><a href="/index.php">Home</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Services</a></li>
+		<li><a href="#">Noticias</a></li>
+		<li><a href="#">Vlog</a></li>
 
 		<!-- Depende de si la sesión está activa (logged in) o no (logged out)
 		el header mostrará una cosa u otra.  -->

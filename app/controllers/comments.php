@@ -1,9 +1,5 @@
 <?php
 
-include ROOT_PATH . "/app/database/db.php";
-// include ROOT_PATH . "/app/helpers/middleware.php";
-
-
 $table = "comments";
 /* Lo primero que hacemos es darle valor a la variable $user_id, para saber qué usuario escribe
 qué comentario */
@@ -21,7 +17,7 @@ $post_query_result = mysqli_query($db, "SELECT * FROM posts WHERE id=$getPostId"
 $post = mysqli_fetch_assoc($post_query_result);
 
 
-// Get all comments from database
+// Recogemos todos los comentarios de la base de datos
 $comments_query_result = mysqli_query($db, "SELECT * FROM comments WHERE post_id=$getPostId ORDER BY created_at DESC");
 
 $comments = mysqli_fetch_all($comments_query_result, MYSQLI_ASSOC);
@@ -91,8 +87,6 @@ if (isset($_POST['comment_posted'])) {
 
 // DELETE
 if (isset($_GET['delete_id'])) {
-	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
-	adminOnly();
 
 	$id = $_GET['delete_id'];
 	$sql = "DELETE FROM $table WHERE id=$id";

@@ -60,7 +60,7 @@ $posts = array_reverse($posts);
 	<div class="page-wrapper">
 		<!-- CONTENT -->
 
-		<div class="content clearfix"> 
+		<div class="content clearfix">
 			<!-- Main content -->
 			<div class="main-content">
 				<h1 class="recent-post-title"><?php echo $postsTitle; ?></h1>

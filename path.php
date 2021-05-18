@@ -13,7 +13,7 @@
 ** DEPLOYED.
 */
 
-$local = "http://localhost:8000";
+$local = "http://localhost:3000";
 $heroku = "https://pherranz.herokuapp.com";
 
 /* BASE_URL */

@@ -1,6 +1,5 @@
 <?php
 include "../../path.php"; 
-// include ROOT_PATH . "/app/controllers/topics.php";
 include ROOT_PATH . "/app/controllers/comments.php";
 
 // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
