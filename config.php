@@ -7,7 +7,7 @@
 // En local. Cambiar el número de puerto en caso necesario.
 // $path = "http://localhost:3000";
 
-// Deplyed en heroku.
+// Deployed en heroku.
 $path = "https://pabloherranzcano.herokuapp.com";
 
 /*******************************************************/

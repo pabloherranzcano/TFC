@@ -9,28 +9,31 @@ require_once ROOT_PATH . "/app/database/db.php";
 require_once ROOT_PATH . "/app/helpers/middleware.php";
 
 $table = "comments";
+
 /* Lo primero que hacemos es darle valor a la variable $user_id, para saber qué usuario escribe
 qué comentario */
 $user_id = $_SESSION['id'];
 
 /* Conectamos de nuevo con la base de datos */
-$db = mysqli_connect($host, $user, $pass, $db_name);
+// $db = mysqli_connect($host, $user, $pass, $db_name);
+
+$db = $connection;
 
 /* Recogemos por GET el id del post que vamos a leer. Más adelante esto no nos servirá cuando hagamos
 la petición por ajax, y tendremos que volver a recogerlo por POST. */
-$getPostId = $_GET['id'];
+// $getPostId = $_GET['id'];
+if(isset($_GET['id'])) {
+	$getPostId = $_GET['id'];
 
-/* Seleccionamos el post cuyo id acabamos de recoger en la base de datos. */
-$post_query_result = mysqli_query($db, "SELECT * FROM posts WHERE id=$getPostId");
-$post = mysqli_fetch_assoc($post_query_result);
+	/* Seleccionamos el post cuyo id acabamos de recoger en la base de datos. */
+	$post =	selectOne($table, ['id' => $getPostId]);
 
+	/* Recogemos todos los comentarios de la base de datos y le damos la vuelta al array para que el último
+	comentario aparezca el primero. */
+	$comments =	array_reverse(selectAll($table, ['post_id' => $getPostId]));
 
-// Recogemos todos los comentarios de la base de datos
-$comments_query_result = mysqli_query($db, "SELECT * FROM comments WHERE post_id=$getPostId ORDER BY created_at DESC");
-
-$comments = mysqli_fetch_all($comments_query_result, MYSQLI_ASSOC);
-
-$commentsAdmin = mysqli_query($db, "SELECT * FROM comments");
+}
+$commentsAdmin = selectAll($table);
 /* Función que recibe el id de un usuario y devuelve su nombre. */
 function getUsernameById($id)
 {
