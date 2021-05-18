@@ -35,40 +35,66 @@ require("connection.php");
 **
 ** ForEach para crear la query. Sentencia if para poner o no la coma que separa los campos.
 */
+// function create($table, $data)
+// {
+// 	global $connection;
+
+// 	$sql = "INSERT INTO $table SET";
+
+// 	$i = 0;
+// 	if ($table == "contact" || $table == "comments") {
+// 		foreach ($data as $key => $value) {
+// 			if ($i == 0)
+// 				$sql = $sql . " $key='$value'";
+// 			else
+// 				$sql = $sql . ", $key='$value'";
+// 			$i++;
+// 		}
+// 		$sql = $sql . ", created_at=now();";
+// 	}else {
+// 		foreach ($data as $key => $value) {
+// 			if ($i == 0)
+// 				$sql = $sql . " $key=?";
+// 			else
+// 				$sql = $sql . ", $key=?";
+// 			$i++;
+// 		}
+// 	}
+
+// 	// echo var_dump($sql);
+
+// 	$stmt = executeQuery($sql, $data);
+// 	$id = $stmt->insert_id;
+
+// 	return ($id);
+// }
+
 function create($table, $data)
 {
 	global $connection;
+			echo var_dump($data);
+
 
 	$sql = "INSERT INTO $table SET";
 
 	$i = 0;
-	if ($table == "contact" || $table == "comments") {
-		foreach ($data as $key => $value) {
-			if ($i == 0)
-				$sql = $sql . " $key='$value'";
-			else
-				$sql = $sql . ", $key='$value'";
-			$i++;
-		}
-		$sql = $sql . ", created_at=now();";
-	}else {
-		foreach ($data as $key => $value) {
-			if ($i == 0)
-				$sql = $sql . " $key=?";
-			else
-				$sql = $sql . ", $key=?";
-			$i++;
-		}
+	foreach ($data as $key => $value) {
+		if ($i == 0)
+			$sql = $sql . " $key='$value'";
+		else
+			$sql = $sql . ", $key='$value'";
+		$i++;
 	}
+	if($table == "contact" || "comments") {
+		$sql = $sql . ", created_at=now();";
 
-	// echo var_dump($sql);
+	}
 
 	$stmt = executeQuery($sql, $data);
 	$id = $stmt->insert_id;
 
 	return ($id);
 }
-
 /********************************************/
 /****************** R E A D *****************/
 /********************************************/
