@@ -3,6 +3,8 @@
 /* Incluimos los ficheros db y middleware con "require_once" para evitar conflictos
 con los includes del archivo posts.php que se generan al incluir posts.php encima ae
 comments.php en el archivo single.php. */
+include "/../../config.php";
+
 require_once ROOT_PATH . "/app/database/db.php";
 require_once ROOT_PATH . "/app/helpers/middleware.php";
 
