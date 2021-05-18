@@ -6,10 +6,13 @@ con los includes del archivo posts.php que se generan al incluir posts.php encim
 comments.php en el archivo single.php.
 */
 
-require_once ROOT_PATH . "/app/database/connection.php";
+require_once ROOT_PATH . "/app/database/db.php";
 require_once ROOT_PATH . "/app/helpers/middleware.php";
 
 $table = "comments";
+
+/* Esta variable la utilizaremos en el index del panel de administador de comentarios. */
+
 
 /* Lo primero que hacemos es darle valor a la variable $user_id, para saber qué usuario escribe
 qué comentario */
@@ -60,21 +63,18 @@ function getCommentsCountByPostId($post_id)
 ** de hacer la llamada AJAX y decir que se ha enviado un comentario (comment_posted = 1). En ese momento,
 ** nosotros recogermos toda la información del post almacenada en un JSON, y la mostraremos automáticamente, y sin
 ** refrescar la página, enciama del último post enviado.
-
-Recogemos los datos del id del post y el texto del comentario, y los introducimos en la base de datos.
+**
+** Insertamos el comentario con la función create(), pasándole el nombre de la tabla y los datos de $inserted_comment
 */
 if (isset($_POST['comment_posted'])) {
 	global $connection;
-
-	// $postPostId = $_POST['postId'];
-	// $comment_text = $_POST['comment_text'];
-
+	$postPostId = $_POST['postId'];
+echo  $_POST['postId'];
 	$comment_id = create($table, $_POST);
 
 	// Query same comment from database to send back to be displayed
 	$inserted_id = $connection->insert_id;
-	$res = mysqli_query($connection, "SELECT * FROM comments WHERE id=$inserted_id");
-	$inserted_comment = mysqli_fetch_assoc($res);
+	$inserted_comment = selectAll($table, ['id' => $inserted_id]);
 	// if insert was successful, get that same comment from the database and return it
 	if ($comment_id) {
 		$comment = "<div class='comment clearfix'>
