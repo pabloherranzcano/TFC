@@ -123,9 +123,9 @@ function selectAll($table, $conditions = [])
 	$i = 0;
 	foreach ($conditions as $key => $value) {
 		if ($i == 0)
-			$sql = $sql . " WHERE $key=?";
+			$sql = $sql . " WHERE $key=$value";
 		else
-			$sql = $sql . " AND $key=?";
+			$sql = $sql . " AND $key=$value";
 		$i++;
 	}
 

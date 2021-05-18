@@ -19,16 +19,13 @@ la petición por ajax, y tendremos que volver a recogerlo por POST. */
 $getPostId = $_GET['id'];
 
 /* Seleccionamos el post cuyo id acabamos de recoger en la base de datos. */
-$post_query_result = mysqli_query($connection, "SELECT * FROM posts WHERE id=$getPostId");
-$post = mysqli_fetch_assoc($post_query_result);
+
+$post = selectOne("posts", ['id' => $post_id]);
 
 
-// Recogemos todos los comentarios de la base de datos
-$comments_query_result = mysqli_query($connection, "SELECT * FROM comments WHERE post_id=$getPostId ORDER BY created_at DESC");
-
-$comments = mysqli_fetch_all($comments_query_result, MYSQLI_ASSOC);
-
-$commentsAdmin = mysqli_query($connection, "SELECT * FROM comments");
+// Recogemos todos los comentarios de ese post de la base de datos
+$comments = array_revese(selectAll("comments", ['post_id'=> $getPostId]));
+$commentsAdmin = selectAll("comments");
 /* Función que recibe el id de un usuario y devuelve su nombre. */
 function getUsernameById($id)
 {

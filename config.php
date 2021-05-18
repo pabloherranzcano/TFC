@@ -5,7 +5,7 @@
 /*******************************************************/
 
 // En local. Cambiar el número de puerto en caso necesario.
-$path = "http://localhost:3000";
+// $path = "http://localhost:3000";
 
 // Deplyed en heroku.
 $path = "https://pabloherranzcano.herokuapp.com";
@@ -22,9 +22,9 @@ $pass = '';
 $db_name = 'tfcblog';
 
 /* DEPLOYED */
-$host = 'remotemysql.com';
-$user = 'O4JnLPhRnn';
-$pass = 'YbASczJrKQ';
-$db_name = 'O4JnLPhRnn';
+// $host = 'remotemysql.com';
+// $user = 'O4JnLPhRnn';
+// $pass = 'YbASczJrKQ';
+// $db_name = 'O4JnLPhRnn';
 
 ?>
