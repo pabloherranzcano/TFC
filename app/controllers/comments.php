@@ -18,7 +18,8 @@ $table = "comments";
 qué comentario */
 $user_id = $_SESSION['id'];
 
-/* Si quremos, por ejemlo, mostrar los comentarios asociados a un post específico, o contar cuántos
+/*
+** Si quremos, por ejemlo, mostrar los comentarios asociados a un post específico, o contar cuántos
 ** comentarios en total tiene dicho post deberemos comprobar si isset($_GET['id']) == true. De moddo que
 ** recogemos por GET el id del post del que queremos información. Más adelante esto no nos servirá cuando hagamos
 ** la petición por AJAX, y tendremos que volver a recogerlo por POST.
@@ -66,17 +67,26 @@ function getCommentsCountByPostId($post_id)
 **
 ** Insertamos el comentario con la función create(), pasándole el nombre de la tabla y los datos de $inserted_comment
 */
+// $result = create($table, $_POST);
+// $inserted_comment = selectAll($table, ['id' => $inserted_id]);
 if (isset($_POST['comment_posted'])) {
 	global $connection;
+	
+	// Recogeemos el id del post y el texto del comentario .
 	$postPostId = $_POST['postId'];
-echo  $_POST['postId'];
-	$comment_id = create($table, $_POST);
+	$comment_text = $_POST['comment_text'];
 
-	// Query same comment from database to send back to be displayed
+	// Insertamos el comentario en la base de datos.
+	$sql = "INSERT INTO comments (post_id, user_id, body, created_at) VALUES ($postPostId, $user_id, '$comment_text', now());";
+	$result = mysqli_query($connection, $sql);
+
+	// Insertamos el comentario que vamos a mostrar posteriormente.
 	$inserted_id = $connection->insert_id;
-	$inserted_comment = selectAll($table, ['id' => $inserted_id]);
-	// if insert was successful, get that same comment from the database and return it
-	if ($comment_id) {
+	$res = mysqli_query($connection, "SELECT * FROM comments WHERE id=$inserted_id");
+	$inserted_comment = mysqli_fetch_assoc($res);
+
+	// Si se ha insertado con éxito, recogemos el comentario de la base de datos, y lo devolvemos a la web.
+	if ($result) {
 		$comment = "<div class='comment clearfix'>
 					<img src='../../assets/images/profile.png' alt='' class='profile_pic'>
 					<div class='comment-details'>
@@ -96,14 +106,12 @@ echo  $_POST['postId'];
 	}
 }
 
-
 // DELETE
 if (isset($_GET['delete_id'])) {
 
 	$id = $_GET['delete_id'];
-	$sql = "DELETE FROM $table WHERE id=$id";
-	$result = mysqli_query($connection, $sql);
-	if ($result) {
+	$count = delete($table, $id);
+	if ($count) {
 		$_SESSION['message'] = 'Comentario eliminado correctamente.';
 		$_SESSION['type'] = 'success';
 	} else {
