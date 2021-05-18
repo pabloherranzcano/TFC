@@ -21,10 +21,10 @@ $user = 'root';
 $pass = '';
 $db_name = 'tfcblog';
 
-/* DEPLOYED */
-// $host = 'remotemysql.com';
-// $user = 'O4JnLPhRnn';
-// $pass = 'YbASczJrKQ';
-// $db_name = 'O4JnLPhRnn';
+// /* DEPLOYED */
+// // $host = 'remotemysql.com';
+// // $user = 'O4JnLPhRnn';
+// // $pass = 'YbASczJrKQ';
+// // $db_name = 'O4JnLPhRnn';
 
 ?>
