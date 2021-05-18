@@ -75,7 +75,7 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 
 		/* Si "admin" llega por POST, es porque tenemos que crear al usuario con permisos
 		de administrador (1 –true– en la DB) */
-		if ($_POST['admin']) {
+		if (isset($_POST['admin'])) {
 			$_POST['admin'] = 1;
 			$user_id = create($table, $_POST);
 
