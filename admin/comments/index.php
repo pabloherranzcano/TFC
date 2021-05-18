@@ -3,6 +3,8 @@
 include "../../path.php"; 
 include ROOT_PATH . "/app/controllers/comments.php";
 
+$commentsAdmin = selectAll($table);
+
 ?>
 
 <!DOCTYPE html>
