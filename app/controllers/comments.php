@@ -76,7 +76,7 @@ if (isset($_POST['comment_posted'])) {
 	$res = mysqli_query($connection, "SELECT * FROM comments WHERE id=$inserted_id");
 	$inserted_comment = mysqli_fetch_assoc($res);
 	// if insert was successful, get that same comment from the database and return it
-	if ($result) {
+	if ($comment_id) {
 		$comment = "<div class='comment clearfix'>
 					<img src='../../assets/images/profile.png' alt='' class='profile_pic'>
 					<div class='comment-details'>
