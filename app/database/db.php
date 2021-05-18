@@ -42,14 +42,7 @@ function create($table, $data)
 	$sql = "INSERT INTO $table SET";
 
 	$i = 0;
-	foreach ($data as $key => $value) {
-		if ($i == 0)
-			$sql = $sql . " $key=?";
-		else
-			$sql = $sql . ", $key=?";
-		$i++;
-	}
-	if($table == "contact" || $table == "comments") {
+	if ($table == "contact" || $table == "comments") {
 		foreach ($data as $key => $value) {
 			if ($i == 0)
 				$sql = $sql . " $key='$value'";
@@ -58,8 +51,16 @@ function create($table, $data)
 			$i++;
 		}
 		$sql = $sql . ", created_at=now();";
+	} else {
+		foreach ($data as $key => $value) {
+			if ($i == 0)
+				$sql = $sql . " $key=?";
+			else
+				$sql = $sql . ", $key=?";
+			$i++;
+		}
 	}
-	
+
 	$stmt = executeQuery($sql, $data);
 	$id = $stmt->insert_id;
 
@@ -120,7 +121,7 @@ function selectAll($table, $conditions = [])
 		$stmt = $connection->prepare($sql);
 		$stmt->execute();
 		$records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-		
+
 		return ($records);
 	}
 
@@ -135,7 +136,7 @@ function selectAll($table, $conditions = [])
 
 	$stmt = executeQuery($sql, $conditions);
 	$records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-	
+
 	return ($records);
 }
 
@@ -172,7 +173,7 @@ function selectOne($table, $conditions)
 
 	$stmt = executeQuery($sql, $conditions);
 	$records = $stmt->get_result()->fetch_assoc();
-	
+
 	return ($records);
 }
 
