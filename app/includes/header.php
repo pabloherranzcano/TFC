@@ -3,7 +3,7 @@
 	<div class="logo">
 		<a href="<?php echo BASE_URL . '/index.php' ?>">
 			<h1 class="logo-text"><span>Pablo</span>Herranz</h1>
-			<h5 class="logo-description">Desarrollo de Aplicaiones Web</h5>
+			<h5 class="logo-description">Estudiante de 42 Madrid | Desarrollador de aplicaciones web</h5>
 		</a>
 	</div>
 	<i class="fa fa-bars burger"></i>

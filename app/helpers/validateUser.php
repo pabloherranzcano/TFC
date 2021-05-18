@@ -26,7 +26,7 @@ function validateUser($user)
 	if(strpos($user['username'], " ") || !ctype_print($user['username']))
 		array_push($errors, 'El nombre de usuario no puede contener espacios en blanco ni caracteres raros.');
 	
-	if (empty($user['email']) || !strpos($user['email'], "@"))
+	if (empty($user['email']))
 		array_push($errors, 'Es necesario introducir un email.');	
 	
 	if (empty($user['password']))

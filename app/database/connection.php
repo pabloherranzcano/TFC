@@ -6,7 +6,8 @@
 ** debajo de DEPLOYED. Por el contrario, si queremos conectar a la base de datos desplegada
 ** en https://remotemysql.com/, lo descomentaremos.
 */
-include "../../config.php";
+
+include "config.php";
 
 $connection = new MySQLi($host, $user, $pass, $db_name);
 

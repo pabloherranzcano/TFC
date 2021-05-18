@@ -30,6 +30,6 @@
 		</div>
 	</div>
 	<div class="footer-bottom">
-		TFCBlog | &copy; Pablo Herranz Cano
+		Blog para el Trabajo de Fin de Ciclo | &copy; Pablo Herranz Cano
 	</div>
 	</div>
