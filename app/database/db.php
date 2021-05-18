@@ -49,11 +49,10 @@ function create($table, $data)
 			$sql = $sql . ", $key='$value'";
 		$i++;
 	}
-	if($table == "contact") {
-		$sql = $sql . ", created_at=now();";
-
+	if($table == "contact" || $table == "comments") {
+		$sql = $sql . ", created_at= now();";
 	}
-
+	
 	$stmt = executeQuery($sql, $data);
 	$id = $stmt->insert_id;
 

@@ -77,7 +77,7 @@ $topicName = $topicName['name'];
 								<h4 class="text-center">Debes <a href="register.php">registrarte</a> o <a href="login.php">loguearte</a> para comentar</h4>
 							</div>
 						<?php endif ?>
-						<!-- Display total number of comments on this post  -->
+						<!-- Mostramos el total de comentarios de este post -->
 						<h2><span id="comments_count"><?php echo count($comments) ?></span> Comentario(s)</h2>
 						<hr>
 						<!-- comments wrapper -->
