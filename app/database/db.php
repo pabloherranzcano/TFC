@@ -121,7 +121,10 @@ function executeQuery($sql, $data)
 
 	$stmt = $connection->prepare($sql);
 	$values = array_values($data);
-	$types = str_repeat('s', count($values));
+	if (isset($data['created_at']))
+		$types = str_repeat('s', 3);
+	else
+		$types = str_repeat('s', count($values));
 	$stmt->bind_param($types, ...$values);
 	$stmt->execute();
 
