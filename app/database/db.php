@@ -34,7 +34,7 @@ require("connection.php");
 ** En esta función nos centraremos en crear la query de la forma nº 2.
 **
 ** ForEach para crear la query. Sentencia if para poner o no la coma que separa los campos.
-*/ss
+*/
 function create($table, $data)
 {
 	global $connection;
@@ -51,7 +51,7 @@ function create($table, $data)
 			$i++;
 		}
 		$sql = $sql . ", created_at=now();";
-	} else {
+	}else {
 		foreach ($data as $key => $value) {
 			if ($i == 0)
 				$sql = $sql . " $key=?";
