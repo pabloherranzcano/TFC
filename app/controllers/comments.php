@@ -24,7 +24,7 @@ $post = selectOne("posts", ['id' => $post_id]);
 
 
 // Recogemos todos los comentarios de ese post de la base de datos
-$comments = array_revese(selectAll("comments", ['post_id'=> $getPostId]));
+$comments = array_reverse(selectAll("comments", ['post_id'=> $getPostId]));
 $commentsAdmin = selectAll("comments");
 /* Función que recibe el id de un usuario y devuelve su nombre. */
 function getUsernameById($id)
