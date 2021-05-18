@@ -2,7 +2,8 @@
 
 /* Incluimos los ficheros connection y middleware con "require_once" para evitar conflictos
 con los includes del archivo posts.php que se generan al incluir posts.php encima ae
-comments.php en el archivo single.php. */
+comments.php en el archivo single.php. Al incluir el fichero connection.php ya tenemos
+la conexión creada con la base de datos. */
 require_once ROOT_PATH . "/app/database/connection.php";
 require_once ROOT_PATH . "/app/helpers/middleware.php";
 
@@ -10,9 +11,6 @@ $table = "comments";
 /* Lo primero que hacemos es darle valor a la variable $user_id, para saber qué usuario escribe
 qué comentario */
 $user_id = $_SESSION['id'];
-
-/* Conectamos de nuevo con la base de datos */
-// $connection = mysqli_connect("localhost", "root", "", "tfcblog");
 
 /* Recogemos por GET el id del post que vamos a leer. Más adelante esto no nos servirá cuando hagamos
 la petición por ajax, y tendremos que volver a recogerlo por POST. */

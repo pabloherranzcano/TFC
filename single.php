@@ -17,8 +17,6 @@ $postsTopic = selectAll('posts', ['topic_id' => $topic_id]);
 $topicName = selectOne('topics', ['id' => $topic_id]);
 $topicName = $topicName['name'];
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
 ?>
 
 <!DOCTYPE html>
