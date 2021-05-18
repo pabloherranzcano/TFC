@@ -14,7 +14,7 @@ session_start();
 ** que es el que nos permite conectarnos
 ** con la base de datos.
 */
-require("connection.php");
+require "connection.php";
 
 /**********************************************************************************/
 /**********************************************************************************/
