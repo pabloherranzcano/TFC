@@ -41,8 +41,8 @@ function create($table, $data)
 
 	$sql = "INSERT INTO $table SET";
 
-	$i = 0;
 	if ($table == "contact" || $table == "comments") {
+		$i = 0;
 		foreach ($data as $key => $value) {
 			if ($i == 0)
 				$sql = $sql . " $key='$value'";
@@ -60,6 +60,8 @@ function create($table, $data)
 			$i++;
 		}
 	}
+
+	echo var_dump($sql);
 
 	$stmt = executeQuery($sql, $data);
 	$id = $stmt->insert_id;
