@@ -78,18 +78,24 @@ function create($table, $data)
 	$sql = "INSERT INTO $table SET";
 
 	$i = 0;
-	foreach ($data as $key => $value) {
-		if ($i == 0)
-			$sql = $sql . " $key='$value'";
-		else
-			$sql = $sql . ", $key='$value'";
-		$i++;
-	}
 	if($table == "contact" || "comments") {
+		foreach ($data as $key => $value) {
+			if ($i == 0)
+			$sql = $sql . " $key='$value'";
+			else
+			$sql = $sql . ", $key='$value'";
+			$i++;
+		}
 		$sql = $sql . ", created_at=now();";
-
+	} else {
+		foreach ($data as $key => $value) {
+			if ($i == 0)
+			$sql = $sql . " $key=?";
+			else
+			$sql = $sql . ", $key=?";
+			$i++;
+		}
 	}
-
 	$stmt = executeQuery($sql, $data);
 	$id = $stmt->insert_id;
 
