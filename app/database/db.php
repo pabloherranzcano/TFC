@@ -72,8 +72,6 @@ require("connection.php");
 function create($table, $data)
 {
 	global $connection;
-			echo var_dump($data);
-
 
 	$sql = "INSERT INTO $table SET";
 
