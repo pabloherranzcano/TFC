@@ -31,14 +31,13 @@ if (isset($_POST['contact-btn'])) {
 	if ($errors == 0) {
 		unset($_POST['contact-btn']);
 		
-		// $name = $_POST['name'];
-		// $email = $_POST['email'];
-		// $message = $_POST['message'];
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$message = $_POST['message'];
 
-		// $sql = "INSERT INTO $table (name, email, message, created_at) VALUES ($, $user_id, '$comment_text', now());";
-		// $result = mysqli_query($connection, $sql);
-		
-		$email_id = create($table, $_POST);
+		$sql = "INSERT INTO $table (name, email, message, created_at) VALUES ('$name', '$email', '$message', now());";
+		$contact_id = mysqli_query($connection, $sql);
+
 
 		$_SESSION['message'] = 'Email enviado correctamente.';
 		$_SESSION['type'] = 'success';
