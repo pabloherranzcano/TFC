@@ -1,12 +1,12 @@
 <?php
 
-include "../../path.php"; 
+include "../../path.php";
 include ROOT_PATH . "/app/controllers/contact.php";
-
 
 $records = selectAll($table);
 $records = array_reverse($records);
 $i = count($records) + 1;
+
 ?>
 
 <!DOCTYPE html>
@@ -46,37 +46,39 @@ $i = count($records) + 1;
 		<!-- Admin content -->
 		<div class="admin-content">
 
-
-            <div class="content">
-                <h2 class="page-title">BANDEJA DE ENTRADA</h2>
+			<!-- Content -->
+			<div class="content">
+				<h2 class="page-title">BANDEJA DE ENTRADA</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 
-                <table>
-                    <thead>
-                        <th>#</th>
-                        <th>Fecha</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Mensaje</th>
+				<table>
+					<thead>
+						<th>#</th>
+						<th>Fecha</th>
+						<th>Nombre</th>
+						<th>Email</th>
+						<th>Mensaje</th>
 						<th colspan='2' class="actions">Opciones</th>
-                    </thead>
-                    <tbody>
-						<?php foreach ($records as $email):?>
+					</thead>
+					<tbody>
+						<?php foreach ($records as $email) : ?>
 							<tr>
 								<td><?php echo $i = $i - 1; ?></td>
-								<td><?php echo $email['created_at']?></td>
-								<td><?php echo $email['name']?></td>
-								<td><?php echo $email['email']?></td>
-								<td> <?php echo substr($email['message'], 0, 30) . '...';?></td>
+								<td><?php echo $email['created_at'] ?></td>
+								<td><?php echo $email['name'] ?></td>
+								<td><?php echo $email['email'] ?></td>
+								<td> <?php echo substr($email['message'], 0, 30) . '...'; ?></td>
 								<td><a href="singleemail.php?read_id=<?php echo $email['id']; ?>" class="read">Leer</a></td>
 								<td><a href="index.php?delete_id=<?php echo $email['id']; ?>" class="delete">Eliminar</a></td>
 							</tr>
 						<?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+					</tbody>
+				</table>
+			</div>
+			<!-- // Content -->
+
+		</div>
 		<!-- // Admin content -->
 	</div>
 	<!-- // PAGE WRAPPER -->

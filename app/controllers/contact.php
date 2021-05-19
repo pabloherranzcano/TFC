@@ -13,13 +13,11 @@ $email = '';
 $message = '';
 $created_at = "now()";
 
-
 /*
 ** En el contacto no nos interesa poder modificar los emails uqe nos lleguen, por lo que
 ** no haremos un Update en ningún momento. Haremos un create para generar el email de contacto.
 ** Reaa, para poder leerlo desde el panel de administrador. Y delete, por si queremos eliminarlo.
 */
-
 
 /********************************************/
 /**************** C R E A T E ***************/
