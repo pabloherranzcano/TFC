@@ -1,77 +1,85 @@
-	/*********************************************************/
-	/******************** COMMENTS SECTION *******************/
-	/*********************************************************/
-	
-	.comments-section {
-	    margin-top: 10px;
-	    width: fit-content;
-	    margin: 80px auto;
-	    margin-top: 150px;
-	    align-items: center;
-	}
-	/********* FORM *********/
-	/************************/
-	
-	form {
-	    width: auto;
-	    display: block;
-	    margin: auto;
-	}
-	
-	form textarea {
-	    width: 600px;
-	    display: block;
-	    margin: 10px auto;
-	    resize: none;
-	}
-	
-	form button {
-	    display: block;
-	    margin: 30px auto;
-	}
-	/********* WELL *********/
-	/************************/
-	
-	.well {
-	    margin-bottom: 50px;
-	    text-align: center;
-	}
-	
-	.well a {
-	    color: #00e5ff;
-	}
-	/*** COMMENTS-WRAPPER ****/
-	/************************/
-	
-	.comment {
-	    margin-bottom: 10px;
-	    display: flex;
-	}
-	
-	.comment .profile_pic {
-	    width: 35px !important;
-	    height: 35px;
-	    margin-right: 5px;
-	    border-radius: 50%;
-	    float: left;
-	}
-	
-	.comment-details {
-	    width: 91.5%;
-	    flex: 9;
-	    padding: 15px;
-	    float: right;
-	}
-	
-	.comment-details p {
-	    margin-bottom: 0px;
-	}
-	
-	.comment .comment-name {
-	    font-weight: bold;
-	}
-	
-	.comment .comment-date {
-	    font-style: italic;
-	    font-size: 0.8em;
-	}
+	    /*********************************************************/
+	    /******************** COMMENTS SECTION *******************/
+	    /*********************************************************/
+	    
+	    .comments-section {
+	        margin-top: 10px;
+	        width: fit-content;
+	        margin: 80px auto;
+	        margin-top: 150px;
+	        align-items: center;
+	    }
+	    /********* FORM *********/
+	    /************************/
+	    
+	    form {
+	        width: auto;
+	        display: block;
+	        margin: auto;
+	    }
+	    
+	    form textarea {
+	        width: 100%;
+	        display: block;
+	        margin: 10px auto;
+	        resize: none;
+	    }
+	    
+	    form button {
+	        display: block;
+	        margin: 30px auto;
+	    }
+	    /********* WELL *********/
+	    /************************/
+	    
+	    .well {
+	        margin-bottom: 50px;
+	        text-align: center;
+	    }
+	    
+	    .well a {
+	        color: #00e5ff;
+	    }
+	    /*** COMMENTS-WRAPPER ****/
+	    /************************/
+	    
+	    .comment {
+	        margin-bottom: 10px;
+	        display: flex;
+	    }
+	    
+	    .comment .profile_pic {
+	        width: 35px !important;
+	        height: 35px;
+	        margin-right: 5px;
+	        border-radius: 50%;
+	        float: left;
+	    }
+	    
+	    .comment-details {
+	        width: 91.5%;
+	        flex: 9;
+	        padding: 15px;
+	        float: right;
+	    }
+	    
+	    .comment-details p {
+	        margin-bottom: 0px;
+	    }
+	    
+	    .comment .comment-name {
+	        font-weight: bold;
+	    }
+	    
+	    .comment .comment-date {
+	        font-style: italic;
+	        font-size: 0.8em;
+	    }
+	    
+	    @media only screen and (max-width: 700px) {
+	        .comments-section {
+	            width: 90%;
+	            margin: auto;
+	            border: 1px solid red;
+	        }
+	    }
