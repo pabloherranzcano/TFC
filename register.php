@@ -42,7 +42,7 @@ guestsOnly();
             </div>
             <div>
                 <label>Email</label>
-                <input type="text" name="email" value="<?php echo $email; ?>" class="text-input">
+                <input type="email" name="email" value="<?php echo $email; ?>" class="text-input">
             </div>
             <div>
                 <label>Contraseña</label>

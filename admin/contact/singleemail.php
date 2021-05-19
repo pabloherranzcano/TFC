@@ -1,6 +1,6 @@
 <?php
 // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
-adminOnly();
+// adminOnly();
 
 /*
 ** Este archivo es en el cargado de mostrarnoss los emails enviados desde el formulario del footer.
