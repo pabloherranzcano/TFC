@@ -4,8 +4,9 @@
 	
 	.comments-section {
 	    margin-top: 10px;
-	    width: 750px;
+	    width: fit-content;
 	    margin: 80px auto;
+	    margin-top: 150px;
 	    align-items: center;
 	}
 	/********* FORM *********/
@@ -26,7 +27,7 @@
 	
 	form button {
 	    display: block;
-	    margin: 5px auto;
+	    margin: 30px auto;
 	}
 	/********* WELL *********/
 	/************************/

@@ -213,6 +213,7 @@
 	        flex: 1;
 	        width: 400px;
 	        margin: auto;
+	        margin-top: 50px;
 	    }
 	    /* A DE LOS ELEMENTOS */
 	    .admin-wrapper .left-sidebar ul li a {
