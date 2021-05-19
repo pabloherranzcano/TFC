@@ -11,17 +11,33 @@ $id = '';
 $name = '';
 $email = '';
 $message = '';
-$sent_at = "now()";
+$created_at = "";
 
-// CREATE
+
+/*
+** En el contacto no nos interesa poder modificar los emails uqe nos lleguen, por lo que
+** no haremos un Update en ningún momento. Haremos un create para generar el email de contacto.
+** Read, para poder leerlo desde el panel de administrador. Y delete, por si queremos eliminarlo.
+*/
+
+
+/********************************************/
+/**************** C R E A T E ***************/
+/********************************************/
 if (isset($_POST['contact-btn'])) {
 	// // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 	// adminOnly();
 	$errors = validateContact($_POST);
 	if ($errors == 0) {
 		unset($_POST['contact-btn']);
+		
+		// $name = $_POST['name'];
+		// $email = $_POST['email'];
+		// $message = $_POST['message'];
 
-		$email_id = create($table, $_POST);
+		// $sql = "INSERT INTO $table (name, email, message, created_at) VALUES ($, $user_id, '$comment_text', now());";
+		// $result = mysqli_query($connection, $sql);
+		
 
 		$_SESSION['message'] = 'Email enviado correctamente.';
 		$_SESSION['type'] = 'success';
@@ -39,7 +55,9 @@ if (isset($_POST['contact-btn'])) {
 		$_SESSION['type'] = 'error';
 	}
 }
-// READ
+/********************************************/
+/****************** R E A D *****************/
+/********************************************/
 if (isset($_GET['read_id'])) {
 	$id = $_GET['read_id'];
 	$singleEmailFetched = selectOne($table, ['id' => $id]);
@@ -48,12 +66,14 @@ if (isset($_GET['read_id'])) {
 	$name = $singleEmailFetched['name'];
 	$email = $singleEmailFetched['email'];
 	$body = $singleEmailFetched['message'];
-	$sent_at = $singleEmailFetched['created_at'];
+	$created_at = $singleEmailFetched['created_at'];
 	
 
 }
 
-// DELETE
+/********************************************/
+/**************** D E L E T E ***************/
+/********************************************/
 if (isset($_GET['delete_id'])) {
 	// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
 	adminOnly();

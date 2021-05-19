@@ -25,5 +25,3 @@ $host = 'remotemysql.com';
 $user = 'O4JnLPhRnn';
 $pass = 'YbASczJrKQ';
 $db_name = 'O4JnLPhRnn';
-
-?>
