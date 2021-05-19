@@ -32,43 +32,10 @@ require("connection.php");
 ** 		2- "INSERT INTO users SET username=?, admin=?, email=?, password=?"
 **
 ** En esta función nos centraremos en crear la query de la forma nº 2.
-**
+** Como en la tabla comments y en contact está el campo "created_at", tenemos que hacer 
+** crear la query aparte y añadirle "created_at=now()" después.
 ** ForEach para crear la query. Sentencia if para poner o no la coma que separa los campos.
 */
-// function create($table, $data)
-// {
-// 	global $connection;
-
-// 	$sql = "INSERT INTO $table SET";
-
-// 	$i = 0;
-// 	if ($table == "contact" || $table == "comments") {
-// 		foreach ($data as $key => $value) {
-// 			if ($i == 0)
-// 				$sql = $sql . " $key='$value'";
-// 			else
-// 				$sql = $sql . ", $key='$value'";
-// 			$i++;
-// 		}
-// 		$sql = $sql . ", created_at=now();";
-// 	}else {
-// 		foreach ($data as $key => $value) {
-// 			if ($i == 0)
-// 				$sql = $sql . " $key=?";
-// 			else
-// 				$sql = $sql . ", $key=?";
-// 			$i++;
-// 		}
-// 	}
-
-// 	// echo var_dump($sql);
-
-// 	$stmt = executeQuery($sql, $data);
-// 	$id = $stmt->insert_id;
-
-// 	return ($id);
-// }
-
 function create($table, $data)
 {
 	global $connection;
@@ -201,11 +168,11 @@ function selectOne($table, $conditions)
 		$i++;
 	}
 
-	$sql = $sql . " LIMIT 1";
+	$sql = $sql . " LIMIT 1;";
 
 	$stmt = executeQuery($sql, $conditions);
 	$records = $stmt->get_result()->fetch_assoc();
-
+	
 	return ($records);
 }
 

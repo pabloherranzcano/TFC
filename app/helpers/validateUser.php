@@ -19,11 +19,8 @@ function validateUser($user)
 {
 	$errors = array();
 
-	if (empty($user['username']))
-		array_push($errors, 'Es necesario introducir un nombre de usuario.');
-	
-	// Comprobamos que no haya espacios ni caracteres no imprimibles
-	if(strpos($user['username'], " ") || !ctype_print($user['username']))
+	// Comprobamos que usuario no esté vacío, ni haya espacios ni caracteres no imprimibles
+	if (empty($user['username']) || strpos($user['username'], " ") || !ctype_print($user['username']))
 		array_push($errors, 'El nombre de usuario no puede contener espacios en blanco ni caracteres raros.');
 	
 	if (empty($user['email']))
@@ -41,16 +38,17 @@ function validateUser($user)
 			array_push($errors, 'El captcha es incorrecto.');
 	}
 	// Comprobamos que no exista un usuario con ese nombre.
-	$existingUser= selectOne('users', ['username' => $user['username']]);
-	if (isset($existingUser)) {
-		if ((isset($user['update-user']) && $existingUser['id'] != $user['id']) || isset($_POST['create-admin']))
-			array_push($errors, 'Ese nombre de usuario ya está registrado.');
+	$existingUser = selectOne('users', ['username' => $user['username']]);
+
+	if ($existingUser) {
+		if ((isset($user['update-user']) && $existingUser['id'] != $user['id']) || isset($_POST['create-admin']) || isset($_POST['register-btn']))
+			array_push($errors, "Ya existe el usuario " . "'" . $user['username'] . "'");
 	}
 	
 	// Comprobamos que no exista un usuario con ese email.
 	$existingUser = selectOne('users', ['email' => $user['email']]);
 	if ($existingUser){
-		if ((isset($user['update-user']) && $existingUser['id'] != $user['id']) || isset($_POST['create-admin']))
+		if ((isset($user['update-user']) && $existingUser['id'] != $user['id']) || isset($_POST['create-admin']) || isset($_POST['register-btn']))
 			array_push($errors, 'Ese email ya está registrado.');
 	}
 

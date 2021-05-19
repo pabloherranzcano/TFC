@@ -28,12 +28,12 @@ $user_id = $_SESSION['id'];
 ** todos los comentarios de la base de datos y le damos la vuelta al array para que el último comentario aparezca el primero.
 */
 if(isset($_GET['id'])) {
+	
 	$getPostId = $_GET['id'];
 
 	$post =	selectOne($table, ['id' => $getPostId]);
 
 	$comments =	array_reverse(selectAll($table, ['post_id' => $getPostId]));
-
 }
 
 /*
@@ -41,6 +41,7 @@ if(isset($_GET['id'])) {
 */
 function getUsernameById($id)
 {
+
 	global $connection;
 	$result = mysqli_query($connection, "SELECT username FROM users WHERE id=$id LIMIT 1");
 	
@@ -108,6 +109,7 @@ if (isset($_POST['comment_posted'])) {
 
 // DELETE
 if (isset($_GET['delete_id'])) {
+	adminOnly();
 
 	$id = $_GET['delete_id'];
 	$count = delete($table, $id);

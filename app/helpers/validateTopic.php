@@ -1,7 +1,7 @@
 <?php 
 
 /*
-** Función para comprobar que un post está listo para publicarse.
+** Función para comprobar que un topic está listo para publicarse.
 ** 
 ** Tenemos que hacer la última comprobación para saber si el topic se está creando
 ** por primera vez o estamos editándolo, ya que si lo editamos y no hacemos esta
@@ -21,7 +21,7 @@ function validateTopic($topic)
 	if ($existingTopic)
 
 	if ((isset($topic['update-topic']) && $existingTopic['id'] != $topic['id']) || isset($_POST['add-topic']))
-		array_push($errors, "Ya existe el topic " . "'" . $topic['name'] . "'");
+		array_push($errors, "Ya existe la categoría " . "'" . $topic['name'] . "'");
 		
 	return ($errors);
 }
