@@ -11,7 +11,7 @@ $id = '';
 $name = '';
 $email = '';
 $message = '';
-$sent_at = "now()";
+$created_at = "now()";
 
 
 /*
@@ -67,7 +67,7 @@ if (isset($_GET['read_id'])) {
 	$name = $singleEmailFetched['name'];
 	$email = $singleEmailFetched['email'];
 	$body = $singleEmailFetched['message'];
-	$sent_at = $singleEmailFetched['created_at'];
+	$created_at = $singleEmailFetched['created_at'];
 	
 
 }
