@@ -2,9 +2,6 @@
 
 /*
 ** Este archivo es simplemente para crear la conexión a la base de datos del blog
-** Si queremos trabajar en local y ver nuestros cambios en local, comentaremos el código
-** debajo de DEPLOYED. Por el contrario, si queremos conectar a la base de datos desplegada
-** en https://remotemysql.com/, lo descomentaremos.
 */
 
 include "config.php";

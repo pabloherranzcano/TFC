@@ -1,16 +1,11 @@
 <?php
 
 /*
-** Como hay varios directorios a los que apuntamos a 
-** través de hipervínculos, creamos las constante ROOT_PATH
-** y BASE_URL para no liarnos con las rutas relativas.
-**
-** De igual forma que en el archivo connection.php, si queremos trabajar en local
-** y ver nuestros cambios en local, reemplazaremos la variable dentro del "define" de
-** BASE_URL (prestando atención a que sea ese el puerto en el que estamos corriendo nuestro
-** servidor). Por el contrario, si queremos que todos los enlaces funcionen en la web desplegada
-** en "https://pabloherranzcano.herokuapp.com/", descomentaremos el código debajo de
-** DEPLOYED.
+** Como hay varios directorios a los que apuntamos a través de hipervínculos,
+** creamos las constante ROOT_PATH y BASE_URL para no liarnos con las rutas
+** relativas, y todo pueda funcionar perfectamentee... Básicamente, BASE_URL es
+** para todo lo que implique mostrar imágenes o navegar por la web, para que el
+** navegador sepa a dónde ir, y ROOT_PATH es para los includes.
 */
 
 include "config.php";
