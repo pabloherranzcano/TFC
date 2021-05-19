@@ -615,7 +615,7 @@
 	    }
 	    /* CADA LINK DE LA LISTA DEL DROPDOWN */
 	    header ul li ul li a {
-	        padding: 25px;
+	        padding: 10px;
 	        background-color: #222831;
 	        color: white;
 	        padding-left: 50px;
