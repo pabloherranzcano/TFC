@@ -1,6 +1,4 @@
 <?php
-// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
-// adminOnly();
 
 /*
 ** Este archivo es en el cargado de mostrarnoss los emails enviados desde el formulario del footer.
@@ -8,6 +6,9 @@
 
 include "../../path.php";
 include ROOT_PATH . "/app/controllers/contact.php";
+
+// Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
+adminOnly();
 
 ?>
 
