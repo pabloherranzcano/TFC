@@ -59,13 +59,9 @@ $topicName = $topicName['name'];
 						<?php echo html_entity_decode($post['body']); ?>
 					</div>
 
-
-
-
-
 					<!-- COMMENTS -->
 					<div class="comments-section">
-						<!-- if user is not signed in, tell them to sign in. If signed in, present them with comment form -->
+						<!-- Si el usuario no se está logueado, le decimos que se loguee o registre. -->
 						<?php if (isset($user_id)) : ?>
 							<form class="clearfix" action="single.php" method="POST" id="comment_form">
 								<input type="text" id="postPostId" value="<?php echo $_GET['id'] ?>" hidden>
@@ -80,12 +76,12 @@ $topicName = $topicName['name'];
 						<!-- Mostramos el total de comentarios de este post -->
 						<h2><span id="comments_count"><?php echo count($comments) ?></span> Comentario(s)</h2>
 						<hr>
-						<!-- comments wrapper -->
+						<!-- Comments wrapper -->
 						<div id="comments-wrapper">
 							<?php if (isset($comments)) : ?>
-								<!-- Display comments -->
+								<!-- Bucle Foreach para mostrar los comentarios -->
 								<?php foreach ($comments as $comment) : ?>
-									<!-- comment -->
+									<!-- Comentario -->
 									<div class="comment clearfix">
 										<img src="../../assets/images/profile.png" alt="" class="profile_pic">
 										<div class="comment-details">
@@ -94,21 +90,16 @@ $topicName = $topicName['name'];
 											<p><?php echo $comment['body']; ?></p>
 										</div>
 									</div>
-									<!-- // comment -->
+									<!-- // Comentario -->
 								<?php endforeach ?>
 							<?php else : ?>
 								<h2>¡Sé el primero en comentar este post!</h2>
 							<?php endif ?>
-						</div><!-- comments wrapper -->
-					</div><!-- // all comments -->
+						</div>
+						<!-- // Comments wrapper -->
+					</div>
 					<!-- // COMMENTS -->
-
-
-
 				</div>
-
-
-
 			</div>
 			<!-- // Main content -->
 
@@ -141,20 +132,12 @@ $topicName = $topicName['name'];
 		</div>
 		<!-- // CONTENT -->
 
-
-
-
-
-
-
-
-
 	</div>
 	<!-- // PAGE WRAPPER -->
 
 	<!-- FOOTER -->
 	<?php include ROOT_PATH . "/app/includes/footer.php"; ?>
-	<!-- FIN FOOTER -->
+	<!-- // FOOTER -->
 
 
 
