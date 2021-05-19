@@ -11,13 +11,13 @@ $id = '';
 $name = '';
 $email = '';
 $message = '';
-$created_at = "";
+$sent_at = "now()";
 
 
 /*
 ** En el contacto no nos interesa poder modificar los emails uqe nos lleguen, por lo que
 ** no haremos un Update en ningún momento. Haremos un create para generar el email de contacto.
-** Read, para poder leerlo desde el panel de administrador. Y delete, por si queremos eliminarlo.
+** Reaa, para poder leerlo desde el panel de administrador. Y delete, por si queremos eliminarlo.
 */
 
 
@@ -38,6 +38,7 @@ if (isset($_POST['contact-btn'])) {
 		// $sql = "INSERT INTO $table (name, email, message, created_at) VALUES ($, $user_id, '$comment_text', now());";
 		// $result = mysqli_query($connection, $sql);
 		
+		$email_id = create($table, $_POST);
 
 		$_SESSION['message'] = 'Email enviado correctamente.';
 		$_SESSION['type'] = 'success';
@@ -66,7 +67,7 @@ if (isset($_GET['read_id'])) {
 	$name = $singleEmailFetched['name'];
 	$email = $singleEmailFetched['email'];
 	$body = $singleEmailFetched['message'];
-	$created_at = $singleEmailFetched['created_at'];
+	$sent_at = $singleEmailFetched['created_at'];
 	
 
 }
