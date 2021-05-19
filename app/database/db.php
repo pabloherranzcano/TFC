@@ -76,7 +76,7 @@ function create($table, $data)
 	$sql = "INSERT INTO $table SET";
 
 	$i = 0;
-	if($table == "contact" || "comments") {
+	if($table == "comments) {
 		foreach ($data as $key => $value) {
 			if ($i == 0)
 			$sql = $sql . " $key='$value'";
@@ -121,10 +121,7 @@ function executeQuery($sql, $data)
 
 	$stmt = $connection->prepare($sql);
 	$values = array_values($data);
-	if (isset($data['created_at']))
-		$types = str_repeat('s', 3);
-	else
-		$types = str_repeat('s', count($values));
+	$types = str_repeat('s', count($values));
 	$stmt->bind_param($types, ...$values);
 	$stmt->execute();
 
