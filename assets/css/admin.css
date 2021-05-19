@@ -172,7 +172,7 @@
 	/*********************************************************/
 	
 	.content .mail {
-	    width: fit-content;
+	    width: 650px;
 	    display: block;
 	    margin: auto;
 	}
@@ -186,7 +186,7 @@
 	.mail .contactEmail,
 	.mail .contactBody {
 	    border-radius: 9px;
-	    width: 600px;
+	    width: auto;
 	    padding: 10px;
 	    background-color: white;
 	    margin-bottom: 20px;
@@ -207,7 +207,6 @@
 	    /******** BOTONES ********/
 	    /*************************/
 	    .admin-content .btn-group {
-	        display: flex;
 	        flex-direction: column;
 	        margin: auto;
 	    }
@@ -235,11 +234,6 @@
 	    .content {
 	        margin-top: 10px;
 	    }
-	    /******** BOTONES ********/
-	    /*************************/
-	    .admin-content .btn-group {
-	        border: 1px solid red;
-	    }
 	    /************************************************/
 	    /******************** SIDEBAR *******************/
 	    /************************************************/
@@ -252,5 +246,11 @@
 	    /* A DE LOS ELEMENTOS */
 	    .admin-wrapper .left-sidebar ul li a {
 	        text-align: center;
+	    }
+	    /*********************************************************/
+	    /*********************** SINGLE EMAIL ********************/
+	    /*********************************************************/
+	    .content .mail {
+	        width: 90%;
 	    }
 	}

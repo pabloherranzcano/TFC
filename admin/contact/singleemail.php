@@ -52,7 +52,7 @@ adminOnly();
 
 				<a href="index.php" class="btn btn-big">Bandeja&nbsp;de&nbsp;entrada</a>
 			</div>
-
+		<!-- Email -->
 			<div class="content">
 				<h2 class="page-title">EMAIL</h2>
 				<div class="mail">
@@ -63,6 +63,7 @@ adminOnly();
 					<label>Texto</label>
 					<div class="contactBody"><?php echo $body; ?></div>
 				</div>
+		<!-- // Email -->
 
 
 			</div>
