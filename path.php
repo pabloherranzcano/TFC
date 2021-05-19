@@ -13,11 +13,10 @@
 ** DEPLOYED.
 */
 
-$local = "http://localhost:3000";
-$heroku = "https://pherranz.herokuapp.com";
+include "config.php";
 
 /* BASE_URL */
-define("BASE_URL", $local);
+define("BASE_URL", $path);
 
 /* ROOT_URL */
 define("ROOT_PATH", realpath(dirname(__FILE__)));
