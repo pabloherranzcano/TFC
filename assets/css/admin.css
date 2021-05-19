@@ -8,10 +8,20 @@
 	    background-repeat: no-repeat;
 	    background-position-y: 90px;
 	}
-	/* BOTONES EDITAR Y ADMINISTRAR */
+	/******** BOTONES ********/
+	/*************************/
+	
+	.admin-content .btn-group {
+	    width: fit-content;
+	    display: flex;
+	    flex-direction: row;
+	    text-align: center;
+	}
 	
 	.btn-group a {
+	    width: 250px;
 	    background-color: #222831;
+	    margin: 5px;
 	}
 	/*********************************************************/
 	/************************* HEADER ************************/
@@ -26,7 +36,6 @@
 	header ul li ul li a {
 	    background-color: #222831;
 	    padding: 25px;
-	    ;
 	}
 	/**********************************************************/
 	/******************** ADMIN PAGE WRAPPER ******************/
@@ -39,7 +48,8 @@
 	    height: calc(100% - 130px);
 	    display: flex;
 	}
-	/* DASHBOARD MESSAGE */
+	/*** DASHBOARD MESSAGE ***/
+	/*************************/
 	
 	.dashboard-message {
 	    display: block;
@@ -49,18 +59,18 @@
 	/******************** CONTENT *******************/
 	/************************************************/
 	
-	.content {
-	    width: 100%;
-	    padding-top: 50px;
-	}
-	
 	.admin-wrapper .admin-content {
 	    flex: 8;
 	    height: 100%;
 	    margin-top: 31px;
-	    padding: 30px 10px;
+	    padding: 11px 10px;
 	    /* Para hacer scroll en los posts sólo en la zona donde se muestran */
 	    overflow-y: scroll;
+	}
+	
+	.content {
+	    width: 100%;
+	    padding-top: 50px;
 	}
 	/************************************************/
 	/******************** SIDEBAR *******************/
@@ -191,6 +201,21 @@
 	/*********************************************************/
 	
 	@media only screen and (max-width: 1150px) {
+	    /*********************************************************/
+	    /************************ GLOBALES ***********************/
+	    /*********************************************************/
+	    /******** BOTONES ********/
+	    /*************************/
+	    .admin-content .btn-group {
+	        display: flex;
+	        flex-direction: column;
+	        margin: auto;
+	        border: 1px solid red;
+	    }
+	    .btn-group a {
+	        background-color: #222831;
+	        margin: 5px;
+	    }
 	    /**********************************************************/
 	    /******************** ADMIN PAGE WRAPPER ******************/
 	    /**********************************************************/
@@ -205,6 +230,16 @@
 	        flex: 1;
 	        overflow-y: visible;
 	        overflow-x: scroll;
+	        margin-top: 5px;
+	        ;
+	    }
+	    .content {
+	        margin-top: 10px;
+	    }
+	    /******** BOTONES ********/
+	    /*************************/
+	    .admin-content .btn-group {
+	        border: 1px solid red;
 	    }
 	    /************************************************/
 	    /******************** SIDEBAR *******************/
