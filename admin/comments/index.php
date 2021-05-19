@@ -3,7 +3,7 @@
 include "../../path.php"; 
 include ROOT_PATH . "/app/controllers/comments.php";
 
-$commentsAdmin = selectAll($table);
+$commentsAdmin = array_reverse(selectAll($table));
 
 ?>
 
