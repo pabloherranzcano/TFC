@@ -34,8 +34,11 @@ if (isset($_POST['contact-btn'])) {
 		$message = $_POST['message'];
 
 		// Podría usar la función create, pero vamos a cambiar un poco la forma de hacerlo esta vez.
-		$sql = "INSERT INTO $table (name, email, message, created_at) VALUES ('$name', '$email', '$message', now());";
-		$contact_id = mysqli_query($connection, $sql);
+		// $sql = "INSERT INTO $table (name, email, message, created_at) VALUES ('$name', '$email', '$message', now());";
+		// $contact_id = mysqli_query($connection, $sql);
+
+		$contact_id = create($table, $_POST);
+
 
 
 		$_SESSION['message'] = 'Email enviado correctamente.';

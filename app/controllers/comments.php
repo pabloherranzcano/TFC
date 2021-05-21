@@ -78,8 +78,10 @@ if (isset($_POST['comment_posted'])) {
 	$comment_text = $_POST['comment_text'];
 
 	// Insertamos el comentario en la base de datos.
-	$sql = "INSERT INTO comments (post_id, user_id, body, created_at) VALUES ($postPostId, $user_id, '$comment_text', now());";
-	$result = mysqli_query($connection, $sql);
+	// $sql = "INSERT INTO comments (post_id, user_id, body, created_at) VALUES ($postPostId, $user_id, '$comment_text', now());";
+	// $result = mysqli_query($connection, $sql);
+
+	$comment_id = create($table, $_POST);
 
 	// Insertamos el comentario que vamos a mostrar posteriormente.
 	$inserted_id = $connection->insert_id;
