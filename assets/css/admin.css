@@ -21,7 +21,7 @@
 	.btn-group a {
 	    width: 250px;
 	    background-color: #222831;
-	    margin: 5px;
+	    margin: 6px;
 	}
 	/*********************************************************/
 	/************************* HEADER ************************/
@@ -46,6 +46,7 @@
 		que restarle 90px del tamaño del header pero, como así seguiría habiendo algo de
 		scroll, le quitamos 150px para asegurar. */
 	    height: calc(100% - 130px);
+	    width: 100%;
 	    display: flex;
 	}
 	/*** DASHBOARD MESSAGE ***/
@@ -108,7 +109,6 @@
 	    background-color: white;
 	    padding-right: 40px;
 	    transition: all .3s;
-	    ;
 	}
 	/************************************************/
 	/******************** SECTIONS ******************/
