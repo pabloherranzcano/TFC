@@ -12,11 +12,11 @@
 /************************* PATH ************************/
 /*******************************************************/
 
-// En local. Cambiar el número de puerto en caso necesario.
-$path = "http://localhost:3000";
+// En local. Cambiar el número de puerto al puerto deseado.
+// $path = "http://localhost:3000";
 
 // Deployed en heroku.
-// $path = "https://pabloherranzcano.herokuapp.com";
+$path = "https://pabloherranzcano.herokuapp.com";
 
 /*******************************************************/
 /*** Variables para la conexión con la base de datos ***/
