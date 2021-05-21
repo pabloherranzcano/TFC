@@ -1,4 +1,3 @@
-<?php include "../../path.php"; ?>
 <header>
 	<div class="logo">
 		<a href="<?php echo BASE_URL . '/index.php' ?>">
