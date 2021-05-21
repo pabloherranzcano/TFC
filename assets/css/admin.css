@@ -14,6 +14,7 @@
 	.admin-content .btn-group {
 	    width: fit-content;
 	    display: flex;
+	    flex-direction: row;
 	    text-align: center;
 	}
 	
@@ -47,6 +48,7 @@
 	    height: calc(100% - 130px);
 	    width: 100%;
 	    display: flex;
+	    border: 1px solid transparent;
 	}
 	/*** DASHBOARD MESSAGE ***/
 	/*************************/
