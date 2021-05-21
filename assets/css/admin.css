@@ -16,6 +16,7 @@
 	    display: flex;
 	    flex-direction: row;
 	    text-align: center;
+	    margin-bottom: 30px;
 	}
 	
 	.btn-group a {
@@ -42,10 +43,8 @@
 	/**********************************************************/
 	
 	.admin-wrapper {
-	    /* Si queremos que no haya scroll, usamos la función calc() de css. Tendríamos
-		que restarle 90px del tamaño del header pero, como así seguiría habiendo algo de
-		scroll, le quitamos 150px para asegurar. */
-	    height: calc(100% - 130px);
+	    /* Usamos la función calc() de css para darle un height del 100% - 90px (el header). */
+	    height: calc(100% - 90px);
 	    width: 100%;
 	    margin: auto;
 	    display: flex;
@@ -56,6 +55,7 @@
 	.dashboard-message {
 	    display: block;
 	    text-align: center;
+	    margin-top: 30px;
 	}
 	/************************************************/
 	/******************** CONTENT *******************/
@@ -63,16 +63,18 @@
 	
 	.admin-wrapper .admin-content {
 	    flex: 8;
-	    height: 100%;
+	    height: 95%;
 	    margin-top: 31px;
 	    padding: 11px 10px;
-	    /* Para hacer scroll en los posts sólo en la zona donde se muestran */
-	    overflow-y: scroll;
+	    overflow-y: hidden;
 	}
 	
 	.content {
 	    width: 100%;
-	    padding-top: 50px;
+	    height: 100%;
+	    padding-top: 10px;
+	    /* Para hacer scroll en los posts sólo en la zona donde se muestran */
+	    overflow-y: scroll;
 	}
 	/************************************************/
 	/******************** SIDEBAR *******************/
@@ -119,6 +121,11 @@
 	.admin-content .page-title {
 	    text-align: center;
 	    margin-bottom: 2rem;
+	}
+	
+	.page-title.comments,
+	.page-title.email {
+	    margin-top: 85px;
 	}
 	/* TABLAS */
 	
@@ -210,6 +217,7 @@
 	    .admin-content .btn-group {
 	        flex-direction: column;
 	        margin: auto;
+	        margin-bottom: 30px;
 	    }
 	    .btn-group a {
 	        background-color: #222831;
@@ -227,13 +235,11 @@
 	    }
 	    .admin-wrapper .admin-content {
 	        flex: 1;
-	        overflow-y: visible;
-	        overflow-x: scroll;
 	        margin-top: 5px;
-	        ;
 	    }
 	    .content {
 	        margin-top: 10px;
+	        overflow-x: scroll;
 	    }
 	    /************************************************/
 	    /******************** SIDEBAR *******************/

@@ -48,15 +48,16 @@ adminOnly();
 				<a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a>
 			</div>
 
+			<h2 class="page-title">EDITAR POST</h2>
+
 			<div class="content">
-				<h2 class="page-title">EDITAR POST</h2>
-				
+
 				<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 				mostramos en este div una lista con los errores. -->
 				<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
-				
-					<!-- Enctype para poder subir imágenes -->
-					<form action="edit.php" method="POST" enctype="multipart/form-data">
+
+				<!-- Enctype para poder subir imágenes -->
+				<form action="edit.php" method="POST" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="<?php echo $id; ?>">
 					<div>
 						<label>Título</label>

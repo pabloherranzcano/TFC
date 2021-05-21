@@ -47,14 +47,14 @@ adminOnly();
 		<div class="admin-content">
 			<div class="btn-group">
 				<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
-				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuarios</a>
 			</div>
 
+			<h2 class="page-title">USUARIOS</h2>
+
 			<div class="content">
-				<h2 class="page-title">USUARIOS</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
-	
+
 				<table>
 					<thead>
 						<th>#</th>

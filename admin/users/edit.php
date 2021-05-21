@@ -43,20 +43,21 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-			<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
-				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuario</a>
+				<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuarios</a>
 			</div>
 
-			<div class="content">
-					<h2 class="page-title">Add User</h2>
+			<h2 class="page-title">Add User</h2>
 
-					<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
+			ƒ<div class="content">
+
+				<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 					mostramos en este div una lista con los errores. -->
-					<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
+				<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
 
 				<form action="edit.php" method="POST">
-				<!-- Necesario para editarlo, sólo para saber qué user necesitamos editar. Por eso hidden. -->
-				<input type="hidden" name="id" value="<?php echo $id; ?>">
+					<!-- Necesario para editarlo, sólo para saber qué user necesitamos editar. Por eso hidden. -->
+					<input type="hidden" name="id" value="<?php echo $id; ?>">
 					<div>
 						<label>Nombre de usuario</label>
 						<input type="text" name="username" value="<?php echo $username; ?>" class="text-input">
@@ -78,7 +79,7 @@ adminOnly();
 						<input type="password" name="passwordConf" value="<?php echo $password; ?>" class="text-input">
 					</div>
 					<div>
-					<?php if ($admin == 1) : ?>
+						<?php if ($admin == 1) : ?>
 							<label>
 								<input type="checkbox" name="admin" checked>
 								Admin
@@ -89,7 +90,7 @@ adminOnly();
 								Admin
 							</label>
 						<?php endif; ?>
-                    </div>
+					</div>
 					<div>
 						<button type="submit" name="update-user" class="btn btn-big">Update user</button>
 					</div>

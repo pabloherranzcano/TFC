@@ -60,11 +60,11 @@ $i = count($records) + 1;
 		<div class="admin-content">
 			<div class="btn-group">
 				<a href="create.php" class="btn btn-big">Crear&nbsp;post</a>
-				<a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a>
 			</div>
 
+			<h2 class="page-title">POSTS</h2>
+
 			<div class="content">
-				<h2 class="page-title">POSTS</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 
@@ -84,9 +84,9 @@ $i = count($records) + 1;
 								<td><?php echo $post['id']; ?></td>
 								<td><?php echo $post['title']; ?></td>
 								<td><?php echo $post['username']; ?></td>
-								<td><a href="edit.php?id=<?php echo $post['id']. "&image=" . $post['image'] ?>" class="edit">Editar</a></td>
+								<td><a href="edit.php?id=<?php echo $post['id'] . "&image=" . $post['image'] ?>" class="edit">Editar</a></td>
 								<td><a href="edit.php?delete_id=<?php echo $post['id'] ?>" class="delete">Eliminar</a></td>
-								
+
 								<?php if ($post['published']) : ?>
 									<td><a href="edit.php?published=0&p_id=<?php echo $post['id']; ?>" class="unpublish">Ocultar</a></td>
 								<?php else : ?>
@@ -112,4 +112,3 @@ $i = count($records) + 1;
 </body>
 
 </html>
-

@@ -48,13 +48,14 @@ adminOnly();
 				<a href="index.php" class="btn btn-big">Adminsitrar&nbsp;posts</a>
 			</div>
 
+			<h2 class="page-title">CREAR POST</h2>
+
 			<div class="content">
-				<h2 class="page-title">CREAR POST</h2>
 
 				<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 				mostramos en este div una lista con los errores. -->
 				<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
-				
+
 				<!-- Enctype para poder subir imágenes -->
 				<form action="create.php" method="POST" enctype="multipart/form-data">
 					<div>

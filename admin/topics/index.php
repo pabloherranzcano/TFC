@@ -1,5 +1,5 @@
 <?php
-include "../../path.php"; 
+include "../../path.php";
 include ROOT_PATH . "/app/controllers/topics.php";
 
 // Llamamos a adminOnly(), para comprobar si el usuario tiene o no permisos.
@@ -42,24 +42,23 @@ adminOnly();
 
 		<!-- Admin content -->
 		<div class="admin-content">
-            <div class="btn-group">
-                <a href="create.php" class="btn btn-big">Crear&nbsp;topic</a>
-                <a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a> 
-            </div>
+			<div class="btn-group">
+				<a href="create.php" class="btn btn-big">Crear&nbsp;topic</a>
+			</div>
 
-            <div class="content">
-                <h2 class="page-title">TOPICS</h2>
-
+			<h2 class="page-title">TOPICS</h2>
+			
+			<div class="content">
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 
-                <table>
-                    <thead>
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th colspan='2' class="actions">Opciones</th>
-                    </thead>
-                    <tbody>
-						<?php foreach ($topics as $key => $topic): ?>
+				<table>
+					<thead>
+						<th>#</th>
+						<th>Nombre</th>
+						<th colspan='2' class="actions">Opciones</th>
+					</thead>
+					<tbody>
+						<?php foreach ($topics as $key => $topic) : ?>
 							<tr>
 								<td><?php echo $key + 1; ?></td>
 								<td><?php echo $topic['name']; ?></td>
@@ -68,10 +67,10 @@ adminOnly();
 								<td><a href="index.php?delete_id=<?php echo $topic['id']; ?>" class="delete">Eliminar</a></td>
 							</tr>
 						<?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+					</tbody>
+				</table>
+			</div>
+		</div>
 		<!-- // Admin content -->
 	</div>
 	<!-- // PAGE WRAPPER -->

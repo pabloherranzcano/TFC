@@ -44,15 +44,16 @@ adminOnly();
 		<div class="admin-content">
 			<div class="btn-group">
 				<a href="create.php" class="btn btn-big">Crear&nbsp;usuario</a>
-				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuario</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;usuarios</a>
 			</div>
 
-			<div class="content">
-					<h2 class="page-title">CREAR USUARIO</h2>
+			<h2 class="page-title">CREAR USUARIO</h2>
 
-					<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
+			<div class="content">
+
+				<!-- Comprobamos que no haya ningún campo vacío del formulario, y si lo hay
 					mostramos en este div una lista con los errores. -->
-					<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
+				<?php include ROOT_PATH . "/app/helpers/formErrors.php" ?>
 
 				<form action="create.php" method="POST">
 					<div>
@@ -72,7 +73,7 @@ adminOnly();
 						<input type="password" name="passwordConf" value="<?php echo $passwordConf; ?>" class="text-input">
 					</div>
 					<div>
-					<?php if ($admin == 1) : ?>
+						<?php if ($admin == 1) : ?>
 							<label>
 								<input type="checkbox" name="admin" checked>
 								Admin
@@ -83,7 +84,7 @@ adminOnly();
 								Admin
 							</label>
 						<?php endif; ?>
-                    </div>
+					</div>
 					<div>
 						<button type="submit" name="create-admin" class="btn btn-big">Add user</button>
 					</div>

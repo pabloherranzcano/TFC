@@ -45,8 +45,9 @@ $commentsAdmin = array_reverse(selectAll($table));
 		<div class="admin-content">
 
 
-            <div class="content">
-                <h2 class="page-title">COMENTARIOS</h2>
+            <h2 class="page-title comments">COMENTARIOS</h2>
+            
+			<div class="content">
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 

@@ -46,9 +46,10 @@ $i = count($records) + 1;
 		<!-- Admin content -->
 		<div class="admin-content">
 
+			<h2 class="page-title email">BANDEJA DE ENTRADA</h2>
+			
 			<!-- Content -->
 			<div class="content">
-				<h2 class="page-title">BANDEJA DE ENTRADA</h2>
 
 				<?php include ROOT_PATH . "/app/includes/messages.php"; ?>
 

@@ -49,12 +49,13 @@ adminOnly();
 		<!-- Admin content -->
 		<div class="admin-content">
 			<div class="btn-group">
-
 				<a href="index.php" class="btn btn-big">Bandeja&nbsp;de&nbsp;entrada</a>
 			</div>
-		<!-- Email -->
+			<!-- Email -->
+
+			<h2 class="page-title">EMAIL</h2>
+
 			<div class="content">
-				<h2 class="page-title">EMAIL</h2>
 				<div class="mail">
 					<label>Nombre de contacto</label>
 					<div class="contactName"><?php echo $name; ?></div>
@@ -63,7 +64,7 @@ adminOnly();
 					<label>Texto</label>
 					<div class="contactBody"><?php echo $body; ?></div>
 				</div>
-		<!-- // Email -->
+				<!-- // Email -->
 
 
 			</div>
