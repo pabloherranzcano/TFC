@@ -47,8 +47,8 @@
 		scroll, le quitamos 150px para asegurar. */
 	    height: calc(100% - 130px);
 	    width: 100%;
+	    margin: auto;
 	    display: flex;
-	    border: 1px solid transparent;
 	}
 	/*** DASHBOARD MESSAGE ***/
 	/*************************/
