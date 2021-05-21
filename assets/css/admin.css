@@ -14,7 +14,6 @@
 	.admin-content .btn-group {
 	    width: fit-content;
 	    display: flex;
-	    flex-direction: row;
 	    text-align: center;
 	}
 	
