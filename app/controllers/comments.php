@@ -27,8 +27,8 @@ $user_id = $_SESSION['id'];
 ** Recogemos en $getPostId el id del post del que solicitaremos información a la base de datos. Después, recogmos
 ** todos los comentarios de la base de datos y le damos la vuelta al array para que el último comentario aparezca el primero.
 */
-if(isset($_GET['id'])) {
-	
+if (isset($_GET['id'])) {
+
 	$getPostId = $_GET['id'];
 
 	$post =	selectOne($table, ['id' => $getPostId]);
@@ -44,7 +44,7 @@ function getUsernameById($id)
 
 	global $connection;
 	$result = mysqli_query($connection, "SELECT username FROM users WHERE id=$id LIMIT 1");
-	
+
 	return mysqli_fetch_assoc($result)['username'];
 }
 
@@ -72,16 +72,14 @@ function getCommentsCountByPostId($post_id)
 // $inserted_comment = selectAll($table, ['id' => $inserted_id]);
 if (isset($_POST['comment_posted'])) {
 	global $connection;
-	
+
 	// Recogeemos el id del post y el texto del comentario .
 	$postPostId = $_POST['postId'];
 	$comment_text = $_POST['comment_text'];
 
-	// Insertamos el comentario en la base de datos.
-	// $sql = "INSERT INTO comments (post_id, user_id, body, created_at) VALUES ($postPostId, $user_id, '$comment_text', now());";
-	// $result = mysqli_query($connection, $sql);
-
-	$comment_id = create($table, $_POST);
+	// Ejecutamos la query, esta vez sin la función create().
+	$sql = "INSERT INTO comments (post_id, user_id, body, created_at) VALUES ($postPostId, $user_id, '$comment_text', now());";
+	$result = mysqli_query($connection, $sql);
 
 	// Insertamos el comentario que vamos a mostrar posteriormente.
 	$inserted_id = $connection->insert_id;
@@ -124,6 +122,6 @@ if (isset($_GET['delete_id'])) {
 	}
 
 	header('location: ' . BASE_URL . '/admin/comments/index.php');
-	
+
 	exit();
 }

@@ -44,15 +44,7 @@ function create($table, $data)
 
 	$i = 0;
 	if($table == "comments" || $table == "contact") {
-		foreach ($data as $key => $value) {
-			if ($i == 0)
-			$sql = $sql . " $key='$value'";
-			else
-			$sql = $sql . ", $key='$value'";
-			$i++;
-		}
-		$sql = $sql . ", created_at=now();";
-	} else {
+
 		foreach ($data as $key => $value) {
 			if ($i == 0)
 			$sql = $sql . " $key=?";
@@ -61,6 +53,7 @@ function create($table, $data)
 			$i++;
 		}
 	}
+
 	$stmt = executeQuery($sql, $data);
 	$id = $stmt->insert_id;
 
