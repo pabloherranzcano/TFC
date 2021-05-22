@@ -43,15 +43,13 @@ function create($table, $data)
 	$sql = "INSERT INTO $table SET";
 
 	$i = 0;
-	if($table == "comments" || $table == "contact") {
 
-		foreach ($data as $key => $value) {
-			if ($i == 0)
-			$sql = $sql . " $key=?";
-			else
-			$sql = $sql . ", $key=?";
-			$i++;
-		}
+	foreach ($data as $key => $value) {
+		if ($i == 0)
+		$sql = $sql . " $key=?";
+		else
+		$sql = $sql . ", $key=?";
+		$i++;
 	}
 
 	$stmt = executeQuery($sql, $data);
