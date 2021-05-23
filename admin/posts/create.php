@@ -24,7 +24,7 @@ adminOnly();
 	<link rel="stylesheet" href="/assets/css/admin.css">
 
 	<!-- CKEDITOR -->
-
+	<script src="/assets/js/ckeditor5-build-classic/ckeditor.js"></script>
 
 	<title>CREAR POSTS | Panel de administrador | TFCBLOG</title>
 </head>
