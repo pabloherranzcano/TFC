@@ -24,7 +24,8 @@ adminOnly();
 	<link rel="stylesheet" href="/assets/css/admin.css">
 
 	<!-- CKEDITOR -->
-	<script src="/assets/js/ckeditor5-build-classic/ckeditor.js"></script>
+	<script src="../../assets/js/ckeditor5-build-classic/ckeditor.js"></script>
+	<script src="../../assets/js/ckfinder/ckfinder.js"></script>
 
 	<title>EDITAR POST | Panel de administrador | TFCBLOG</title>
 </head>
@@ -65,13 +66,6 @@ adminOnly();
 					<div>
 						<label>Texto</label>
 						<textarea name="body" id="body"><?php echo $body; ?></textarea>
-						<script>
-							ClassicEditor
-								.create(document.querySelector('#body'))
-								.catch(error => {
-									console.error(error);
-								});
-						</script>
 					</div>
 					<div>
 						<label>Imagen</label>

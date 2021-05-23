@@ -6,8 +6,14 @@ $(document).ready(function() {
     });
 });
 
-// CKEditor
-CKEDITOR.replace('editor', {
-    filebrowserUploadurl: "ckeditor5-build-classic/ck_upload.php",
-    filebrowserUploadMethod: "form"
-});
+// // CKEditor
+ClassicEditor
+    .create(document.querySelector('#body'), {
+        ckfinder: {
+            uploadUrl: '/assets/images/posts_images'
+        }
+    })
+    .then(data => console.log(data))
+    .catch(error => {
+        console.error(error);
+    });
