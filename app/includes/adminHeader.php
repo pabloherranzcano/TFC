@@ -11,7 +11,7 @@
 		<?php if (isset($_SESSION['id'])) : ?>
 			<li>
 				<a href="#">
-					<i class="fa fa-user"></i>
+					<i class="fa fa-user"></i> &nbsp;
 					<?php echo $_SESSION['username']; ?>
 					<i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
 				</a>
