@@ -6,11 +6,11 @@ $(document).ready(function() {
     });
 });
 
-// // CKEditor
+// CKEditor
 ClassicEditor
     .create(document.querySelector('#body'), {
         ckfinder: {
-            uploadUrl: ' /ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&currentFolder=/',
+            uploadUrl: '../../../images/'
         },
     })
     .catch(error => {
