@@ -10,10 +10,9 @@ $(document).ready(function() {
 ClassicEditor
     .create(document.querySelector('#body'), {
         ckfinder: {
-            uploadUrl: '/assets/images/posts_images'
-        }
+            uploadUrl: ' /ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&currentFolder=/',
+        },
     })
-    .then(data => console.log(data))
     .catch(error => {
         console.error(error);
     });

@@ -24,7 +24,7 @@ adminOnly();
 	<link rel="stylesheet" href="/assets/css/admin.css">
 
 	<!-- CKEDITOR -->
-	<script src="../../assets/js/ckeditor5-build-classic/ckeditor.js"></script>
+	<script src="../../assets/js/ckeditor5/ckeditor.js"></script>
 	<script src="../../assets/js/ckfinder/ckfinder.js"></script>
 
 	<title>EDITAR POST | Panel de administrador | TFCBLOG</title>
