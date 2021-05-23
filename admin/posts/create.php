@@ -24,8 +24,7 @@ adminOnly();
 	<link rel="stylesheet" href="/assets/css/admin.css">
 
 	<!-- CKEDITOR -->
-	<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
-	<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+
 
 	<title>CREAR POSTS | Panel de administrador | TFCBLOG</title>
 </head>
@@ -45,7 +44,7 @@ adminOnly();
 		<div class="admin-content">
 			<div class="btn-group">
 				<a href="create.php" class="btn btn-big">Crear&nbsp;post</a>
-				<a href="index.php" class="btn btn-big">Adminsitrar&nbsp;posts</a>
+				<a href="index.php" class="btn btn-big">Administrar&nbsp;posts</a>
 			</div>
 
 			<h2 class="page-title">CREAR POST</h2>
