@@ -1,21 +1,22 @@
 $(document).ready(function() {
-    // When user clicks on submit comment to add comment under post
+    // Cuando el usuario hace click en "enviar comentario".
     $(document).on('click', '#submit_comment', function(e) {
         e.preventDefault();
         var postId = $('#postPostId').val();
         var comment_text = $('#comment_text').val();
-        /* Si el comentario tiene apóstrofos, genra un conflicto con el string, por lo que anulamos
+
+        /* Si el comentario tiene apóstrofos, genera un conflicto con el string, por lo que anulamos
         cualquier posible apóstrofo que un usuario pueda insertar. */
         if (comment_text.includes("'")) {
             comment_text = comment_text.replace("'", "\\'");
-
-            console.log(comment_text);
         }
 
         var url = $('#comment_form').attr('action');
-        // Stop executing if not value is entered
+
+        // Paramos la ejecución si no se ha itnroducido nada.
         if (comment_text === "")
             return;
+
         $.ajax({
             url: url,
             type: "POST",
@@ -28,7 +29,7 @@ $(document).ready(function() {
                 var response = JSON.parse(data);
                 console.log(data);
                 if (data === "error") {
-                    alert('There was an error adding comment. Please try again');
+                    alert('Ha habido un error enviando el comentario. Prueba otra vez.');
                 } else {
                     $('#comments-wrapper').prepend(response.comment)
                     $('#comments_count').text(response.comments_count);
